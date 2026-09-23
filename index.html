@@ -131,6 +131,16 @@ figcaption{font-size:13px;color:var(--muted);margin-top:6px}
 .mod p{font-size:13px;color:var(--muted);margin:0}
 .mod .st{margin-top:8px}
 .log li{margin:4px 0}
+.tnum{margin:0;text-align:right;font-size:14px;color:var(--muted)}
+.tcap{font-style:italic;font-weight:500!important;font-size:17px!important;margin:0 0 12px!important}
+table.orig{border-collapse:collapse;min-width:max-content;font-size:15px;border:1.5px solid var(--ink)}
+table.orig th,table.orig td{border:1px solid var(--ink);padding:7px 12px;vertical-align:middle;white-space:nowrap;text-align:left}
+table.orig th{text-transform:none;letter-spacing:0;font-size:13.5px;color:var(--ink);font-weight:600;background:var(--accent-soft);vertical-align:top}
+table.orig td{border-top-color:var(--line);border-bottom-color:var(--line)}
+table.orig tr.gend td,table.orig td[rowspan]{border-bottom:1px solid var(--ink)}
+table.orig .c{text-align:center}
+.tnote{font-size:14.5px;margin-top:10px}
+.tnote p{margin:4px 0}
 .empty{display:none;color:var(--muted);padding:20px 0}
 footer{color:var(--muted);font-size:13px;margin-top:40px}
 </style>
@@ -149,13 +159,23 @@ window.MathJax={
 <div class="shell">
 <aside class="side">
   <p class="brand">Прикл. стат. анализ</p>
-  <p class="brand-sub">2 курс · осень 2026 · конспект в формулах</p>
+  <p class="brand-sub">3 курс · осень 2026 · конспект в формулах</p>
   <input id="q" class="search" type="search" placeholder="Поиск: квантиль, ОМП, свёртка…" aria-label="Поиск по конспекту">
   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Содержание</button>
   <nav class="nav" id="nav">
     <div>
       <h4>Как пользоваться</h4>
       <ul><li><a href="#start">Старт и журнал обновлений</a></li><li><a href="#fixes">Поправки к конспекту</a></li></ul>
+    </div>
+    <div>
+      <h4>Таблицы (от преподавателя)</h4>
+      <ul>
+        <li><a href="#t21">2.1 Точечные оценки</a></li>
+        <li><a href="#t22">2.2 Интервальные оценки</a></li>
+        <li><a href="#t31">3.1 Гипотезы: одна выборка</a></li>
+        <li><a href="#t32">3.2 Гипотезы: две выборки</a></li>
+        <li><a href="#t41">4.1 Линейная регрессия</a></li>
+      </ul>
     </div>
     <div>
       <h4>А. База из 1 семестра</h4>
@@ -207,6 +227,7 @@ window.MathJax={
   <details>
     <summary>Журнал обновлений</summary>
     <div class="inner"><ul class="log clean">
+      <li><b>23.09.2026</b> — добавлены таблицы преподавателя 2.1, 2.2, 3.1, 3.2, 4.1.</li>
       <li><b>23.09.2026</b> — создан конспект: база 1 семестра, лекции 1–5 (по фото тетради), семинар 10.09.26, Д/З про \(\bar X\) при \(n=3\), задачи Ефимова 15.26, 15.33, 15.40, карта модулей задачника.</li>
     </ul></div>
   </details>
@@ -227,6 +248,116 @@ window.MathJax={
     <li><b>Геометрическое распределение</b> в методичке 1 сем. описано как «число неудач до успеха», но формула \(P(k)=p(1-p)^{k-1},\ k\ge1\) — это «номер первого успеха». Обе формы — в <a href="#b-dist">таблице</a>; в задачнике (2.18–2.19) используется форма с \(k\ge0\).</li>
   </ul>
 </section>
+
+<!-- ============ TABLES ============ -->
+<div class="part" id="tables">
+  <div class="part-h"><h2>Таблицы от преподавателя</h2><span class="hand">всегда под рукой</span></div>
+  <p class="part-lead">Перенесены один в один с PDF (включая черты и «крышки»: \(\hat\theta\) — оценка, \(\overline X\) — выборочное среднее). Широкие таблицы на телефоне листаются вбок.</p>
+  <div class="box note"><span class="lbl">Обозначения квантилей</span>\(z_p,\ u_p\) — квантили \(N(0,1)\); \(t_p(k)\), \(\chi^2_p(k)\), \(F_p(k_1,k_2)\) — квантили уровня \(p\) распределений Стьюдента, хи-квадрат и Фишера; \(\alpha\) — уровень значимости, \(\gamma\) — доверительная вероятность. \(S_0^2=\frac1n\sum(X_i-m)^2\) (среднее \(m\) известно), \(S^2=\frac1{n-1}\sum(X_i-\overline X)^2\).</div>
+
+<section class="topic" id="t21" data-k="таблица 2.1 точечные оценки параметров распределений">
+  <p class="tnum">Таблица 2.1</p>
+  <h3 class="tcap">Точечные оценки параметров некоторых распределений</h3>
+  <div class="tbl"><table class="orig">
+    <tr><th>Распределение</th><th>Обозначение</th><th>Параметры</th><th>Точечные оценки параметров</th></tr>
+    <tr><td>Равномерное</td><td class="c">\(R(\theta_1,\theta_2)\)</td><td class="c">\(\theta_1,\theta_2\)</td><td class="c">\(\hat\theta_1=X_{(1)},\quad \hat\theta_2=X_{(n)}\)</td></tr>
+    <tr><td>Экспоненциальное</td><td class="c">\(Exp(\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\dfrac{1}{\overline X}\)</td></tr>
+    <tr><td rowspan="3">Нормальное<br>(гауссовское)</td><td class="c">\(N(\theta,\sigma^2)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\overline X\)</td></tr>
+    <tr><td class="c">\(N(m,\theta^2)\)</td><td class="c">\(\theta^2\)</td><td class="c">\(\hat\theta^2=S_0^2=\frac1n\sum(X_i-m)^2\)</td></tr>
+    <tr><td class="c">\(N(\theta_1,\theta_2^2)\)</td><td class="c">\(\theta_1,\theta_2\)</td><td class="c">\(\hat\theta_1=\overline X,\quad \hat\theta_2^2=S^2\)</td></tr>
+    <tr><td>Эрланга</td><td class="c">\(E(k,\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\dfrac{\overline X}{k}\)</td></tr>
+    <tr><td>Биномиальное</td><td class="c">\(B(m,\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\dfrac{\overline X}{m}\)</td></tr>
+    <tr><td>Геометрическое</td><td class="c">\(G(\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\dfrac{1}{\overline X}\)</td></tr>
+    <tr><td>Пуассона</td><td class="c">\(\Pi(\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\overline X\)</td></tr>
+  </table></div>
+</section>
+
+<section class="topic" id="t22" data-k="таблица 2.2 интервальные оценки доверительный интервал">
+  <p class="tnum">Таблица 2.2</p>
+  <h3 class="tcap">Интервальные оценки параметров некоторых распределений</h3>
+  <div class="tbl"><table class="orig">
+    <tr><th rowspan="2">Распределение</th><th rowspan="2">Точечная оценка</th><th colspan="2" class="c">Интервальная оценка</th></tr>
+    <tr><th class="c">Формула</th><th>Примечание</th></tr>
+    <tr><td>\(N(\theta,\sigma^2)\)</td><td>\(\hat\theta=\overline X\)</td><td class="c">\(\displaystyle \overline X-u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}&lt;\theta&lt;\overline X+u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}\)</td><td>Точная</td></tr>
+    <tr><td>\(N(m,\theta^2)\)</td><td>\(\hat\theta^2=S_0^2\)</td><td class="c">\(\displaystyle \frac{n\cdot S_0^2}{\chi^2_{\frac{1-\gamma}{2}}(n)}&lt;\theta^2&lt;\frac{n\cdot S_0^2}{\chi^2_{\frac{1+\gamma}{2}}(n)}\)</td><td>Точная</td></tr>
+    <tr><td rowspan="2">\(N(\theta_1,\theta_2^2)\)</td><td>\(\hat\theta_1=\overline X\)</td><td class="c">\(\displaystyle \overline X-t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}&lt;\theta_1&lt;\overline X+t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}\)</td><td>Точная</td></tr>
+    <tr><td>\(\hat\theta_2^2=S^2\)</td><td class="c">\(\displaystyle \frac{(n-1)\cdot S^2}{\chi^2_{\frac{1-\gamma}{2}}(n-1)}&lt;\theta_2^2&lt;\frac{(n-1)\cdot S^2}{\chi^2_{\frac{1+\gamma}{2}}(n-1)}\)</td><td>Точная</td></tr>
+    <tr><td>\(\Pi(\theta)\)</td><td>\(\hat\theta=\overline X\)</td><td class="c">\(\displaystyle \overline X-u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\overline X}{n}}&lt;\theta&lt;\overline X+u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\overline X}{n}}\)</td><td>Приближенная</td></tr>
+    <tr><td>Бернулли</td><td>\(\displaystyle \hat\theta=\nu=\frac{x}{n}\)</td><td class="c">\(\displaystyle \nu-u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\nu\cdot(1-\nu)}{n}}&lt;\theta&lt;\nu+u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\nu\cdot(1-\nu)}{n}}\)</td><td>Приближенная</td></tr>
+  </table></div>
+  <p class="tnote"><i>Примечание:</i> В распределении Бернулли оцениваемым параметром является вероятность успеха в одном испытании. Статистика \(x\) равна числу наступлений успехов в серии из \(n\) испытаний.</p>
+  <div class="box warn"><span class="lbl">Проверь у преподавателя</span>В строках с \(\chi^2\) здесь в <b>левой</b> границе стоит \(\chi^2_{\frac{1-\gamma}{2}}\). Если \(\chi^2_p\) — квантиль уровня \(p\) (как в табл. 3.1 и 4.1), левая граница должна быть с большим квантилем \(\chi^2_{\frac{1+\gamma}{2}}\), иначе она окажется больше правой. Скорее всего, в этой таблице \(\chi^2_p\) означает точку, правее которой лежит вероятность \(p\). На практике: <b>в знаменатель левой границы ставь больший из двух квантилей</b>.</div>
+</section>
+
+<section class="topic" id="t31" data-k="таблица 3.1 проверка гипотез параметры нормального одновыборочная критерий">
+  <p class="tnum">Таблица 3.1</p>
+  <h3 class="tcap">Проверка гипотез о параметрах нормального распределения в одновыборочной задаче</h3>
+  <div class="tbl"><table class="orig">
+    <tr><th>Модель</th><th>Гипотеза \(H_0\)</th><th>Статистика критерия \(T\)</th><th>Альтернатива \(H_1\)</th><th>Область принятия \(H_0\)</th><th>Критическая область \(H_0\)<br>(область принятия \(H_1\))</th></tr>
+    <tr><td rowspan="3">\(N(\theta,\sigma^2)\)</td><td rowspan="3">\(\theta=m_0\)</td><td rowspan="3">\(\displaystyle T=\frac{(\overline X-m_0)\sqrt n}{\sigma}\)</td>
+      <td>\(\theta\ne m_0\)</td><td>\(|T|&lt;z_{1-\alpha/2}\)</td><td>\(|T|\ge z_{1-\alpha/2}\)</td></tr>
+    <tr><td>\(\theta&gt;m_0\)</td><td>\(T&lt;z_{1-\alpha}\)</td><td>\(T\ge z_{1-\alpha}\)</td></tr>
+    <tr class="gend"><td>\(\theta&lt;m_0\)</td><td>\(T&gt;z_{\alpha}\)</td><td>\(T\le z_{\alpha}\)</td></tr>
+    <tr><td rowspan="3">\(N(\theta_1,\theta_2^2)\)</td><td rowspan="3">\(\theta_1=m_0\)</td><td rowspan="3">\(\displaystyle T=\frac{(\overline X-m_0)\sqrt n}{S}\)</td>
+      <td>\(\theta_1\ne m_0\)</td><td>\(|T|&lt;t_{1-\alpha/2}(n-1)\)</td><td>\(|T|\ge t_{1-\alpha/2}(n-1)\)</td></tr>
+    <tr><td>\(\theta_1&gt;m_0\)</td><td>\(T&lt;t_{1-\alpha}(n-1)\)</td><td>\(T\ge t_{1-\alpha}(n-1)\)</td></tr>
+    <tr class="gend"><td>\(\theta_1&lt;m_0\)</td><td>\(T&gt;t_{\alpha}(n-1)\)</td><td>\(T\le t_{\alpha}(n-1)\)</td></tr>
+    <tr><td rowspan="3">\(N(m,\theta^2)\)</td><td rowspan="3">\(\theta^2=\sigma_0^2\)</td><td rowspan="3">\(\displaystyle T=\frac{n\cdot S_0^2}{\sigma_0^2}\)</td>
+      <td>\(\theta^2\ne\sigma_0^2\)</td><td>\(\chi^2_{\alpha/2}(n)&lt;T&lt;\chi^2_{1-\alpha/2}(n)\)</td><td>\(\left[\begin{array}{l}T\le\chi^2_{\alpha/2}(n)\\ T\ge\chi^2_{1-\alpha/2}(n)\end{array}\right.\)</td></tr>
+    <tr><td>\(\theta^2&gt;\sigma_0^2\)</td><td>\(T&lt;\chi^2_{1-\alpha}(n)\)</td><td>\(T\ge\chi^2_{1-\alpha}(n)\)</td></tr>
+    <tr class="gend"><td>\(\theta^2&lt;\sigma_0^2\)</td><td>\(T&gt;\chi^2_{\alpha}(n)\)</td><td>\(T\le\chi^2_{\alpha}(n)\)</td></tr>
+    <tr><td rowspan="3">\(N(\theta_1,\theta_2^2)\)</td><td rowspan="3">\(\theta_2^2=\sigma_0^2\)</td><td rowspan="3">\(\displaystyle T=\frac{(n-1)\cdot S^2}{\sigma_0^2}\)</td>
+      <td>\(\theta_2^2\ne\sigma_0^2\)</td><td>\(\chi^2_{\alpha/2}(n-1)&lt;T&lt;\chi^2_{1-\alpha/2}(n-1)\)</td><td>\(\left[\begin{array}{l}T\le\chi^2_{\alpha/2}(n-1)\\ T\ge\chi^2_{1-\alpha/2}(n-1)\end{array}\right.\)</td></tr>
+    <tr><td>\(\theta_2^2&gt;\sigma_0^2\)</td><td>\(T&lt;\chi^2_{1-\alpha}(n-1)\)</td><td>\(T\ge\chi^2_{1-\alpha}(n-1)\)</td></tr>
+    <tr class="gend"><td>\(\theta_2^2&lt;\sigma_0^2\)</td><td>\(T&gt;\chi^2_{\alpha}(n-1)\)</td><td>\(T\le\chi^2_{\alpha}(n-1)\)</td></tr>
+  </table></div>
+</section>
+
+<section class="topic" id="t32" data-k="таблица 3.2 проверка гипотез двухвыборочная сравнение средних дисперсий фишер стьюдент">
+  <p class="tnum">Таблица 3.2</p>
+  <h3 class="tcap">Проверка гипотез о параметрах нормальных распределений в двухвыборочной задаче</h3>
+  <div class="tbl"><table class="orig">
+    <tr><th>Модель</th><th>Гипотеза \(H_0\)</th><th>Доп. усл.</th><th>Статистика \(T\)</th><th>Альтернатива \(H_1\)</th><th>Область принятия \(H_0\)</th><th>Критическая область \(H_0\)<br>(область принятия \(H_1\))</th></tr>
+    <tr><td rowspan="3">\(N(\theta_{11},\sigma_1^2),\)<br>\(N(\theta_{21},\sigma_2^2)\)</td><td rowspan="3">\(\theta_{11}=\theta_{21}\)</td><td rowspan="3"></td><td rowspan="3">\(\displaystyle T=\frac{\overline X-\overline Y}{\sqrt{\dfrac{\sigma_1^2}{n_1}+\dfrac{\sigma_2^2}{n_2}}}\)</td>
+      <td>\(\theta_{11}\ne\theta_{21}\)</td><td>\(|T|&lt;z_{1-\alpha/2}\)</td><td>\(|T|\ge z_{1-\alpha/2}\)</td></tr>
+    <tr><td>\(\theta_{11}&gt;\theta_{21}\)</td><td>\(T&lt;z_{1-\alpha}\)</td><td>\(T\ge z_{1-\alpha}\)</td></tr>
+    <tr class="gend"><td>\(\theta_{11}&lt;\theta_{21}\)</td><td>\(T&gt;z_{\alpha}\)</td><td>\(T\le z_{\alpha}\)</td></tr>
+    <tr><td rowspan="3">\(N(\theta_{11},\theta_{12}^2),\)<br>\(N(\theta_{21},\theta_{22}^2)\)</td><td rowspan="3">\(\theta_{11}=\theta_{21}\)</td><td rowspan="3">\(\theta_{12}^2=\theta_{22}^2\)</td><td rowspan="3">\(\displaystyle T=\frac{\overline X-\overline Y}{S\sqrt{\dfrac{1}{n_1}+\dfrac{1}{n_2}}}\) (*)</td>
+      <td>\(\theta_{11}\ne\theta_{21}\)</td><td>\(|T|&lt;t_{1-\alpha/2}(n_1+n_2-2)\)</td><td>\(|T|\ge t_{1-\alpha/2}(n_1+n_2-2)\)</td></tr>
+    <tr><td>\(\theta_{11}&gt;\theta_{21}\)</td><td>\(T&lt;t_{1-\alpha}(n_1+n_2-2)\)</td><td>\(T\ge t_{1-\alpha}(n_1+n_2-2)\)</td></tr>
+    <tr class="gend"><td>\(\theta_{11}&lt;\theta_{21}\)</td><td>\(T&gt;t_{\alpha}(n_1+n_2-2)\)</td><td>\(T\le t_{\alpha}(n_1+n_2-2)\)</td></tr>
+    <tr><td rowspan="3">\(N(\theta_{11},\theta_{12}^2),\)<br>\(N(\theta_{21},\theta_{22}^2)\)</td><td rowspan="3">\(\theta_{11}=\theta_{21}\)</td><td rowspan="3">\(\theta_{12}^2\ne\theta_{22}^2\)</td><td rowspan="3">\(\displaystyle T=\frac{\overline X-\overline Y}{\sqrt{\dfrac{S_1^2}{n_1}+\dfrac{S_2^2}{n_2}}}\) (**)</td>
+      <td>\(\theta_{11}\ne\theta_{21}\)</td><td>\(|T|&lt;t_{1-\alpha/2}(k)\)</td><td>\(|T|\ge t_{1-\alpha/2}(k)\)</td></tr>
+    <tr><td>\(\theta_{11}&gt;\theta_{21}\)</td><td>\(T&lt;t_{1-\alpha}(k)\) &nbsp;(**)</td><td>\(T\ge t_{1-\alpha}(k)\) &nbsp;(**)</td></tr>
+    <tr class="gend"><td>\(\theta_{11}&lt;\theta_{21}\)</td><td>\(T&gt;t_{\alpha}(k)\)</td><td>\(T\le t_{\alpha}(k)\)</td></tr>
+    <tr><td rowspan="3">\(N(m_1,\theta_{12}^2),\)<br>\(N(m_2,\theta_{22}^2)\)</td><td rowspan="3">\(\theta_{12}^2=\theta_{22}^2\)</td><td rowspan="3"></td><td rowspan="3">\(\displaystyle T=\frac{S_{01}^2}{S_{02}^2}\)</td>
+      <td>\(\theta_{12}^2\ne\theta_{22}^2\)</td><td>\(\left\{\begin{array}{l}T&gt;F_{\alpha/2}(n_1,n_2)\\ T&lt;F_{1-\alpha/2}(n_1,n_2)\end{array}\right.\)</td><td>\(\left[\begin{array}{l}T\le F_{\alpha/2}(n_1,n_2)\\ T\ge F_{1-\alpha/2}(n_1,n_2)\end{array}\right.\)</td></tr>
+    <tr><td>\(\theta_{12}^2&gt;\theta_{22}^2\)</td><td>\(T&lt;F_{1-\alpha}(n_1,n_2)\)</td><td>\(T\ge F_{1-\alpha}(n_1,n_2)\)</td></tr>
+    <tr class="gend"><td>\(\theta_{12}^2&lt;\theta_{22}^2\)</td><td>\(T&gt;F_{\alpha}(n_1,n_2)\)</td><td>\(T\le F_{\alpha}(n_1,n_2)\)</td></tr>
+    <tr><td rowspan="3">\(N(\theta_{11},\theta_{12}^2),\)<br>\(N(\theta_{21},\theta_{22}^2)\)</td><td rowspan="3">\(\theta_{12}^2=\theta_{22}^2\)</td><td rowspan="3"></td><td rowspan="3">\(\displaystyle T=\frac{S_1^2}{S_2^2}\)</td>
+      <td>\(\theta_{12}^2\ne\theta_{22}^2\)</td><td>\(\left\{\begin{array}{l}T&gt;F_{\alpha/2}(n_1-1,n_2-1)\\ T&lt;F_{1-\alpha/2}(n_1-1,n_2-1)\end{array}\right.\)</td><td>\(\left[\begin{array}{l}T\le F_{\alpha/2}(n_1-1,n_2-1)\\ T\ge F_{1-\alpha/2}(n_1-1,n_2-1)\end{array}\right.\)</td></tr>
+    <tr><td>\(\theta_{12}^2&gt;\theta_{22}^2\)</td><td>\(T&lt;F_{1-\alpha}(n_1-1,n_2-1)\)</td><td>\(T\ge F_{1-\alpha}(n_1-1,n_2-1)\)</td></tr>
+    <tr class="gend"><td>\(\theta_{12}^2&lt;\theta_{22}^2\)</td><td>\(T&gt;F_{\alpha}(n_1-1,n_2-1)\)</td><td>\(T\le F_{\alpha}(n_1-1,n_2-1)\)</td></tr>
+  </table></div>
+  <div class="tnote"><p><i>Примечания к табл. 3.2.</i></p>
+  <p>(*) Статистика \(\displaystyle S^2=\frac{(n_1-1)\cdot S_1^2+(n_2-1)\cdot S_2^2}{n_1+n_2-2}\) является оценкой дисперсии по объединенной выборке.</p>
+  <p>(**) Распределение статистики \(T\) близко к распределению \(t(k)\) при</p>
+  \[k=\left(\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}\right)^2:\left(\frac{S_1^4}{n_1^2\cdot(n_1-1)}+\frac{S_2^4}{n_2^2\cdot(n_2-1)}\right).\]</div>
+</section>
+
+<section class="topic" id="t41" data-k="таблица 4.1 линейная регрессия оценки параметров прогноз">
+  <p class="tnum">Таблица 4.1</p>
+  <h3 class="tcap">Оценки параметров и прогноза для простой линейной регрессии</h3>
+  <div class="tbl"><table class="orig">
+    <tr><th class="c">Параметр</th><th class="c">Точечная оценка</th><th class="c">Интервальная оценка (центральная)</th></tr>
+    <tr><td class="c">\(\beta_0\)</td><td class="c">\(\displaystyle \bar\beta_0=\bar y-\frac{Q_{XY}^2}{Q_X^2}\,\bar x\)</td><td class="c">\(\displaystyle \left(\bar\beta_0-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}},\ \ \bar\beta_0+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}}\right)\)</td></tr>
+    <tr><td class="c">\(\beta_1\)</td><td class="c">\(\displaystyle \bar\beta_1=\frac{Q_{XY}^2}{Q_X^2}\)</td><td class="c">\(\displaystyle \left(\bar\beta_1-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X},\ \ \bar\beta_1+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\right)\)</td></tr>
+    <tr><td class="c">\(\sigma^2\)</td><td class="c">\(\displaystyle \bar\sigma^2=S^2=\frac{Q_l^2}{n-2}\)</td><td class="c">\(\displaystyle \left(\frac{(n-2)S^2}{\chi^2_{\frac{1+\gamma}{2}}(n-2)},\ \ \frac{(n-2)S^2}{\chi^2_{\frac{1-\gamma}{2}}(n-2)}\right)\)</td></tr>
+    <tr><td class="c">\(M\bigl(y(x_0)\bigr)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
+    <tr><td class="c">\(y(x_0)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
+  </table></div>
+</section>
+</div>
 
 <!-- ============ PART A ============ -->
 <div class="part">
