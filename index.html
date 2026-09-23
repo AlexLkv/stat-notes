@@ -109,9 +109,9 @@ ul.clean li{margin:3px 0}
 .box.good{background:var(--ok-soft)} .box.good .lbl{color:var(--ok)}
 .hand-note{font-family:"Caveat",cursive;font-size:21px;color:var(--accent);line-height:1.2}
 details{border:1px solid var(--line);border-radius:10px;margin:12px 0;background:var(--paper)}
-details>summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:15px;list-style:none;display:flex;gap:8px;align-items:center}
+details>summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:15px;list-style:none;display:block}
 details>summary::-webkit-details-marker{display:none}
-details>summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+details>summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--accent);transition:transform .15s}
 details[open]>summary::before{transform:rotate(90deg)}
 details>summary:focus-visible{outline:2px solid var(--accent);border-radius:10px}
 details .inner{padding:0 16px 14px}
@@ -1025,7 +1025,12 @@ window.MathJax={
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
   var title=document.getElementById('tbTitle');
   function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('on',on);if(on)title.textContent=a.textContent;})}
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)setActive(en.target.id)})},{rootMargin:'-15% 0px -75% 0px'});secs.forEach(function(s){io.observe(s)});}
+  var cur='',tick=false;
+  function track(){tick=false;var y=window.innerHeight*0.3,id=secs[0]&&secs[0].id;
+    for(var i=0;i<secs.length;i++){if(secs[i].hidden)continue;if(secs[i].getBoundingClientRect().top<=y)id=secs[i].id;else break;}
+    if(id!==cur){cur=id;setActive(id);}}
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(track);}},{passive:true});
+  window.addEventListener('load',track);track();
   secs.forEach(function(s,i){if(s.tagName!=='SECTION')return;var d=document.createElement('div');d.className='pn';
     var pv=secs[i-1],nx=secs[i+1];
     if(pv){var a=document.createElement('a');a.href='#'+pv.id;a.textContent='← '+links[i-1].textContent;d.appendChild(a);}
