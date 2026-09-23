@@ -200,6 +200,8 @@ window.MathJax={
         <li><a href="#l-sem1">Сем. 10.09. Группировка, X̄</a></li>
         <li><a href="#l-est">Л4. Свойства оценок</a></li>
         <li><a href="#l-methods">Л5. Метод моментов и ОМП</a></li>
+        <li><a href="#l-sem2">Сем. 14.09. Задачи 2.3–2.19</a></li>
+        <li><a href="#l-rao">Л 17.09. Фишер, Рао–Крамер</a></li>
       </ul>
     </div>
     <div>
@@ -227,6 +229,7 @@ window.MathJax={
   <details>
     <summary>Журнал обновлений</summary>
     <div class="inner"><ul class="log clean">
+      <li><b>23.09.2026</b> — семинар 14.09 (2.3, 2.5, 2.8, разбор 2.19) и лекция 17.09 (информация Фишера, Рао–Крамер, доверительные интервалы).</li>
       <li><b>23.09.2026</b> — добавлены таблицы преподавателя 2.1, 2.2, 3.1, 3.2, 4.1.</li>
       <li><b>23.09.2026</b> — создан конспект: база 1 семестра, лекции 1–5 (по фото тетради), семинар 10.09.26, Д/З про \(\bar X\) при \(n=3\), задачи Ефимова 15.26, 15.33, 15.40, карта модулей задачника.</li>
     </ul></div>
@@ -670,6 +673,104 @@ window.MathJax={
   </div></details>
   <div class="box warn"><span class="lbl">Ловушка: равномерное распределение (2.11–2.13)</span>У \(R[0,\theta]\) производная не обнуляется: \(L=\theta^{-n}\) при \(\theta\ge X_{(n)}\) и 0 иначе. \(L\) убывает, значит максимум на границе: \(\hat\theta=X_{(n)}\). Всегда проверяй, от \(\theta\) ли зависит носитель.</div>
 </section>
+<section class="topic" id="l-sem2" data-k="семинар 14.09 2.3 2.5 2.8 2.19 метод моментов омп нормальное экспоненциальное усечённое геометрическое">
+  <h3>Семинар 14.09. Задачи 2.3, 2.5, 2.8, 2.19</h3>
+  <div class="meta"><span class="tag">семинар</span><span class="tag hot">Д/З: модуль 2 до 2.24 включительно</span></div>
+
+  <details open><summary>№2.3 — \(Y_i=1-e^{-3X_i}\), \(X_i\sim Exp(3)\)</summary><div class="inner">
+    <p>\(F_X(x)=P(X_i&lt;x)=\begin{cases}1-e^{-3x},&amp;x&gt;0\\0,&amp;\text{иначе}\end{cases}\), \(\ p_X(x)=\begin{cases}3e^{-3x},&amp;x\ge0\\0,&amp;\text{иначе}\end{cases}\)</p>
+    <p>Так как \(X_i&gt;0\), то \(e^{-3X_i}\in(0,1)\) и \(Y_i\in(0;1)\).</p>
+    \[F_Y(x)=P(1-e^{-3X}&lt;x)=P(e^{-3X}&gt;1-x)=P\bigl(-3X&gt;\ln(1-x)\bigr)=P\!\left(X&lt;-\tfrac13\ln(1-x)\right)=F_X\!\left(-\tfrac13\ln(1-x)\right)\]
+    \[p_Y(x)=p_X\!\left(-\tfrac13\ln(1-x)\right)\cdot\frac{1}{3(1-x)},\qquad p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}=3(1-x).\]
+    <p>Условие \(-\frac13\ln(1-x)\ge0\) ⇔ \(0&lt;1-x\le1\) ⇔ \(0\le x&lt;1\). Итого</p>
+    \[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}=1,\ \ 0\le x&lt;1;\qquad p_Y(x)=0\ \text{иначе}\ \Rightarrow\ Y_i\sim R(0,1).\]
+    <div class="box intu"><span class="lbl">Почему так вышло</span>\(1-e^{-3x}\) — это и есть \(F_X(x)\). Общий факт: \(F(\xi)\sim R(0,1)\) для любой непрерывной \(F\) (см. <a href="#b-func">функции от СВ</a>).</div>
+  </div></details>
+
+  <details><summary>№2.5 — метод моментов для \(N(a,\sigma^2)\)</summary><div class="inner">
+    <ol class="clean" style="padding-left:22px">
+      <li>\(a\) неизвестно: \(M\xi=a=\overline X\ \Rightarrow\ \tilde a=\overline X\).</li>
+      <li>\(\sigma^2\) неизвестна, \(a\) известно: \(D\xi=M(\xi-a)^2\ \Rightarrow\ \tilde\sigma^2=\frac1n\sum_{i=1}^n(X_i-a)^2\).</li>
+      <li>\((a,\sigma^2)\) оба неизвестны: \(\tilde a=\overline X,\ \tilde\sigma^2=D_{\text{в}}\) (на семинаре записали \(S^2\) — это та же оценка, исправленная на несмещённость).</li>
+    </ol>
+    <div class="box warn"><span class="lbl">Не путай</span>Когда \(a\) <b>известно</b>, делим на \(n\): \(\frac1n\sum(X_i-a)^2\) уже несмещённая (это \(S_0^2\) из <a href="#t21">табл. 2.1</a>). Вариант с \(\frac1{n-1}\), записанный в тетради, при известном \(a\) — смещённый. \(n-1\) нужно только когда вместо \(a\) стоит \(\overline X\).</div>
+  </div></details>
+
+  <details><summary>№2.8 — ОМП векторного параметра \((a,\sigma)\) нормального распределения</summary><div class="inner">
+    \[f(x,\theta)=\frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}},\qquad L(x,\theta)=\frac{1}{(\sqrt{2\pi}\,\sigma)^n}\,e^{-\frac{\sum_{i=1}^n(x_i-a)^2}{2\sigma^2}}\]
+    \[\ln L=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]
+    \[\begin{cases}\dfrac{\partial\ln L}{\partial a}=\dfrac1{\sigma^2}\sum(x_i-a)=0\\[4pt]\dfrac{\partial\ln L}{\partial\sigma}=-\dfrac n\sigma+\dfrac{\sum(x_i-a)^2}{\sigma^3}=0\end{cases}\ \Rightarrow\ \hat a=\overline X,\quad \hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=D_{\text{в}}.\]
+    <p><b>Проверка максимума</b> в точке \(M=(\hat a,\hat\sigma)\):</p>
+    \[A=\frac{\partial^2\ln L}{\partial a^2}\Big|_M=-\frac{n}{\sigma^2},\quad B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M=-\frac{2}{\sigma^3}\sum(x_i-\hat a)=0,\quad C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2=-\frac{2n}{\sigma^2}.\]
+    <p>\(\Delta=AC-B^2=\dfrac{2n^2}{\sigma^4}&gt;0\) ⇒ экстремум; \(A&lt;0\) ⇒ максимум.</p>
+    <div class="box warn"><span class="lbl">Поправка к тетради</span>В записи \(C\) стоит «\(&gt;0\)», но после подстановки \(\sum(x_i-\hat a)^2=n\hat\sigma^2\) получается \(C=\frac{n}{\sigma^2}-\frac{3n}{\sigma^2}=-\frac{2n}{\sigma^2}&lt;0\). Отсюда и \(\Delta=\frac{2n^2}{\sigma^4}\). Вывод (максимум) верный.</div>
+    <p><b>Сравнение с 2.5:</b> для \(a\) оба метода дают \(\overline X\); для \(\sigma^2\) ОМП даёт смещённую \(D_{\text{в}}\).</p>
+  </div></details>
+
+  <details><summary>№2.19 — ОМП для усечённого геометрического (Д/З, разбор)</summary><div class="inner">
+    <p>\(P(X_i=k)=p(1-p)^k,\ k=0,\dots,m-1;\quad P(X_i=m)=1-P(X_i\le m-1)=(1-p)^m.\)</p>
+    <p>Пусть \(r\) — число наблюдений, <b>меньших</b> \(m\), а \(\Sigma=\sum_{i=1}^n X_i\) — сумма всех наблюдений. Каждое \(X_i&lt;m\) даёт множитель \(p(1-p)^{X_i}\), каждое \(X_i=m\) — множитель \((1-p)^m=(1-p)^{X_i}\). Поэтому</p>
+    \[L(p)=p^{\,r}(1-p)^{\Sigma},\qquad \ln L=r\ln p+\Sigma\ln(1-p),\qquad \frac{\partial\ln L}{\partial p}=\frac rp-\frac{\Sigma}{1-p}=0\]
+    \[\Rightarrow\ \hat p=\frac{r}{r+\Sigma}.\]
+    <p>\(\frac{\partial^2\ln L}{\partial p^2}=-\frac r{p^2}-\frac{\Sigma}{(1-p)^2}&lt;0\) — максимум. При \(m\to\infty\) (усечения нет) \(r=n\) и \(\hat p=\frac{n}{n+\sum X_i}=\frac1{1+\overline X}\).</p>
+  </div></details>
+</section>
+
+<section class="topic" id="l-rao" data-k="лекция 17.09 вклад выборки информация фишера неравенство рао крамера эффективность относительная асимптотическая условия регулярности">
+  <h3>Лекция 17.09. Информация Фишера и неравенство Рао–Крамера</h3>
+  <div class="meta"><span class="tag">лекция</span><span class="tag hot">модуль 2, задачи 2.21–2.24</span></div>
+  <p>\(X=(X_1,\dots,X_n)\) — выборка, \(\xi\) — наблюдаемая СВ, \(f(x,\theta)\) — её плотность (или вероятность). Функция правдоподобия и её логарифм:</p>
+  \[L(X,\theta)=f(X_1,\theta)\,f(X_2,\theta)\cdots f(X_n,\theta),\qquad \ln L(X,\theta)=\sum_{i=1}^n\ln f(X_i,\theta).\]
+  <div class="def"><b>Вклад выборки</b> (score): \(U=\dfrac{\partial}{\partial\theta}\ln L(X,\theta)\) — случайная величина.</div>
+  \[EU=\int_{R_\theta}U\cdot L(X,\theta)\,dX=\int_{R_\theta}L\,\frac{\partial\ln L}{\partial\theta}\,dX=\int L\cdot\frac1L\frac{\partial L}{\partial\theta}\,dX=\frac{\partial}{\partial\theta}\underbrace{\int L\,dX}_{=1}=0.\]
+  <p>⇒ в среднем вклад выборки равен 0. Вклад одного наблюдения \(U_1=\frac{\partial}{\partial\theta}\ln f(X_i,\theta)\); \(U=\sum_{i=1}^nU_i\) — вклад выборки равен сумме вкладов.</p>
+  <div class="def"><b>Информация Фишера:</b> \(DU=EU^2=I_n(\theta)\),
+  \[I_n(\theta)=E\left[\frac{\partial}{\partial\theta}\ln L\right]^2=-E\left(\frac{\partial^2\ln L}{\partial\theta^2}\right),\qquad I_n(\theta)=n\,I_1(\theta).\]</div>
+  <div class="box intu"><span class="lbl">Интуиция</span>\(I_n\) — сколько «информации о \(\theta\)» содержит выборка. Чем круче \(\ln L\) изогнута около максимума (большая \(-\partial^2\ln L\)), тем точнее можно оценить \(\theta\). Информация складывается: \(n\) наблюдений дают в \(n\) раз больше.</div>
+
+  <h5>Неравенство Рао–Крамера</h5>
+  <p><b>Условия регулярности:</b></p>
+  <ol class="clean" style="padding-left:22px">
+    <li>\(\operatorname{supp}X\) не зависит от \(\theta\) (носитель функции — множество, где она \(\ne0\));</li>
+    <li>\(f(X,\theta)\) дифференцируема по \(\theta\);</li>
+    <li>интегрирование и дифференцирование можно менять местами.</li>
+  </ol>
+  <p>Пусть условия выполнены и \(\tilde\theta\) — <b>несмещённая</b> оценка (\(E\tilde\theta=\theta\)). Тогда</p>
+  \[\boxed{D\tilde\theta\ \ge\ \frac{1}{I_n(\theta)}}\]
+  <div class="def"><b>Эффективная оценка</b> — несмещённая оценка, которая обращает неравенство Рао–Крамера в равенство.</div>
+  <p>Если оценка смещённая, \(E\tilde\theta=\theta+b(\theta)\) (\(b\) — смещение), то</p>
+  \[D\tilde\theta\ \ge\ \frac{\bigl(1+b'(\theta)\bigr)^2}{I_n(\theta)}.\]
+  <div class="box warn"><span class="lbl">Когда неравенство не работает</span>Для \(R[0,\theta]\) носитель \([0,\theta]\) зависит от \(\theta\) — условие 1 нарушено. Поэтому, например, для \(X_{(n)}\) дисперсия может быть меньше «границы» Рао–Крамера — это не противоречие.</div>
+
+  <h5>Относительная и асимптотическая эффективность</h5>
+  \[e(\tilde\theta)=\frac{1}{I_n(\theta)}:D\tilde\theta\quad\text{— относительная эффективность}.\]
+  <ul class="clean">
+    <li>\(e=1\) — эффективная оценка; \(e&lt;1\) — оценку можно улучшить;</li>
+    <li>\(\lim_{n\to\infty}e(\tilde\theta)=1\) — асимптотически эффективная;</li>
+    <li>\(\lim_{n\to\infty}E\tilde\theta=\theta\) — асимптотически несмещённая.</li>
+  </ul>
+  <p class="hand-note">«\(a\sim b\)»: для несмещённости смотрим \(a-b\to0\), для эффективности — \(a/b\to1\).</p>
+
+  <details open><summary>Пример с лекции: \(\Pi(\theta)\), \(\Theta=\{\theta:\theta&gt;0\}\)</summary><div class="inner">
+    \[f(x,\theta)=e^{-\theta}\frac{\theta^x}{x!},\ x=0,1,2,\dots;\qquad L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!};\qquad \ln L=-n\theta+\sum_{i=1}^nx_i\ln\theta-\ln\prod_{i=1}^n x_i!\]
+    \[U=-n+\frac1\theta\sum_{i=1}^nX_i\ \Rightarrow\ \tilde\theta=\frac1n\sum X_i=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]
+    \[\frac{\partial U}{\partial\theta}=-\frac1{\theta^2}\sum_{i=1}^nX_i,\qquad I_n(\theta)=-E\left[-\frac1{\theta^2}\sum X_i\right]=\frac{n\theta}{\theta^2}=\frac n\theta,\qquad I_1(\theta)=\frac1\theta.\]
+    <p>Рао–Крамер: \(D\tilde\theta\ge\dfrac\theta n\). А \(D\tilde\theta=\dfrac1{n^2}\,n\,DX_i=\dfrac1n\,\theta\) — равенство ⇒ <b>оценка эффективная</b>.</p>
+  </div></details>
+
+  <h5>Доверительное (интервальное) оценивание</h5>
+  <p>Вместо одного числа \(\hat\theta\) ищем случайный интервал \((T_1,T_2)\), который накрывает \(\theta\):</p>
+  \[P(T_1&lt;\theta&lt;T_2)=\gamma\quad\text{— доверительная вероятность (уровень доверия)},\qquad \gamma:\ 0{,}9;\ 0{,}95;\ 0{,}99;\ 0{,}995;\ 0{,}999.\]
+  <p>Три вида интервалов (по графику функции/плотности распределения оценки):</p>
+  <ol class="clean" style="padding-left:22px">
+    <li>\(c=0\): \(P(\theta&lt;T_2)=\gamma\) — односторонний (верхняя граница);</li>
+    <li>\(c=1-\gamma\): \(P(T_1&lt;\theta)=\gamma\) — односторонний (нижняя граница);</li>
+    <li>\(c=\frac{1-\gamma}2\): \(P(T_1&lt;\theta&lt;T_2)=\gamma\) — <b>центральный</b>: \(P(\theta&lt;T_1)=P(\theta&gt;T_2)=\frac{1-\gamma}{2}\).</li>
+  </ol>
+  <p>Если параметр векторный, \(\theta=(\theta_1,\theta_2)\in\Theta\) (например, \(N(\theta_1,\theta_2^2)\)), ищут <b>доверительную область</b> \(G\subset\Theta\): \(P(\theta\in G)=\gamma\). Простейший вариант — прямоугольник из двух интервалов уровней \(\gamma_1,\gamma_2\); если оценки независимы, его уровень \(\gamma_1\gamma_2\ge\gamma\).</p>
+  <p>Переход «точечная оценка → доверительная» для \(N(m,\theta^2)\), \(N(\theta,\sigma^2)\), \(N(\theta_1,\theta_2^2)\) — это ровно <a href="#t22">таблица 2.2</a>. Квантили: \(u_\alpha,\ z_\alpha\) — по таблице Лапласа, \(N(0,1)\); \(t_\alpha(n-1)\) — распределение Стьюдента; \(\chi^2_\alpha(n)\).</p>
+</section>
+
 </div>
 
 <!-- ============ PART C ============ -->
@@ -730,7 +831,7 @@ window.MathJax={
   <p>Что повторить из раздела А перед каждым модулем. Статус обновляю по мере лекций.</p>
   <div class="modmap">
     <div class="mod"><span class="n">Модуль 1</span><h6>Описательная статистика</h6><p>Л1–Л3, семинар. Повторить: <a href="#b-func">порядковые статистики</a> (1.7–1.8).</p><div class="st"><span class="tag done">пройдено</span></div></div>
-    <div class="mod"><span class="n">Модуль 2</span><h6>Оценивание</h6><p>Л4–Л5. Повторить: <a href="#b-dist">таблицу распределений</a>, <a href="#b-func">функции от СВ</a> (2.3–2.4), <a href="#b-stat">лемму Фишера</a> (2.25).</p><div class="st"><span class="tag hot">сейчас</span></div></div>
+    <div class="mod"><span class="n">Модуль 2</span><h6>Оценивание</h6><p>Л4–Л5, <a href="#l-sem2">сем. 14.09</a>, <a href="#l-rao">лекция 17.09</a>. Повторить: <a href="#b-dist">таблицу распределений</a>, <a href="#b-func">функции от СВ</a> (2.3–2.4), <a href="#b-stat">лемму Фишера</a> (2.25).</p><div class="st"><span class="tag hot">сейчас</span></div></div>
     <div class="mod"><span class="n">Модуль 3</span><h6>Проверка гипотез</h6><p>Ошибки I/II рода, уровень значимости. Повторить: <a href="#b-normal">квантили N(0,1)</a>.</p><div class="st"><span class="tag src">впереди</span></div></div>
     <div class="mod"><span class="n">Модуль 4</span><h6>Критерии согласия</h6><p>Колмогоров (<a href="#l-sample">Л2</a>), χ² Пирсона. Повторить: <a href="#b-stat">χ²</a>.</p><div class="st"><span class="tag src">впереди</span></div></div>
     <div class="mod"><span class="n">Модуль 5</span><h6>Критерии однородности</h6><p>Смирнов (<a href="#l-sample">Л2</a>), ранговые критерии (<a href="#l-rank">Л3</a>).</p><div class="st"><span class="tag src">впереди</span></div></div>
