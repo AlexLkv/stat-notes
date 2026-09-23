@@ -52,6 +52,7 @@ body{
 a{color:var(--accent)}
 .shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:0 20px}
 @media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr);gap:0;padding:0 16px}}
+@media (min-width:901px){.quick{display:none}}
 
 /* sidebar */
 .side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;overflow-y:auto;padding-block:28px 40px}
@@ -90,7 +91,7 @@ section.topic{background:var(--paper);border:1px solid var(--line);border-radius
 @media (max-width:600px){section.topic{padding:18px 16px}}
 section.topic h3{margin:0 0 4px;font-size:21px;font-weight:600;text-wrap:balance}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
-.tag{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500;white-space:nowrap}
+.tag{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500}
 .tag.src{background:transparent;border:1px solid var(--line);color:var(--muted)}
 .tag.hot{background:var(--warn-soft);color:var(--warn)}
 .tag.done{background:var(--ok-soft);color:var(--ok)}
@@ -120,7 +121,8 @@ th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;verti
 th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
 td.num,th.num{font-variant-numeric:tabular-nums;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px}
 .math-scroll{overflow-x:auto;overflow-y:hidden}
-mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0}
+mjx-container svg{max-width:100%;height:auto}
+mjx-container[display="true"]{max-width:100%;margin:.7em 0!important}
 figure{margin:16px 0}
 figure > svg{display:block;width:100%;height:auto;max-width:640px}
 figcaption{font-size:13px;color:var(--muted);margin-top:6px}
@@ -141,6 +143,58 @@ table.orig tr.gend td,table.orig td[rowspan]{border-bottom:1px solid var(--ink)}
 table.orig .c{text-align:center}
 .tnote{font-size:14.5px;margin-top:10px}
 .tnote p{margin:4px 0}
+/* ---- mobile navigation & cards ---- */
+.topbar{display:none}
+.quick{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:0 0 14px;scrollbar-width:none}
+.quick::-webkit-scrollbar{display:none}
+.quick span{font-size:12px;color:var(--muted);white-space:nowrap}
+.quick a{flex:none;font-size:13px;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--paper);text-decoration:none;color:var(--ink);white-space:nowrap}
+.drawer-close{display:none}
+.totop{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--accent);font-size:20px;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:30;cursor:pointer}
+.pn{display:flex;justify-content:space-between;gap:8px;margin-top:18px;padding-top:12px;border-top:1px dashed var(--line)}
+.pn a{font-size:13px;text-decoration:none;color:var(--accent);max-width:48%;line-height:1.3}
+.pn a.next{text-align:right;margin-left:auto}
+.cards{display:none}
+.card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper);display:flex;flex-direction:column;gap:6px}
+.kv .k{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1.3}
+.kv .v{display:block;min-width:0}
+.card .sub{border-top:1px dashed var(--line);padding-top:6px;display:flex;flex-direction:column;gap:4px}
+.card .sub .kv{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:8px;align-items:center}
+.card .sub .kv .k{font-size:10.5px}
+.card .sub .kv.acc .k{color:var(--ok)} .card .sub .kv.rej .k{color:var(--warn)}
+.scrim{position:fixed;inset:0;background:rgba(10,14,30,.45);z-index:40}
+@media (max-width:900px){
+  html{scroll-padding-top:64px}
+  .topbar{display:flex;flex-wrap:wrap;align-items:center;gap:4px;position:sticky;top:env(safe-area-inset-top,0px);z-index:35;background:var(--paper);border-bottom:1px solid var(--line);padding:6px 8px}
+  .tb-btn{flex:none;width:42px;height:42px;display:grid;place-items:center;border:0;background:transparent;color:var(--ink);border-radius:10px;cursor:pointer}
+  .tb-btn:active{background:var(--accent-soft)}
+  .tb-title{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:600 15px/1.2 "Onest",system-ui,sans-serif;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px;cursor:pointer}
+  .tb-search{flex-basis:100%;padding:2px 4px 6px}
+  .side{display:none}
+  .side.open{display:block;position:fixed;top:0;bottom:0;left:0;width:min(86vw,340px);z-index:45;background:var(--ground);height:100%;overflow-y:auto;padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:4px 0 24px rgba(0,0,0,.25)}
+  .side.open .nav{display:flex}
+  .side .search{display:none}
+  .drawer-close{display:block;margin:0 0 10px auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:14px}
+  .nav a{padding:9px 10px;font-size:15px}
+  main{padding-block:12px 90px}
+  .hero{padding-block:4px 14px;margin-bottom:14px}
+  .hero h1{font-size:24px}
+  .hero p{font-size:15px}
+  .part{margin-top:28px}
+  .part-h h2{font-size:22px}
+  section.topic{background:transparent;border:0;border-radius:0;box-shadow:none;padding:18px 0 8px;margin:0;border-top:1px solid var(--line)}
+  section.topic h3{font-size:19px}
+  body{font-size:15.5px;background-image:none}
+  .box{padding:10px 12px}
+  details .inner{padding:0 10px 12px}
+  details>summary{padding:10px}
+  .def{padding-left:10px}
+  ul.clean,ol.clean{padding-left:18px!important}
+}
+@media (max-width:760px){
+  .tbl.has-cards{display:none}
+  .cards{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+}
 .empty{display:none;color:var(--muted);padding:20px 0}
 footer{color:var(--muted);font-size:13px;margin-top:40px}
 </style>
@@ -152,16 +206,23 @@ window.MathJax={
   options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
 };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js" async onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js';s.async=true;document.head.appendChild(s);"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.js" defer onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js';s.async=true;document.head.appendChild(s);"></script>
 
 </head>
 <body>
+<div class="topbar" id="topbar">
+  <button class="tb-btn" id="menuBtn" type="button" aria-label="Оглавление" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+  <button class="tb-title" id="tbTitle" type="button">Прикладной стат. анализ</button>
+  <button class="tb-btn" id="searchBtn" type="button" aria-label="Поиск"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.5 15.5 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div class="tb-search" id="tbSearch" hidden><input id="q2" class="search" type="search" placeholder="Поиск по конспекту…" aria-label="Поиск по конспекту"></div>
+</div>
 <div class="shell">
-<aside class="side">
+<aside class="side" id="side">
+  <button class="drawer-close" id="drawerClose" type="button">Закрыть ✕</button>
+
   <p class="brand">Прикл. стат. анализ</p>
   <p class="brand-sub">3 курс · осень 2026 · конспект в формулах</p>
   <input id="q" class="search" type="search" placeholder="Поиск: квантиль, ОМП, свёртка…" aria-label="Поиск по конспекту">
-  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false">Содержание</button>
   <nav class="nav" id="nav">
     <div>
       <h4>Как пользоваться</h4>
@@ -216,6 +277,7 @@ window.MathJax={
 </aside>
 
 <main id="main">
+<nav class="quick" aria-label="Быстрый доступ"><span>Таблицы:</span><a href="#t21">2.1</a><a href="#t22">2.2</a><a href="#t31">3.1</a><a href="#t32">3.2</a><a href="#t41">4.1</a><a href="#l-rao">Рао–Крамер</a><a href="#p-map">Модули</a></nav>
 <header class="hero" id="start">
   <h1>Прикладной статистический анализ — живой конспект</h1>
   <p>Сюда постепенно переезжают рукописные лекции в нормальном виде с формулами. Раздел&nbsp;А — только то из теории вероятностей, что реально нужно в этом семестре. Раздел&nbsp;Б — лекции. Раздел&nbsp;В — разборы задач и карта задачника Синевой–Скородумовой (ч.&nbsp;2).</p>
@@ -261,7 +323,7 @@ window.MathJax={
 <section class="topic" id="t21" data-k="таблица 2.1 точечные оценки параметров распределений">
   <p class="tnum">Таблица 2.1</p>
   <h3 class="tcap">Точечные оценки параметров некоторых распределений</h3>
-  <div class="tbl"><table class="orig">
+  <div class="tbl"><table class="orig" data-cols="Распределение|Обозначение|Параметры|Оценки">
     <tr><th>Распределение</th><th>Обозначение</th><th>Параметры</th><th>Точечные оценки параметров</th></tr>
     <tr><td>Равномерное</td><td class="c">\(R(\theta_1,\theta_2)\)</td><td class="c">\(\theta_1,\theta_2\)</td><td class="c">\(\hat\theta_1=X_{(1)},\quad \hat\theta_2=X_{(n)}\)</td></tr>
     <tr><td>Экспоненциальное</td><td class="c">\(Exp(\theta)\)</td><td class="c">\(\theta\)</td><td class="c">\(\hat\theta=\dfrac{1}{\overline X}\)</td></tr>
@@ -278,7 +340,7 @@ window.MathJax={
 <section class="topic" id="t22" data-k="таблица 2.2 интервальные оценки доверительный интервал">
   <p class="tnum">Таблица 2.2</p>
   <h3 class="tcap">Интервальные оценки параметров некоторых распределений</h3>
-  <div class="tbl"><table class="orig">
+  <div class="tbl"><table class="orig" data-cols="Распределение|Точечная оценка|Интервальная оценка|Примечание">
     <tr><th rowspan="2">Распределение</th><th rowspan="2">Точечная оценка</th><th colspan="2" class="c">Интервальная оценка</th></tr>
     <tr><th class="c">Формула</th><th>Примечание</th></tr>
     <tr><td>\(N(\theta,\sigma^2)\)</td><td>\(\hat\theta=\overline X\)</td><td class="c">\(\displaystyle \overline X-u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}&lt;\theta&lt;\overline X+u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}\)</td><td>Точная</td></tr>
@@ -295,7 +357,7 @@ window.MathJax={
 <section class="topic" id="t31" data-k="таблица 3.1 проверка гипотез параметры нормального одновыборочная критерий">
   <p class="tnum">Таблица 3.1</p>
   <h3 class="tcap">Проверка гипотез о параметрах нормального распределения в одновыборочной задаче</h3>
-  <div class="tbl"><table class="orig">
+  <div class="tbl"><table class="orig" data-hyp data-cols="Модель|Гипотеза \(H_0\)|Статистика \(T\)|\(H_1\)|Принять \(H_0\), если|Отвергнуть \(H_0\), если">
     <tr><th>Модель</th><th>Гипотеза \(H_0\)</th><th>Статистика критерия \(T\)</th><th>Альтернатива \(H_1\)</th><th>Область принятия \(H_0\)</th><th>Критическая область \(H_0\)<br>(область принятия \(H_1\))</th></tr>
     <tr><td rowspan="3">\(N(\theta,\sigma^2)\)</td><td rowspan="3">\(\theta=m_0\)</td><td rowspan="3">\(\displaystyle T=\frac{(\overline X-m_0)\sqrt n}{\sigma}\)</td>
       <td>\(\theta\ne m_0\)</td><td>\(|T|&lt;z_{1-\alpha/2}\)</td><td>\(|T|\ge z_{1-\alpha/2}\)</td></tr>
@@ -319,7 +381,7 @@ window.MathJax={
 <section class="topic" id="t32" data-k="таблица 3.2 проверка гипотез двухвыборочная сравнение средних дисперсий фишер стьюдент">
   <p class="tnum">Таблица 3.2</p>
   <h3 class="tcap">Проверка гипотез о параметрах нормальных распределений в двухвыборочной задаче</h3>
-  <div class="tbl"><table class="orig">
+  <div class="tbl"><table class="orig" data-hyp data-cols="Модель|Гипотеза \(H_0\)|Доп. условие|Статистика \(T\)|\(H_1\)|Принять \(H_0\), если|Отвергнуть \(H_0\), если">
     <tr><th>Модель</th><th>Гипотеза \(H_0\)</th><th>Доп. усл.</th><th>Статистика \(T\)</th><th>Альтернатива \(H_1\)</th><th>Область принятия \(H_0\)</th><th>Критическая область \(H_0\)<br>(область принятия \(H_1\))</th></tr>
     <tr><td rowspan="3">\(N(\theta_{11},\sigma_1^2),\)<br>\(N(\theta_{21},\sigma_2^2)\)</td><td rowspan="3">\(\theta_{11}=\theta_{21}\)</td><td rowspan="3"></td><td rowspan="3">\(\displaystyle T=\frac{\overline X-\overline Y}{\sqrt{\dfrac{\sigma_1^2}{n_1}+\dfrac{\sigma_2^2}{n_2}}}\)</td>
       <td>\(\theta_{11}\ne\theta_{21}\)</td><td>\(|T|&lt;z_{1-\alpha/2}\)</td><td>\(|T|\ge z_{1-\alpha/2}\)</td></tr>
@@ -351,7 +413,7 @@ window.MathJax={
 <section class="topic" id="t41" data-k="таблица 4.1 линейная регрессия оценки параметров прогноз">
   <p class="tnum">Таблица 4.1</p>
   <h3 class="tcap">Оценки параметров и прогноза для простой линейной регрессии</h3>
-  <div class="tbl"><table class="orig">
+  <div class="tbl"><table class="orig" data-cols="Параметр|Точечная оценка|Интервальная оценка">
     <tr><th class="c">Параметр</th><th class="c">Точечная оценка</th><th class="c">Интервальная оценка (центральная)</th></tr>
     <tr><td class="c">\(\beta_0\)</td><td class="c">\(\displaystyle \bar\beta_0=\bar y-\frac{Q_{XY}^2}{Q_X^2}\,\bar x\)</td><td class="c">\(\displaystyle \left(\bar\beta_0-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}},\ \ \bar\beta_0+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}}\right)\)</td></tr>
     <tr><td class="c">\(\beta_1\)</td><td class="c">\(\displaystyle \bar\beta_1=\frac{Q_{XY}^2}{Q_X^2}\)</td><td class="c">\(\displaystyle \left(\bar\beta_1-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X},\ \ \bar\beta_1+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\right)\)</td></tr>
@@ -387,7 +449,7 @@ window.MathJax={
 <section class="topic" id="b-char" data-k="математическое ожидание дисперсия ковариация корреляция свойства моменты">
   <h3>Числовые характеристики и их свойства</h3>
   <div class="meta"><span class="tag src">методичка 1 сем., табл. 1</span><span class="tag hot">используется в каждой задаче на оценки</span></div>
-  <div class="tbl"><table>
+  <div class="tbl"><table data-cols="Что|Дискретная|Непрерывная">
     <tr><th>Что</th><th>Дискретная</th><th>Непрерывная</th></tr>
     <tr><td>\(M\xi=E\xi\)</td><td>\(\sum_k x_kp_k\)</td><td>\(\int x\,p(x)\,dx\)</td></tr>
     <tr><td>\(M g(\xi)\)</td><td>\(\sum_k g(x_k)p_k\)</td><td>\(\int g(x)\,p(x)\,dx\)</td></tr>
@@ -410,7 +472,7 @@ window.MathJax={
 <section class="topic" id="b-dist" data-k="распределения биномиальное пуассон геометрическое равномерное нормальное показательное экспоненциальное бернулли таблица">
   <h3>Таблица основных распределений</h3>
   <div class="meta"><span class="tag src">методичка 1 сем., с. 10–14</span></div>
-  <div class="tbl"><table>
+  <div class="tbl"><table data-cols="Распределение|Вероятности / плотность|\(M\xi\)|\(D\xi\)">
     <tr><th>Распределение</th><th>Вероятности / плотность</th><th>\(M\xi\)</th><th>\(D\xi\)</th></tr>
     <tr><td>Бернулли \(Bern(p)\)</td><td>\(P(1)=p,\ P(0)=1-p\)</td><td>\(p\)</td><td>\(p(1-p)\)</td></tr>
     <tr><td>Биномиальное \(B(n,p)\)</td><td>\(C_n^kp^k(1-p)^{n-k},\ k=0..n\)</td><td>\(np\)</td><td>\(np(1-p)\)</td></tr>
@@ -429,7 +491,7 @@ window.MathJax={
   <h3>χ², Стьюдент, Фишер — «статистические» распределения</h3>
   <div class="meta"><span class="tag src">методичка 1 сем., с. 11–14</span><span class="tag hot">понадобятся с модуля 2 (дов. интервалы) и дальше везде</span></div>
   <p>Главное — не громоздкие плотности, а <b>как они строятся</b> из стандартных нормальных \(\xi_i\sim N(0,1)\), независимых:</p>
-  <div class="tbl"><table>
+  <div class="tbl"><table data-cols="Название|Конструкция|\(M\), \(D\)">
     <tr><th>Название</th><th>Конструкция</th><th>\(M\), \(D\)</th></tr>
     <tr><td>\(\chi^2(k)\)</td><td>\(\xi_1^2+\dots+\xi_k^2\)</td><td>\(M=k,\ D=2k\)</td></tr>
     <tr><td>Стьюдента \(t(k)\)</td><td>\(\dfrac{\xi_0}{\sqrt{\chi^2(k)/k}}\)</td><td>\(M=0\ (k&gt;1),\ D=\frac{k}{k-2}\ (k&gt;2)\)</td></tr>
@@ -440,7 +502,7 @@ window.MathJax={
   <p>Если \(X_1,\dots,X_n\) — выборка из \(N(a,\sigma^2)\), то \(\bar X\) и \(S^2\) независимы и</p>
   \[\bar X\sim N\!\left(a,\tfrac{\sigma^2}{n}\right),\qquad \frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1),\qquad \frac{\sqrt n(\bar X-a)}{S}\sim t(n-1).\]
   <div class="box intu"><span class="lbl">Зачем</span>Эти три факта — основа точных доверительных интервалов (задача 2.25) и почти всех критериев модулей 3–8. Когда их дадут на лекции, здесь появится подробный вывод.</div>
-  <details><summary>Гамма-функция и функция ошибок (справка)</summary><div class="inner">
+  <details open><summary>Гамма-функция и функция ошибок (справка)</summary><div class="inner">
     <p>\(\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}dt\); \(\Gamma(z+1)=z\Gamma(z)\), \(\Gamma(n)=(n-1)!\), \(\Gamma(\tfrac12)=\sqrt\pi\).</p>
     <p>\(\operatorname{erf}(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}dt\), \(\Phi(x)=\frac12\bigl(1+\operatorname{erf}(x/\sqrt2)\bigr)\).</p>
   </div></details>
@@ -514,7 +576,7 @@ window.MathJax={
   <h5>Программы</h5>
   <p>Специализированные: SPSS, SAS, Minitab, <b>STATGRAPHICS</b>, язык R, STATISTICA. Общематематические: Excel, Mathcad/Maple, Matlab, Mathematica (Wolfram).</p>
   <h5>Шкалы измерения признаков</h5>
-  <div class="tbl"><table>
+  <div class="tbl"><table data-cols="Шкала|Что можно делать|Пример">
     <tr><th>Шкала</th><th>Что можно делать</th><th>Пример</th></tr>
     <tr><td>1. Номинальная (категориальная)</td><td>только \(x=y,\ x\ne y\)</td><td>пол, цвет, оператор связи</td></tr>
     <tr><td>2. Порядковая (ординальная)</td><td>\(\{=,\ne,&lt;,&gt;,\le,\ge\}\) (множество \(a\))</td><td>оценка «отл/хор/уд», место в рейтинге</td></tr>
@@ -633,14 +695,14 @@ window.MathJax={
   \[D\tilde\theta\ \ge\ \frac1{n\,I(\theta)},\qquad I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]
   \(I(\theta)\) — информация Фишера одного наблюдения. Для дискретной СВ вместо \(p\) — \(P(\xi=x)\).</div>
   <h5>Пример с лекции: \(\theta=M\xi\), три оценки</h5>
-  <div class="tbl"><table>
+  <div class="tbl"><table data-cols="Оценка|\(M\)|\(D\)|Состоятельна?">
     <tr><th>Оценка</th><th>\(M\)</th><th>\(D\)</th><th>Состоятельна?</th></tr>
     <tr><td>\(\tilde\theta^{(1)}=X_7\)</td><td>\(\theta\)</td><td>\(d\)</td><td>нет</td></tr>
     <tr><td>\(\tilde\theta^{(2)}=\frac12(X_1+X_n)\)</td><td>\(\theta\)</td><td>\(\frac d2\)</td><td>нет</td></tr>
     <tr><td>\(\tilde\theta^{(3)}=\bar X\)</td><td>\(\theta\)</td><td>\(\frac dn\)</td><td>да, по ЗБЧ Чебышева</td></tr>
   </table></div>
   <p>Все три несмещённые, но дисперсия у \(\bar X\) убывает с \(n\) — она лучше.</p>
-  <details><summary>Д/З с лекции: является ли \(\bar X\) эффективной? (разбор для Пуассона)</summary><div class="inner">
+  <details open><summary>Д/З с лекции: является ли \(\bar X\) эффективной? (разбор для Пуассона)</summary><div class="inner">
     <p>\(\ln P(\xi=x)=-\theta+x\ln\theta-\ln x!\); \(\frac{\partial}{\partial\theta}=-1+\frac x\theta\); \(\frac{\partial^2}{\partial\theta^2}=-\frac{x}{\theta^2}\).</p>
     <p>\(I(\theta)=M\frac{\xi}{\theta^2}=\frac{\theta}{\theta^2}=\frac1\theta\) ⇒ нижняя граница \(\frac1{nI}=\frac\theta n\).</p>
     <p>\(D\bar X=\frac{D\xi}n=\frac\theta n\) — равенство ⇒ <b>\(\bar X\) эффективна</b> для параметра Пуассона. Так же решаются задачи 2.22–2.24.</p>
@@ -648,7 +710,7 @@ window.MathJax={
   </div></details>
   <h5>Дисперсия: \(S^2\) против \(D_{\text{в}}\)</h5>
   <p>\(MS^2=d\) — несмещённая; \(MD_{\text{в}}=\frac{n-1}{n}d&lt;d\) — смещённая (но асимптотически несмещённая).</p>
-  <details><summary>Почему \(MD_{\text{в}}=\frac{n-1}nd\) (вывод)</summary><div class="inner">
+  <details open><summary>Почему \(MD_{\text{в}}=\frac{n-1}nd\) (вывод)</summary><div class="inner">
     <p>\(\sum(X_i-\bar X)^2=\sum(X_i-m)^2-n(\bar X-m)^2\). Берём \(M\): \(nd-n\cdot\frac dn=(n-1)d\). Делим на \(n\) → \(\frac{n-1}nd\); делим на \(n-1\) → \(d\).</p>
   </div></details>
 </section>
@@ -660,7 +722,7 @@ window.MathJax={
   <p>Приравниваем теоретические моменты (зависят от \(\theta\)) к выборочным и решаем относительно \(\theta\):</p>
   \[M\xi=\bar X,\quad D\xi=S^2\ (\text{или }D_{\text{в}}),\quad M\xi^2=\frac1n\sum X_i^2,\quad M|\xi-M\xi|=\frac1n\sum|X_i-\bar X|,\ \dots\]
   <div class="box warn"><span class="lbl">Не однозначен</span>Для Пуассона \(M\xi=D\xi=\theta\), поэтому годятся и \(\tilde\theta=\bar X\), и \(\tilde\theta=S^2\). Какая лучше? Нужно проверять свойства: \(\bar X\) эффективна (см. Рао–Крамер выше), значит она лучше. Параметров \(k\) — берёшь \(k\) уравнений, обычно самые простые моменты.</div>
-  <details><summary>Пример: \(R[0,\theta]\) (задача 2.6.1)</summary><div class="inner"><p>\(M\xi=\frac\theta2=\bar X\Rightarrow\tilde\theta=2\bar X\).</p></div></details>
+  <details open><summary>Пример: \(R[0,\theta]\) (задача 2.6.1)</summary><div class="inner"><p>\(M\xi=\frac\theta2=\bar X\Rightarrow\tilde\theta=2\bar X\).</p></div></details>
   <h5>2. Метод максимального правдоподобия (ММП, ОМП)</h5>
   <p><b>Функция правдоподобия</b> — «вероятность получить именно нашу выборку»:</p>
   \[L(x,\theta)=f(x_1,\theta)\cdot f(x_2,\theta)\cdots f(x_n,\theta),\qquad f(x_i,\theta)=\begin{cases}P(\xi=x_i\,|\,\theta),&amp;\text{дискретная}\\ p_\xi(x_i\,|\,\theta),&amp;\text{непрерывная}\end{cases}\]
@@ -687,7 +749,7 @@ window.MathJax={
     <div class="box intu"><span class="lbl">Почему так вышло</span>\(1-e^{-3x}\) — это и есть \(F_X(x)\). Общий факт: \(F(\xi)\sim R(0,1)\) для любой непрерывной \(F\) (см. <a href="#b-func">функции от СВ</a>).</div>
   </div></details>
 
-  <details><summary>№2.5 — метод моментов для \(N(a,\sigma^2)\)</summary><div class="inner">
+  <details open><summary>№2.5 — метод моментов для \(N(a,\sigma^2)\)</summary><div class="inner">
     <ol class="clean" style="padding-left:22px">
       <li>\(a\) неизвестно: \(M\xi=a=\overline X\ \Rightarrow\ \tilde a=\overline X\).</li>
       <li>\(\sigma^2\) неизвестна, \(a\) известно: \(D\xi=M(\xi-a)^2\ \Rightarrow\ \tilde\sigma^2=\frac1n\sum_{i=1}^n(X_i-a)^2\).</li>
@@ -696,7 +758,7 @@ window.MathJax={
     <div class="box warn"><span class="lbl">Не путай</span>Когда \(a\) <b>известно</b>, делим на \(n\): \(\frac1n\sum(X_i-a)^2\) уже несмещённая (это \(S_0^2\) из <a href="#t21">табл. 2.1</a>). Вариант с \(\frac1{n-1}\), записанный в тетради, при известном \(a\) — смещённый. \(n-1\) нужно только когда вместо \(a\) стоит \(\overline X\).</div>
   </div></details>
 
-  <details><summary>№2.8 — ОМП векторного параметра \((a,\sigma)\) нормального распределения</summary><div class="inner">
+  <details open><summary>№2.8 — ОМП векторного параметра \((a,\sigma)\) нормального распределения</summary><div class="inner">
     \[f(x,\theta)=\frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}},\qquad L(x,\theta)=\frac{1}{(\sqrt{2\pi}\,\sigma)^n}\,e^{-\frac{\sum_{i=1}^n(x_i-a)^2}{2\sigma^2}}\]
     \[\ln L=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]
     \[\begin{cases}\dfrac{\partial\ln L}{\partial a}=\dfrac1{\sigma^2}\sum(x_i-a)=0\\[4pt]\dfrac{\partial\ln L}{\partial\sigma}=-\dfrac n\sigma+\dfrac{\sum(x_i-a)^2}{\sigma^3}=0\end{cases}\ \Rightarrow\ \hat a=\overline X,\quad \hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=D_{\text{в}}.\]
@@ -707,7 +769,7 @@ window.MathJax={
     <p><b>Сравнение с 2.5:</b> для \(a\) оба метода дают \(\overline X\); для \(\sigma^2\) ОМП даёт смещённую \(D_{\text{в}}\).</p>
   </div></details>
 
-  <details><summary>№2.19 — ОМП для усечённого геометрического (Д/З, разбор)</summary><div class="inner">
+  <details open><summary>№2.19 — ОМП для усечённого геометрического (Д/З, разбор)</summary><div class="inner">
     <p>\(P(X_i=k)=p(1-p)^k,\ k=0,\dots,m-1;\quad P(X_i=m)=1-P(X_i\le m-1)=(1-p)^m.\)</p>
     <p>Пусть \(r\) — число наблюдений, <b>меньших</b> \(m\), а \(\Sigma=\sum_{i=1}^n X_i\) — сумма всех наблюдений. Каждое \(X_i&lt;m\) даёт множитель \(p(1-p)^{X_i}\), каждое \(X_i=m\) — множитель \((1-p)^m=(1-p)^{X_i}\). Поэтому</p>
     \[L(p)=p^{\,r}(1-p)^{\Sigma},\qquad \ln L=r\ln p+\Sigma\ln(1-p),\qquad \frac{\partial\ln L}{\partial p}=\frac rp-\frac{\Sigma}{1-p}=0\]
@@ -792,7 +854,7 @@ window.MathJax={
 <section class="topic" id="p-efimov" data-k="ефимов 15.26 15.33 15.40 мода медиана выборочное среднее дисперсия условные варианты">
   <h3>Ефимов, гл. 15: №26, 33, 40 (+52 впереди)</h3>
   <div class="meta"><span class="tag done">числа в тетради пересчитаны — верно</span></div>
-  <details><summary>15.26 — влияние выброса</summary><div class="inner">
+  <details open><summary>15.26 — влияние выброса</summary><div class="inner">
     <div class="tbl"><table>
       <tr><th></th><th>а) 1,2,3,4,5,5,9</th><th>б) 1,2,3,4,5,5,12</th></tr>
       <tr><td>Мода</td><td class="num">5</td><td class="num">5</td></tr>
@@ -804,12 +866,12 @@ window.MathJax={
     </table></div>
     <p><b>Вывод:</b> одно большое значение почти не трогает моду и медиану, но заметно сдвигает среднее и почти удваивает дисперсию. Медиана — <b>устойчивая</b> (робастная) характеристика, среднее и дисперсия — нет.</p>
   </div></details>
-  <details><summary>15.33 — сгруппированные данные</summary><div class="inner">
+  <details open><summary>15.33 — сгруппированные данные</summary><div class="inner">
     <p>Интервалы 5–7, …, 15–17, частоты 8, 14, 40, 26, 6, 4; \(n=98\), середины \(x_i^*=6,8,\dots,16\), \(h=2\).</p>
     <p>\(\bar x=\frac{1020}{98}\approx10{,}41\); мода \(=10\) (наибольшая частота 40); медиана: \(np=49\) — целое, \(\frac{x_{(49)}+x_{(50)}}2=10\) (накопленные частоты 8, 22, 62 — позиции 23–62 заняты значением 10).</p>
     <p>\(\overline{x^2}=\frac{11128}{98}\approx113{,}55\), \(D_{\text{в}}\approx113{,}55-10{,}41^2\approx5{,}22\), \(S^2=\frac{98}{97}D_{\text{в}}\approx5{,}27\).</p>
   </div></details>
-  <details><summary>15.40 — \(n=36\), шаг \(b=1\), метод условных вариант</summary><div class="inner">
+  <details open><summary>15.40 — \(n=36\), шаг \(b=1\), метод условных вариант</summary><div class="inner">
     <p>По несгруппированным данным: \(\bar x=\frac{213{,}8}{36}\approx5{,}939\), \(D_{\text{в}}=\frac{1316{,}82}{36}-5{,}939^2\approx1{,}30\), \(S^2=\frac{36}{35}D_{\text{в}}\approx1{,}34\).</p>
     <p>Группировка: \([2{,}5;3{,}5)\ldots[7{,}5;8{,}5]\), середины \(z_i=3..8\), частоты \(n_i=1,3,7,14,8,3\). Ложный нуль \(d^*=6\) (наибольшая частота), \(u_i=z_i-6\).</p>
     <div class="tbl"><table>
@@ -851,9 +913,39 @@ window.MathJax={
 <footer>Источники: рукописный конспект лекций и семинаров (сент. 2026); Синева И.С., Скородумова Е.А. «Теория вероятностей и математическая статистика», МТУСИ, 2016; их же «Вероятностный и прикладной статистический анализ. Сборник задач. Ч. 2», МТУСИ, 2025.</footer>
 </main>
 </div>
+<button class="totop" id="toTop" type="button" aria-label="Наверх" hidden>↑</button>
+<div class="scrim" id="scrim" hidden></div>
 
 <script>
 (function(){
+  // ---------- phone cards for wide tables (built before MathJax typesets) ----------
+  [].slice.call(document.querySelectorAll('table[data-cols]')).forEach(function(tbl){
+    var labels=tbl.getAttribute('data-cols').split('|'),nc=labels.length;
+    var rows=[].slice.call(tbl.rows).filter(function(r){return !r.querySelector('th')});
+    var grid=[];
+    rows.forEach(function(tr,r){grid[r]=grid[r]||[];var c=0;[].slice.call(tr.cells).forEach(function(td){
+      while(grid[r][c])c++;var rs=td.rowSpan||1,cs=td.colSpan||1;
+      for(var i=0;i<rs;i++)for(var j=0;j<cs;j++){(grid[r+i]=grid[r+i]||[])[c+j]={td:td,cs:cs,c0:c};}
+      c+=cs;});});
+    function kv(label,html,cls){var d=document.createElement('div');d.className='kv'+(cls?' '+cls:'');
+      if(label){var k=document.createElement('span');k.className='k';k.innerHTML=label;d.appendChild(k);}
+      var v=document.createElement('span');v.className='v';v.innerHTML=html;d.appendChild(v);return d;}
+    function lab(cell){return cell.cs>1?labels.slice(cell.c0,cell.c0+cell.cs).join(' / '):labels[cell.c0];}
+    var wrap=document.createElement('div');wrap.className='cards';var r=0;
+    while(r<rows.length){var first=grid[r][0].td,r1=r;while(r1+1<rows.length&&grid[r1+1][0]&&grid[r1+1][0].td===first)r1++;
+      var card=document.createElement('div');card.className='card';var fixed=[],vary=[];
+      for(var c=0;c<nc;c++){var a=grid[r][c];if(!a||a.c0!==c)continue;
+        if(r===r1||a.td===grid[r1][c].td)fixed.push(c);else vary.push(c);}
+      fixed.forEach(function(c){var cell=grid[r][c];if(cell.td.innerHTML.trim())card.appendChild(kv(lab(cell),cell.td.innerHTML));});
+      var tri=vary.length===3&&tbl.hasAttribute('data-hyp');
+      for(var rr=r;rr<=r1&&vary.length;rr++){var sub=document.createElement('div');sub.className='sub';
+        vary.forEach(function(c,k){var cell=grid[rr][c];if(!cell||cell.c0!==c||!cell.td.innerHTML.trim())return;
+          if(rr>r&&grid[rr-1][c]&&grid[rr-1][c].td===cell.td)return;
+          sub.appendChild(kv(tri?['\\(H_1\\)','Принять','Отвергнуть'][k]:lab(cell),cell.td.innerHTML,tri?['','acc','rej'][k]:''));});
+        if(sub.childNodes.length)card.appendChild(sub);}
+      wrap.appendChild(card);r=r1+1;}
+    var box=tbl.closest('.tbl');box.classList.add('has-cards');box.parentNode.insertBefore(wrap,box.nextSibling);
+  });
   // box-plot ticks
   var t=document.getElementById('ticks');
   if(t){var ns='http://www.w3.org/2000/svg';
@@ -875,18 +967,38 @@ window.MathJax={
     el('line',{x1:L,x2:W-R,y1:Y(0),y2:Y(0),stroke:'var(--muted)','stroke-width':1});
     [['n = 1','var(--muted)',X(0.03),Y(1)-6],['n = 2','var(--note)',X(0.62),Y(1.6)],['n = 3','var(--accent)',X(0.56),Y(2.3)]].forEach(function(a){var tt=el('text',{x:a[2],y:a[3],'font-size':13,fill:a[1],'font-family':'Onest, sans-serif','font-weight':600});tt.textContent=a[0];});
   }
-  // nav: mobile toggle, active link, search
-  var nav=document.getElementById('nav'),btn=document.getElementById('menuBtn');
-  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
-  nav.addEventListener('click',function(e){if(e.target.tagName==='A'&&window.innerWidth<=900){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+  // ---------- nav, drawer, search ----------
+  var nav=document.getElementById('nav'),side=document.getElementById('side'),btn=document.getElementById('menuBtn'),scrim=document.getElementById('scrim');
+  function openDrawer(o){side.classList.toggle('open',o);scrim.hidden=!o;btn.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';
+    if(o){var on=nav.querySelector('a.on');if(on)on.scrollIntoView({block:'center'});}}
+  btn.addEventListener('click',function(){openDrawer(!side.classList.contains('open'))});
+  document.getElementById('tbTitle').addEventListener('click',function(){openDrawer(true)});
+  document.getElementById('drawerClose').addEventListener('click',function(){openDrawer(false)});
+  scrim.addEventListener('click',function(){openDrawer(false)});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))openDrawer(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')openDrawer(false)});
   var links=[].slice.call(nav.querySelectorAll('a'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});secs.forEach(function(s){io.observe(s)});}
-  var q=document.getElementById('q'),all=[].slice.call(document.querySelectorAll('section.topic')),parts=[].slice.call(document.querySelectorAll('.part')),empty=document.getElementById('empty');
-  q.addEventListener('input',function(){var v=q.value.trim().toLowerCase(),n=0;
+  var title=document.getElementById('tbTitle');
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('on',on);if(on)title.textContent=a.textContent;})}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)setActive(en.target.id)})},{rootMargin:'-15% 0px -75% 0px'});secs.forEach(function(s){io.observe(s)});}
+  secs.forEach(function(s,i){if(s.tagName!=='SECTION')return;var d=document.createElement('div');d.className='pn';
+    var pv=secs[i-1],nx=secs[i+1];
+    if(pv){var a=document.createElement('a');a.href='#'+pv.id;a.textContent='← '+links[i-1].textContent;d.appendChild(a);}
+    if(nx){var b=document.createElement('a');b.href='#'+nx.id;b.className='next';b.textContent=links[i+1].textContent+' →';d.appendChild(b);}
+    s.appendChild(d);});
+  var q=document.getElementById('q'),q2=document.getElementById('q2'),all=[].slice.call(document.querySelectorAll('section.topic')),parts=[].slice.call(document.querySelectorAll('.part')),empty=document.getElementById('empty');
+  function filter(v){v=v.trim().toLowerCase();var n=0;
     all.forEach(function(s){var hit=!v||((s.dataset.k||'')+' '+s.textContent).toLowerCase().indexOf(v)>-1;s.hidden=!hit;if(hit)n++});
     parts.forEach(function(p){p.hidden=!!v&&!p.querySelector('section.topic:not([hidden])')});
-    empty.style.display=n?'none':'block';});
+    empty.style.display=n?'none':'block';}
+  q.addEventListener('input',function(){q2.value=q.value;filter(q.value)});
+  q2.addEventListener('input',function(){q.value=q2.value;filter(q2.value)});
+  var sb=document.getElementById('tbSearch');
+  document.getElementById('searchBtn').addEventListener('click',function(){sb.hidden=!sb.hidden;if(!sb.hidden)q2.focus();else{q2.value='';q.value='';filter('')}});
+  var tt=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){tt.hidden=window.scrollY<900},{passive:true});
+  tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
 })();
 </script>
 
