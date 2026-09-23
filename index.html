@@ -122,6 +122,8 @@ th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute
 td.num,th.num{font-variant-numeric:tabular-nums;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px}
 .math-scroll{overflow-x:auto;overflow-y:hidden}
 mjx-container svg{max-width:100%;height:auto}
+mjx-assistive-mml{max-width:100%!important;right:0}
+html,body{overflow-x:clip}
 mjx-container[display="true"]{max-width:100%;margin:.7em 0!important}
 figure{margin:16px 0}
 figure > svg{display:block;width:100%;height:auto;max-width:640px}
@@ -345,7 +347,7 @@ window.MathJax={
     <tr><th class="c">Формула</th><th>Примечание</th></tr>
     <tr><td>\(N(\theta,\sigma^2)\)</td><td>\(\hat\theta=\overline X\)</td><td class="c">\(\displaystyle \overline X-u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}&lt;\theta&lt;\overline X+u_{\frac{1+\gamma}{2}}\cdot\frac{\sigma}{\sqrt n}\)</td><td>Точная</td></tr>
     <tr><td>\(N(m,\theta^2)\)</td><td>\(\hat\theta^2=S_0^2\)</td><td class="c">\(\displaystyle \frac{n\cdot S_0^2}{\chi^2_{\frac{1-\gamma}{2}}(n)}&lt;\theta^2&lt;\frac{n\cdot S_0^2}{\chi^2_{\frac{1+\gamma}{2}}(n)}\)</td><td>Точная</td></tr>
-    <tr><td rowspan="2">\(N(\theta_1,\theta_2^2)\)</td><td>\(\hat\theta_1=\overline X\)</td><td class="c">\(\displaystyle \overline X-t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}&lt;\theta_1&lt;\overline X+t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}\)</td><td>Точная</td></tr>
+    <tr><td rowspan="2">\(N(\theta_1,\theta_2^2)\)</td><td>\(\hat\theta_1=\overline X\)</td><td class="c" data-m="\(\begin{array}{l}\displaystyle \overline X-t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}&amp;lt;\theta_1\\ \displaystyle\qquad\qquad&amp;lt;\overline X+t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}\end{array}\)">\(\displaystyle \overline X-t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}&lt;\theta_1&lt;\overline X+t_{\frac{1+\gamma}{2}}(n-1)\cdot\frac{S}{\sqrt n}\)</td><td>Точная</td></tr>
     <tr><td>\(\hat\theta_2^2=S^2\)</td><td class="c">\(\displaystyle \frac{(n-1)\cdot S^2}{\chi^2_{\frac{1-\gamma}{2}}(n-1)}&lt;\theta_2^2&lt;\frac{(n-1)\cdot S^2}{\chi^2_{\frac{1+\gamma}{2}}(n-1)}\)</td><td>Точная</td></tr>
     <tr><td>\(\Pi(\theta)\)</td><td>\(\hat\theta=\overline X\)</td><td class="c">\(\displaystyle \overline X-u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\overline X}{n}}&lt;\theta&lt;\overline X+u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\overline X}{n}}\)</td><td>Приближенная</td></tr>
     <tr><td>Бернулли</td><td>\(\displaystyle \hat\theta=\nu=\frac{x}{n}\)</td><td class="c">\(\displaystyle \nu-u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\nu\cdot(1-\nu)}{n}}&lt;\theta&lt;\nu+u_{\frac{1+\gamma}{2}}\cdot\sqrt{\frac{\nu\cdot(1-\nu)}{n}}\)</td><td>Приближенная</td></tr>
@@ -415,11 +417,11 @@ window.MathJax={
   <h3 class="tcap">Оценки параметров и прогноза для простой линейной регрессии</h3>
   <div class="tbl"><table class="orig" data-cols="Параметр|Точечная оценка|Интервальная оценка">
     <tr><th class="c">Параметр</th><th class="c">Точечная оценка</th><th class="c">Интервальная оценка (центральная)</th></tr>
-    <tr><td class="c">\(\beta_0\)</td><td class="c">\(\displaystyle \bar\beta_0=\bar y-\frac{Q_{XY}^2}{Q_X^2}\,\bar x\)</td><td class="c">\(\displaystyle \left(\bar\beta_0-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}},\ \ \bar\beta_0+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}}\right)\)</td></tr>
+    <tr><td class="c">\(\beta_0\)</td><td class="c">\(\displaystyle \bar\beta_0=\bar y-\frac{Q_{XY}^2}{Q_X^2}\,\bar x\)</td><td class="c" data-m="\(\left(\begin{array}{l}\displaystyle \bar\beta_0-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}},\\ \displaystyle \bar\beta_0+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}}\end{array}\right)\)">\(\displaystyle \left(\bar\beta_0-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}},\ \ \bar\beta_0+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\sqrt{\frac{\sum x_j^2}{n}}\right)\)</td></tr>
     <tr><td class="c">\(\beta_1\)</td><td class="c">\(\displaystyle \bar\beta_1=\frac{Q_{XY}^2}{Q_X^2}\)</td><td class="c">\(\displaystyle \left(\bar\beta_1-t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X},\ \ \bar\beta_1+t_{\frac{1+\gamma}{2}}(n-2)\frac{S}{Q_X}\right)\)</td></tr>
     <tr><td class="c">\(\sigma^2\)</td><td class="c">\(\displaystyle \bar\sigma^2=S^2=\frac{Q_l^2}{n-2}\)</td><td class="c">\(\displaystyle \left(\frac{(n-2)S^2}{\chi^2_{\frac{1+\gamma}{2}}(n-2)},\ \ \frac{(n-2)S^2}{\chi^2_{\frac{1-\gamma}{2}}(n-2)}\right)\)</td></tr>
-    <tr><td class="c">\(M\bigl(y(x_0)\bigr)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
-    <tr><td class="c">\(y(x_0)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
+    <tr><td class="c">\(M\bigl(y(x_0)\bigr)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c" data-m="\(\left(\begin{array}{l}\displaystyle \bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\\ \displaystyle \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\end{array}\right)\)">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
+    <tr><td class="c">\(y(x_0)\)</td><td class="c">\(\bar y(x_0)=\bar\beta_0+\bar\beta_1x_0\)</td><td class="c" data-m="\(\left(\begin{array}{l}\displaystyle \bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\\ \displaystyle \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\end{array}\right)\)">\(\displaystyle \left(\bar y(x_0)-t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}},\ \ \bar y(x_0)+t_{\frac{1+\gamma}{2}}(n-2)S\sqrt{1+\frac1n+\frac{(x_0-\bar x)^2}{Q_X^2}}\right)\)</td></tr>
   </table></div>
 </section>
 </div>
@@ -460,11 +462,14 @@ window.MathJax={
     <tr><td>Моменты</td><td colspan="2">начальный \(\alpha_k=M\xi^k\); центральный \(\mu_k=M(\xi-M\xi)^k\)</td></tr>
   </table></div>
   <h5>Свойства — их надо знать наизусть</h5>
-  \[M(a\xi+b)=aM\xi+b,\qquad M(\xi+\eta)=M\xi+M\eta\ \ \text{(всегда)}\]
-  \[D(a\xi+b)=a^2D\xi,\qquad D(\xi+\eta)=D\xi+D\eta+2\operatorname{cov}(\xi,\eta)\]
+  \[M(a\xi+b)=aM\xi+b,\]
+\[M(\xi+\eta)=M\xi+M\eta\ \ \text{(всегда)}\]
+  \[D(a\xi+b)=a^2D\xi,\]
+\[D(\xi+\eta)=D\xi+D\eta+2\operatorname{cov}(\xi,\eta)\]
   <p>Если \(\xi,\eta\) <b>независимы</b>: \(M(\xi\eta)=M\xi\,M\eta\), \(\operatorname{cov}=0\), \(D(\xi+\eta)=D\xi+D\eta\).</p>
   <div class="box good"><span class="lbl">Главный вывод для статистики</span>Если \(X_1,\dots,X_n\) независимы, \(MX_i=m\), \(DX_i=d\), то
-  \[M\bar X=m,\qquad D\bar X=\frac{1}{n^2}\cdot n d=\frac dn.\]
+  \[M\bar X=m,\]
+\[D\bar X=\frac{1}{n^2}\cdot n d=\frac dn.\]
   Именно это на лекции давало \(\operatorname{Var}\tilde\theta^{(3)}=\frac dn\).</div>
   <p>Также пригодятся: коэффициенты асимметрии \(A=\mu_3/\sigma^3\) и эксцесса \(E=\mu_4/\sigma^4-3\) (задача 1.6), коэффициент вариации \(V=\sigma/\bar x\cdot100\%\) (задача 1.5; при \(V&lt;33\%\) выборку обычно считают однородной).</p>
 </section>
@@ -500,7 +505,9 @@ window.MathJax={
   <p>Числитель и знаменатель — независимы. При \(k\to\infty\): \(t(k)\to N(0,1)\), \(\chi^2(k)\approx N(k,2k)\).</p>
   <h5>Лемма Фишера (мост к этому семестру)</h5>
   <p>Если \(X_1,\dots,X_n\) — выборка из \(N(a,\sigma^2)\), то \(\bar X\) и \(S^2\) независимы и</p>
-  \[\bar X\sim N\!\left(a,\tfrac{\sigma^2}{n}\right),\qquad \frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1),\qquad \frac{\sqrt n(\bar X-a)}{S}\sim t(n-1).\]
+  \[\bar X\sim N\!\left(a,\tfrac{\sigma^2}{n}\right),\]
+\[\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1),\]
+\[\frac{\sqrt n(\bar X-a)}{S}\sim t(n-1).\]
   <div class="box intu"><span class="lbl">Зачем</span>Эти три факта — основа точных доверительных интервалов (задача 2.25) и почти всех критериев модулей 3–8. Когда их дадут на лекции, здесь появится подробный вывод.</div>
   <details open><summary>Гамма-функция и функция ошибок (справка)</summary><div class="inner">
     <p>\(\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}dt\); \(\Gamma(z+1)=z\Gamma(z)\), \(\Gamma(n)=(n-1)!\), \(\Gamma(\tfrac12)=\sqrt\pi\).</p>
@@ -521,7 +528,8 @@ window.MathJax={
   <h3>Функции от случайных величин, свёртка, порядковые статистики</h3>
   <div class="meta"><span class="tag hot">нужно для Д/З и задач 1.7, 1.8, 2.3, 2.4</span></div>
   <h5>Линейное преобразование</h5>
-  \[\eta=a\xi+b\ \Rightarrow\ p_\eta(y)=\frac1{|a|}\,p_\xi\!\left(\frac{y-b}{a}\right).\]
+  \[\eta=a\xi+b\]
+\[\Rightarrow\ p_\eta(y)=\frac1{|a|}\,p_\xi\!\left(\frac{y-b}{a}\right).\]
   <p>На семинаре: \(\bar X=\frac12Y\Rightarrow p_{\bar X}(x)=2p_Y(2x)\); для \(n=3\): \(p_{\bar X}(x)=3p_Y(3x)\).</p>
   <h5>Монотонная функция</h5>
   <p>Если \(\eta=g(\xi)\), \(g\) монотонна: \(p_\eta(y)=p_\xi\bigl(g^{-1}(y)\bigr)\,\bigl|(g^{-1})'(y)\bigr|\). Универсальный путь — через \(F\): \(F_\eta(y)=P(g(\xi)&lt;y)\), потом дифференцировать.</p>
@@ -530,7 +538,8 @@ window.MathJax={
   \[p_{\xi+\eta}(z)=(p_\xi*p_\eta)(z)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\eta(z-y)\,dy.\]
   <p>Техника: подынтегральное выражение ненулевое только там, где <b>оба</b> аргумента лежат в носителях — выписываешь систему неравенств на \(y\), и в зависимости от \(z\) получаются разные пределы интегрирования (как на семинаре: случаи 1)–4)).</p>
   <h5>Порядковые статистики (выборка из \(F\), \(p\))</h5>
-  \[F_{X_{(n)}}(x)=F(x)^n,\qquad F_{X_{(1)}}(x)=1-\bigl(1-F(x)\bigr)^n,\]
+  \[F_{X_{(n)}}(x)=F(x)^n,\]
+\[F_{X_{(1)}}(x)=1-\bigl(1-F(x)\bigr)^n,\]
   \[p_{X_{(k)}}(x)=\frac{n!}{(k-1)!\,(n-k)!}\,F(x)^{k-1}\bigl(1-F(x)\bigr)^{n-k}p(x).\]
   <div class="box intu"><span class="lbl">Откуда</span>\(X_{(n)}&lt;x\) ⇔ все \(X_i&lt;x\) ⇒ \(F^n\). \(X_{(1)}\ge x\) ⇔ все \(X_i\ge x\) ⇒ \((1-F)^n\).</div>
 </section>
@@ -538,7 +547,8 @@ window.MathJax={
 <section class="topic" id="b-cond" data-k="условное распределение условное математическое ожидание полная вероятность полная дисперсия байес">
   <h3>Условные распределения и условное М</h3>
   <div class="meta"><span class="tag src">методичка 1 сем., с. 14–26</span><span class="tag">понадобится в регрессии (модули 10–11)</span></div>
-  \[p_{\xi|\eta}(x\,|\,y)=\frac{p_{\xi,\eta}(x,y)}{p_\eta(y)},\qquad M(\xi\,|\,\eta=y)=\int x\,p_{\xi|\eta}(x|y)\,dx.\]
+  \[p_{\xi|\eta}(x\,|\,y)=\frac{p_{\xi,\eta}(x,y)}{p_\eta(y)},\]
+\[M(\xi\,|\,\eta=y)=\int x\,p_{\xi|\eta}(x|y)\,dx.\]
   <p><b>Формула полного М:</b> \(M\xi=M\bigl[M(\xi|\eta)\bigr]\). <b>Полной дисперсии:</b> \(D\xi=M\bigl[D(\xi|\eta)\bigr]+D\bigl[M(\xi|\eta)\bigr]\).</p>
   <p><b>Сумма случайного числа слагаемых</b> \(\xi=\sum_{i=1}^{\eta}\xi_i\) (курсовая про мессенджер): \(M\xi=m_\xi m_\eta\), \(D\xi=d_\xi m_\eta+m_\xi^2d_\eta\).</p>
   <div class="box intu"><span class="lbl">Зачем</span>Регрессия — это и есть \(M(\eta|\xi=x)\) как функция от \(x\): «лучший прогноз \(\eta\), если знаешь \(\xi\)».</div>
@@ -599,12 +609,15 @@ window.MathJax={
   <p>Как в тетради: \(\forall\varepsilon&gt;0\ \ P\bigl(|F_n(x)-F_\xi(x)|&lt;\varepsilon\bigr)\xrightarrow[n\to\infty]{}1\) — это ЗБЧ Бернулли для события \(\{\xi&lt;x\}\).<br>
   Сама теорема сильнее: \(\displaystyle\sup_{x\in\mathbb R}|F_n(x)-F_\xi(x)|\to0\) почти наверное — ЭФР приближает \(F\) <b>равномерно по всей прямой</b>.</p>
   <h5>Расстояние и теорема Колмогорова</h5>
-  \[D_n=\sup_{x\in\mathbb R}|F_n(x)-F_\xi(x)|,\qquad \lim_{n\to\infty}P\bigl(\sqrt n\,D_n&lt;x\bigr)=K(x),\]
-  \[K(x)=1+2\sum_{i=1}^{\infty}(-1)^ie^{-2i^2x^2},\quad x&gt;0\qquad(F_\xi\text{ непрерывна}).\]
+  \[D_n=\sup_{x\in\mathbb R}|F_n(x)-F_\xi(x)|,\]
+\[\lim_{n\to\infty}P\bigl(\sqrt n\,D_n&lt;x\bigr)=K(x),\]
+  \[K(x)=1+2\sum_{i=1}^{\infty}(-1)^ie^{-2i^2x^2},\ \ x&gt;0\]
+  <p>(при непрерывной \(F_\xi\)).</p>
   <div class="box intu"><span class="lbl">Зачем</span>Замечательно, что предел \(K(x)\) <b>не зависит</b> от \(F_\xi\). Это основа критерия Колмогорова (модуль 4): если \(\sqrt n D_n\) больше квантиля \(K\) (например, \(1{,}36\) для уровня 0,05), гипотеза «данные из \(F_\xi\)» отвергается.</div>
   <h5>Две выборки: теорема Смирнова</h5>
   <p>Выборки \(X_1..X_n\) и \(Y_1..Y_m\), ЭФР \(F_n\) и \(F_m\):</p>
-  \[D_{nm}=\sup_x|F_n(x)-F_m(x)|,\qquad \lim_{n,m\to\infty}P\!\left(\sqrt{\tfrac{nm}{n+m}}\,D_{nm}&lt;x\right)=K(x).\]
+  \[D_{nm}=\sup_x|F_n(x)-F_m(x)|,\]
+\[\lim_{n,m\to\infty}P\!\left(\sqrt{\tfrac{nm}{n+m}}\,D_{nm}&lt;x\right)=K(x).\]
   <p>Вопрос с лекции «\(F_1(x)=F_2(x)\)?» — из одного ли распределения выборки — решается по величине \(D_{nm}\): критерий однородности Смирнова (модуль 5).</p>
 </section>
 
@@ -665,12 +678,16 @@ window.MathJax={
   </ul>
   <p><b>Формула Стёрджесса</b> (рекомендуемое число интервалов): \(m\approx[\log_2n]+1\).</p>
   <h5>Основные точечные оценки</h5>
-  \[\bar X=\frac1n\sum_{i=1}^nX_i,\qquad S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2\ \text{(несмещённая)},\qquad D_{\text{в}}=\frac1n\sum_{i=1}^n(X_i-\bar X)^2\ \text{(смещённая)}.\]
+  \[\bar X=\frac1n\sum_{i=1}^nX_i,\]
+\[S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2\ \text{(несмещённая)},\]
+\[D_{\text{в}}=\frac1n\sum_{i=1}^n(X_i-\bar X)^2\ \text{(смещённая)}.\]
   <p>\(S=\sqrt{S^2}\), \(\sigma_{\text{в}}=\sqrt{D_{\text{в}}}\); \(S^2=\frac{n}{n-1}D_{\text{в}}\). Удобно считать \(D_{\text{в}}=\overline{X^2}-(\bar X)^2\).</p>
   <h5>Распределение \(\bar X\) для \(\xi\sim R(\theta_1,\theta_2)\), \(n=2\)</h5>
   <p>\(Y=X_1+X_2\), \(\bar X=\frac12Y\). Плотность \(Y\) — свёртка:</p>
-  \[p_Y(x)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\xi(x-y)\,dy,\qquad \begin{cases}\theta_1\le y\le\theta_2\\ x-\theta_2\le y\le x-\theta_1\end{cases}\]
-  \[p_Y(x)=\begin{cases}\dfrac{x-2\theta_1}{(\theta_2-\theta_1)^2},&amp;2\theta_1&lt;x&lt;\theta_1+\theta_2\\ \dfrac{2\theta_2-x}{(\theta_2-\theta_1)^2},&amp;\theta_1+\theta_2&lt;x&lt;2\theta_2\\ 0,&amp;\text{иначе}\end{cases}\qquad p_{\bar X}(x)=2p_Y(2x).\]
+  \[p_Y(x)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\xi(x-y)\,dy,\]
+\[\begin{cases}\theta_1\le y\le\theta_2\\ x-\theta_2\le y\le x-\theta_1\end{cases}\]
+  \[p_Y(x)=\begin{cases}\dfrac{x-2\theta_1}{(\theta_2-\theta_1)^2},&amp;2\theta_1&lt;x&lt;\theta_1+\theta_2\\ \dfrac{2\theta_2-x}{(\theta_2-\theta_1)^2},&amp;\theta_1+\theta_2&lt;x&lt;2\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]
+\[p_{\bar X}(x)=2p_Y(2x).\]
   <p>Получается <b>треугольник</b> (распределение Симпсона) на \([\theta_1,\theta_2]\) с вершиной в \(\frac{\theta_1+\theta_2}2\) высотой \(\frac2{\theta_2-\theta_1}\).</p>
   <figure>
     <svg id="xbarPlot" viewBox="0 0 600 240" role="img" aria-label="Плотности среднего для n=1,2,3"></svg>
@@ -692,7 +709,8 @@ window.MathJax={
     <li><b>Эффективность:</b> несмещённая оценка с наименьшей дисперсией. Проверка — через <b>неравенство Рао–Крамера</b>: оценка эффективна, если неравенство обращается в равенство.</li>
   </ol>
   <div class="box note"><span class="lbl">Неравенство Рао–Крамера (пояснение)</span>Для любой несмещённой оценки \(\tilde\theta\) (при условиях регулярности):
-  \[D\tilde\theta\ \ge\ \frac1{n\,I(\theta)},\qquad I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]
+  \[D\tilde\theta\ \ge\ \frac1{n\,I(\theta)},\]
+\[I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]
   \(I(\theta)\) — информация Фишера одного наблюдения. Для дискретной СВ вместо \(p\) — \(P(\xi=x)\).</div>
   <h5>Пример с лекции: \(\theta=M\xi\), три оценки</h5>
   <div class="tbl"><table data-cols="Оценка|\(M\)|\(D\)|Состоятельна?">
@@ -720,17 +738,24 @@ window.MathJax={
   <div class="meta"><span class="tag">лекция</span><span class="tag hot">модуль 2, задачи 2.5–2.20</span></div>
   <h5>1. Метод моментов</h5>
   <p>Приравниваем теоретические моменты (зависят от \(\theta\)) к выборочным и решаем относительно \(\theta\):</p>
-  \[M\xi=\bar X,\quad D\xi=S^2\ (\text{или }D_{\text{в}}),\quad M\xi^2=\frac1n\sum X_i^2,\quad M|\xi-M\xi|=\frac1n\sum|X_i-\bar X|,\ \dots\]
+  \[M\xi=\bar X,\]
+\[D\xi=S^2\ (\text{или }D_{\text{в}}),\]
+\[M\xi^2=\frac1n\sum X_i^2,\]
+\[M|\xi-M\xi|=\frac1n\sum|X_i-\bar X|,\ \dots\]
   <div class="box warn"><span class="lbl">Не однозначен</span>Для Пуассона \(M\xi=D\xi=\theta\), поэтому годятся и \(\tilde\theta=\bar X\), и \(\tilde\theta=S^2\). Какая лучше? Нужно проверять свойства: \(\bar X\) эффективна (см. Рао–Крамер выше), значит она лучше. Параметров \(k\) — берёшь \(k\) уравнений, обычно самые простые моменты.</div>
   <details open><summary>Пример: \(R[0,\theta]\) (задача 2.6.1)</summary><div class="inner"><p>\(M\xi=\frac\theta2=\bar X\Rightarrow\tilde\theta=2\bar X\).</p></div></details>
   <h5>2. Метод максимального правдоподобия (ММП, ОМП)</h5>
   <p><b>Функция правдоподобия</b> — «вероятность получить именно нашу выборку»:</p>
-  \[L(x,\theta)=f(x_1,\theta)\cdot f(x_2,\theta)\cdots f(x_n,\theta),\qquad f(x_i,\theta)=\begin{cases}P(\xi=x_i\,|\,\theta),&amp;\text{дискретная}\\ p_\xi(x_i\,|\,\theta),&amp;\text{непрерывная}\end{cases}\]
+  \[L(x,\theta)=f(x_1,\theta)\cdot f(x_2,\theta)\cdots f(x_n,\theta),\]
+\[f(x_i,\theta)=\begin{cases}P(\xi=x_i\,|\,\theta),&amp;\text{дискретная}\\ p_\xi(x_i\,|\,\theta),&amp;\text{непрерывная}\end{cases}\]
   \[\hat\theta=\arg\max_{\theta\in\Theta}L(x,\theta).\]
   <p>Удобнее максимизировать \(\ln L\) (тот же максимум, т.к. \(\ln\) возрастает, а произведение превращается в сумму): \(\frac{\partial\ln L}{\partial\theta}=\frac1L\frac{\partial L}{\partial\theta}=0\). Для \(k\) параметров — система уравнений правдоподобия \(\frac{\partial\ln L}{\partial\theta_j}=0,\ j=1..k\).</p>
   <details open><summary>Пример с лекции: Пуассон</summary><div class="inner">
-    \[f(x_i,\theta)=e^{-\theta}\frac{\theta^{x_i}}{x_i!},\qquad L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!}\]
-    \[\ln L=-n\theta+\sum x_i\ln\theta-\ln\prod x_i!,\qquad \frac{\partial\ln L}{\partial\theta}=-n+\frac1\theta\sum x_i=0\ \Rightarrow\ \boxed{\hat\theta=\bar X}\]
+    \[f(x_i,\theta)=e^{-\theta}\frac{\theta^{x_i}}{x_i!},\]
+\[L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!}\]
+    \[\ln L=-n\theta+\sum x_i\ln\theta-\ln\prod x_i!,\]
+\[\frac{\partial\ln L}{\partial\theta}=-n+\frac1\theta\sum x_i=0\]
+\[\Rightarrow\ \boxed{\hat\theta=\bar X}\]
     <p>Проверка максимума: \(\frac{\partial^2\ln L}{\partial\theta^2}=-\frac1{\theta^2}\sum x_i&lt;0\).</p>
   </div></details>
   <div class="box warn"><span class="lbl">Ловушка: равномерное распределение (2.11–2.13)</span>У \(R[0,\theta]\) производная не обнуляется: \(L=\theta^{-n}\) при \(\theta\ge X_{(n)}\) и 0 иначе. \(L\) убывает, значит максимум на границе: \(\hat\theta=X_{(n)}\). Всегда проверяй, от \(\theta\) ли зависит носитель.</div>
@@ -742,10 +767,13 @@ window.MathJax={
   <details open><summary>№2.3 — \(Y_i=1-e^{-3X_i}\), \(X_i\sim Exp(3)\)</summary><div class="inner">
     <p>\(F_X(x)=P(X_i&lt;x)=\begin{cases}1-e^{-3x},&amp;x&gt;0\\0,&amp;\text{иначе}\end{cases}\), \(\ p_X(x)=\begin{cases}3e^{-3x},&amp;x\ge0\\0,&amp;\text{иначе}\end{cases}\)</p>
     <p>Так как \(X_i&gt;0\), то \(e^{-3X_i}\in(0,1)\) и \(Y_i\in(0;1)\).</p>
-    \[F_Y(x)=P(1-e^{-3X}&lt;x)=P(e^{-3X}&gt;1-x)=P\bigl(-3X&gt;\ln(1-x)\bigr)=P\!\left(X&lt;-\tfrac13\ln(1-x)\right)=F_X\!\left(-\tfrac13\ln(1-x)\right)\]
-    \[p_Y(x)=p_X\!\left(-\tfrac13\ln(1-x)\right)\cdot\frac{1}{3(1-x)},\qquad p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}=3(1-x).\]
+    \[\begin{aligned}F_Y(x)&=P(1-e^{-3X}&lt;x)=P(e^{-3X}&gt;1-x)\\&=P\bigl(-3X&gt;\ln(1-x)\bigr)=P\!\left(X&lt;-\tfrac13\ln(1-x)\right)\\&=F_X\!\left(-\tfrac13\ln(1-x)\right)\end{aligned}\]
+    \[p_Y(x)=p_X\!\left(-\tfrac13\ln(1-x)\right)\cdot\frac{1}{3(1-x)},\]
+\[p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}=3(1-x).\]
     <p>Условие \(-\frac13\ln(1-x)\ge0\) ⇔ \(0&lt;1-x\le1\) ⇔ \(0\le x&lt;1\). Итого</p>
-    \[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}=1,\ \ 0\le x&lt;1;\qquad p_Y(x)=0\ \text{иначе}\ \Rightarrow\ Y_i\sim R(0,1).\]
+    \[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}=1,\ \ 0\le x&lt;1;\]
+\[p_Y(x)=0\ \text{иначе}\]
+\[\Rightarrow\ Y_i\sim R(0,1).\]
     <div class="box intu"><span class="lbl">Почему так вышло</span>\(1-e^{-3x}\) — это и есть \(F_X(x)\). Общий факт: \(F(\xi)\sim R(0,1)\) для любой непрерывной \(F\) (см. <a href="#b-func">функции от СВ</a>).</div>
   </div></details>
 
@@ -759,20 +787,27 @@ window.MathJax={
   </div></details>
 
   <details open><summary>№2.8 — ОМП векторного параметра \((a,\sigma)\) нормального распределения</summary><div class="inner">
-    \[f(x,\theta)=\frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}},\qquad L(x,\theta)=\frac{1}{(\sqrt{2\pi}\,\sigma)^n}\,e^{-\frac{\sum_{i=1}^n(x_i-a)^2}{2\sigma^2}}\]
+    \[f(x,\theta)=\frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}},\]
+\[L(x,\theta)=\frac{1}{(\sqrt{2\pi}\,\sigma)^n}\,e^{-\frac{\sum_{i=1}^n(x_i-a)^2}{2\sigma^2}}\]
     \[\ln L=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]
-    \[\begin{cases}\dfrac{\partial\ln L}{\partial a}=\dfrac1{\sigma^2}\sum(x_i-a)=0\\[4pt]\dfrac{\partial\ln L}{\partial\sigma}=-\dfrac n\sigma+\dfrac{\sum(x_i-a)^2}{\sigma^3}=0\end{cases}\ \Rightarrow\ \hat a=\overline X,\quad \hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=D_{\text{в}}.\]
+    \[\begin{cases}\dfrac{\partial\ln L}{\partial a}=\dfrac1{\sigma^2}\sum(x_i-a)=0\\[4pt]\dfrac{\partial\ln L}{\partial\sigma}=-\dfrac n\sigma+\dfrac{\sum(x_i-a)^2}{\sigma^3}=0\end{cases}\]
+\[\Rightarrow\ \hat a=\overline X,\]
+\[\hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=D_{\text{в}}.\]
     <p><b>Проверка максимума</b> в точке \(M=(\hat a,\hat\sigma)\):</p>
-    \[A=\frac{\partial^2\ln L}{\partial a^2}\Big|_M=-\frac{n}{\sigma^2},\quad B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M=-\frac{2}{\sigma^3}\sum(x_i-\hat a)=0,\quad C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2=-\frac{2n}{\sigma^2}.\]
+    \[A=\frac{\partial^2\ln L}{\partial a^2}\Big|_M=-\frac{n}{\sigma^2},\]
+\[B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M=-\frac{2}{\sigma^3}\sum(x_i-\hat a)=0,\]
+\[C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2=-\frac{2n}{\sigma^2}.\]
     <p>\(\Delta=AC-B^2=\dfrac{2n^2}{\sigma^4}&gt;0\) ⇒ экстремум; \(A&lt;0\) ⇒ максимум.</p>
     <div class="box warn"><span class="lbl">Поправка к тетради</span>В записи \(C\) стоит «\(&gt;0\)», но после подстановки \(\sum(x_i-\hat a)^2=n\hat\sigma^2\) получается \(C=\frac{n}{\sigma^2}-\frac{3n}{\sigma^2}=-\frac{2n}{\sigma^2}&lt;0\). Отсюда и \(\Delta=\frac{2n^2}{\sigma^4}\). Вывод (максимум) верный.</div>
     <p><b>Сравнение с 2.5:</b> для \(a\) оба метода дают \(\overline X\); для \(\sigma^2\) ОМП даёт смещённую \(D_{\text{в}}\).</p>
   </div></details>
 
   <details open><summary>№2.19 — ОМП для усечённого геометрического (Д/З, разбор)</summary><div class="inner">
-    <p>\(P(X_i=k)=p(1-p)^k,\ k=0,\dots,m-1;\quad P(X_i=m)=1-P(X_i\le m-1)=(1-p)^m.\)</p>
+    <p>\(P(X_i=k)=p(1-p)^k,\ k=0,\dots,m-1;\)<br>\(P(X_i=m)=1-P(X_i\le m-1)=(1-p)^m.\)</p>
     <p>Пусть \(r\) — число наблюдений, <b>меньших</b> \(m\), а \(\Sigma=\sum_{i=1}^n X_i\) — сумма всех наблюдений. Каждое \(X_i&lt;m\) даёт множитель \(p(1-p)^{X_i}\), каждое \(X_i=m\) — множитель \((1-p)^m=(1-p)^{X_i}\). Поэтому</p>
-    \[L(p)=p^{\,r}(1-p)^{\Sigma},\qquad \ln L=r\ln p+\Sigma\ln(1-p),\qquad \frac{\partial\ln L}{\partial p}=\frac rp-\frac{\Sigma}{1-p}=0\]
+    \[L(p)=p^{\,r}(1-p)^{\Sigma},\]
+\[\ln L=r\ln p+\Sigma\ln(1-p),\]
+\[\frac{\partial\ln L}{\partial p}=\frac rp-\frac{\Sigma}{1-p}=0\]
     \[\Rightarrow\ \hat p=\frac{r}{r+\Sigma}.\]
     <p>\(\frac{\partial^2\ln L}{\partial p^2}=-\frac r{p^2}-\frac{\Sigma}{(1-p)^2}&lt;0\) — максимум. При \(m\to\infty\) (усечения нет) \(r=n\) и \(\hat p=\frac{n}{n+\sum X_i}=\frac1{1+\overline X}\).</p>
   </div></details>
@@ -782,12 +817,14 @@ window.MathJax={
   <h3>Лекция 17.09. Информация Фишера и неравенство Рао–Крамера</h3>
   <div class="meta"><span class="tag">лекция</span><span class="tag hot">модуль 2, задачи 2.21–2.24</span></div>
   <p>\(X=(X_1,\dots,X_n)\) — выборка, \(\xi\) — наблюдаемая СВ, \(f(x,\theta)\) — её плотность (или вероятность). Функция правдоподобия и её логарифм:</p>
-  \[L(X,\theta)=f(X_1,\theta)\,f(X_2,\theta)\cdots f(X_n,\theta),\qquad \ln L(X,\theta)=\sum_{i=1}^n\ln f(X_i,\theta).\]
+  \[L(X,\theta)=f(X_1,\theta)\,f(X_2,\theta)\cdots f(X_n,\theta),\]
+\[\ln L(X,\theta)=\sum_{i=1}^n\ln f(X_i,\theta).\]
   <div class="def"><b>Вклад выборки</b> (score): \(U=\dfrac{\partial}{\partial\theta}\ln L(X,\theta)\) — случайная величина.</div>
-  \[EU=\int_{R_\theta}U\cdot L(X,\theta)\,dX=\int_{R_\theta}L\,\frac{\partial\ln L}{\partial\theta}\,dX=\int L\cdot\frac1L\frac{\partial L}{\partial\theta}\,dX=\frac{\partial}{\partial\theta}\underbrace{\int L\,dX}_{=1}=0.\]
+  \[\begin{aligned}EU&=\int_{R_\theta}U\cdot L(X,\theta)\,dX\\&=\int_{R_\theta}L\,\frac{\partial\ln L}{\partial\theta}\,dX\\&=\int L\cdot\frac1L\frac{\partial L}{\partial\theta}\,dX=\frac{\partial}{\partial\theta}\underbrace{\int L\,dX}_{=1}=0.\end{aligned}\]
   <p>⇒ в среднем вклад выборки равен 0. Вклад одного наблюдения \(U_1=\frac{\partial}{\partial\theta}\ln f(X_i,\theta)\); \(U=\sum_{i=1}^nU_i\) — вклад выборки равен сумме вкладов.</p>
   <div class="def"><b>Информация Фишера:</b> \(DU=EU^2=I_n(\theta)\),
-  \[I_n(\theta)=E\left[\frac{\partial}{\partial\theta}\ln L\right]^2=-E\left(\frac{\partial^2\ln L}{\partial\theta^2}\right),\qquad I_n(\theta)=n\,I_1(\theta).\]</div>
+  \[I_n(\theta)=E\left[\frac{\partial}{\partial\theta}\ln L\right]^2=-E\left(\frac{\partial^2\ln L}{\partial\theta^2}\right),\]
+\[I_n(\theta)=n\,I_1(\theta).\]</div>
   <div class="box intu"><span class="lbl">Интуиция</span>\(I_n\) — сколько «информации о \(\theta\)» содержит выборка. Чем круче \(\ln L\) изогнута около максимума (большая \(-\partial^2\ln L\)), тем точнее можно оценить \(\theta\). Информация складывается: \(n\) наблюдений дают в \(n\) раз больше.</div>
 
   <h5>Неравенство Рао–Крамера</h5>
@@ -814,15 +851,21 @@ window.MathJax={
   <p class="hand-note">«\(a\sim b\)»: для несмещённости смотрим \(a-b\to0\), для эффективности — \(a/b\to1\).</p>
 
   <details open><summary>Пример с лекции: \(\Pi(\theta)\), \(\Theta=\{\theta:\theta&gt;0\}\)</summary><div class="inner">
-    \[f(x,\theta)=e^{-\theta}\frac{\theta^x}{x!},\ x=0,1,2,\dots;\qquad L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!};\qquad \ln L=-n\theta+\sum_{i=1}^nx_i\ln\theta-\ln\prod_{i=1}^n x_i!\]
-    \[U=-n+\frac1\theta\sum_{i=1}^nX_i\ \Rightarrow\ \tilde\theta=\frac1n\sum X_i=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]
-    \[\frac{\partial U}{\partial\theta}=-\frac1{\theta^2}\sum_{i=1}^nX_i,\qquad I_n(\theta)=-E\left[-\frac1{\theta^2}\sum X_i\right]=\frac{n\theta}{\theta^2}=\frac n\theta,\qquad I_1(\theta)=\frac1\theta.\]
+    \[f(x,\theta)=e^{-\theta}\frac{\theta^x}{x!},\ x=0,1,2,\dots;\]
+\[L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!};\]
+\[\ln L=-n\theta+\sum_{i=1}^nx_i\ln\theta-\ln\prod_{i=1}^n x_i!\]
+    \[U=-n+\frac1\theta\sum_{i=1}^nX_i\]
+\[\Rightarrow\ \tilde\theta=\frac1n\sum X_i=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]
+    \[\frac{\partial U}{\partial\theta}=-\frac1{\theta^2}\sum_{i=1}^nX_i,\]
+\[I_n(\theta)=-E\left[-\frac1{\theta^2}\sum X_i\right]=\frac{n\theta}{\theta^2}=\frac n\theta,\]
+\[I_1(\theta)=\frac1\theta.\]
     <p>Рао–Крамер: \(D\tilde\theta\ge\dfrac\theta n\). А \(D\tilde\theta=\dfrac1{n^2}\,n\,DX_i=\dfrac1n\,\theta\) — равенство ⇒ <b>оценка эффективная</b>.</p>
   </div></details>
 
   <h5>Доверительное (интервальное) оценивание</h5>
   <p>Вместо одного числа \(\hat\theta\) ищем случайный интервал \((T_1,T_2)\), который накрывает \(\theta\):</p>
-  \[P(T_1&lt;\theta&lt;T_2)=\gamma\quad\text{— доверительная вероятность (уровень доверия)},\qquad \gamma:\ 0{,}9;\ 0{,}95;\ 0{,}99;\ 0{,}995;\ 0{,}999.\]
+  \[P(T_1&lt;\theta&lt;T_2)=\gamma\quad\text{— доверительная вероятность (уровень доверия)},\]
+\[\gamma:\ 0{,}9;\ 0{,}95;\ 0{,}99;\ 0{,}995;\ 0{,}999.\]
   <p>Три вида интервалов (по графику функции/плотности распределения оценки):</p>
   <ol class="clean" style="padding-left:22px">
     <li>\(c=0\): \(P(\theta&lt;T_2)=\gamma\) — односторонний (верхняя граница);</li>
@@ -843,7 +886,8 @@ window.MathJax={
   <h3>Д/З: распределение \(\bar X=\frac13(X_1+X_2+X_3)\), \(X_i\sim R(\theta_1,\theta_2)\)</h3>
   <div class="meta"><span class="tag done">проверено — в тетради верно</span></div>
   <p>Обозначим \(h=\theta_2-\theta_1\). Идея: \(Z=X_1+X_2\) (треугольник с семинара), \(Y=Z+X_3\) — ещё одна свёртка:</p>
-  \[p_Y(x)=\int p_Z(u)\,p_\xi(x-u)\,du,\qquad \begin{cases}2\theta_1\le u\le2\theta_2\\ x-\theta_2\le u\le x-\theta_1\end{cases}\]
+  \[p_Y(x)=\int p_Z(u)\,p_\xi(x-u)\,du,\]
+\[\begin{cases}2\theta_1\le u\le2\theta_2\\ x-\theta_2\le u\le x-\theta_1\end{cases}\]
   <p>Пять случаев в зависимости от положения отрезка \([x-\theta_2,\,x-\theta_1]\) относительно точек \(2\theta_1,\ \theta_1+\theta_2,\ 2\theta_2\):</p>
   \[p_Y(x)=\begin{cases}\dfrac{(x-3\theta_1)^2}{2h^3},&amp;3\theta_1&lt;x&lt;2\theta_1+\theta_2\\ \dfrac{2h^2-(x-2\theta_1-\theta_2)^2-(2\theta_2+\theta_1-x)^2}{2h^3},&amp;2\theta_1+\theta_2&lt;x&lt;\theta_1+2\theta_2\\ \dfrac{(3\theta_2-x)^2}{2h^3},&amp;\theta_1+2\theta_2&lt;x&lt;3\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]
   <p>Затем \(p_{\bar X}(x)=3\,p_Y(3x)\):</p>
@@ -936,12 +980,12 @@ window.MathJax={
       var card=document.createElement('div');card.className='card';var fixed=[],vary=[];
       for(var c=0;c<nc;c++){var a=grid[r][c];if(!a||a.c0!==c)continue;
         if(r===r1||a.td===grid[r1][c].td)fixed.push(c);else vary.push(c);}
-      fixed.forEach(function(c){var cell=grid[r][c];if(cell.td.innerHTML.trim())card.appendChild(kv(lab(cell),cell.td.innerHTML));});
+      fixed.forEach(function(c){var cell=grid[r][c];if(cell.td.innerHTML.trim())card.appendChild(kv(lab(cell),cell.td.getAttribute('data-m')||cell.td.innerHTML));});
       var tri=vary.length===3&&tbl.hasAttribute('data-hyp');
       for(var rr=r;rr<=r1&&vary.length;rr++){var sub=document.createElement('div');sub.className='sub';
         vary.forEach(function(c,k){var cell=grid[rr][c];if(!cell||cell.c0!==c||!cell.td.innerHTML.trim())return;
           if(rr>r&&grid[rr-1][c]&&grid[rr-1][c].td===cell.td)return;
-          sub.appendChild(kv(tri?['\\(H_1\\)','Принять','Отвергнуть'][k]:lab(cell),cell.td.innerHTML,tri?['','acc','rej'][k]:''));});
+          sub.appendChild(kv(tri?['\\(H_1\\)','Принять','Отвергнуть'][k]:lab(cell),cell.td.getAttribute('data-m')||cell.td.innerHTML,tri?['','acc','rej'][k]:''));});
         if(sub.childNodes.length)card.appendChild(sub);}
       wrap.appendChild(card);r=r1+1;}
     var box=tbl.closest('.tbl');box.classList.add('has-cards');box.parentNode.insertBefore(wrap,box.nextSibling);
