@@ -65,6 +65,7 @@ a{color:var(--accent)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
 .nav a{display:block;padding:4px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14px;line-height:1.4}
 .nav a:hover{background:var(--accent-soft)}
+.nav a small{font-size:11px;color:var(--muted);font-weight:500;margin-left:4px;white-space:nowrap}
 .nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
 .nav a:focus-visible{outline:2px solid var(--accent)}
 .menu-btn{display:none}
@@ -186,7 +187,7 @@ table.orig .c{text-align:center}
   .part-h h2{font-size:22px}
   section.topic{background:transparent;border:0;border-radius:0;box-shadow:none;padding:18px 0 8px;margin:0;border-top:1px solid var(--line)}
   section.topic h3{font-size:19px}
-  body{font-size:15.5px;background-image:none}
+  body{font-size:15.5px}
   .box{padding:10px 12px}
   details .inner{padding:0 10px 12px}
   details>summary{padding:10px}
@@ -231,13 +232,13 @@ window.MathJax={
       <ul><li><a href="#start">Старт и журнал обновлений</a></li><li><a href="#fixes">Поправки к конспекту</a></li></ul>
     </div>
     <div>
-      <h4>Таблицы (от преподавателя)</h4>
+      <h4>Таблицы преподавателя</h4>
       <ul>
-        <li><a href="#t21">2.1 Точечные оценки</a></li>
-        <li><a href="#t22">2.2 Интервальные оценки</a></li>
-        <li><a href="#t31">3.1 Гипотезы: одна выборка</a></li>
-        <li><a href="#t32">3.2 Гипотезы: две выборки</a></li>
-        <li><a href="#t41">4.1 Линейная регрессия</a></li>
+        <li><a href="#t21" data-t="Точечные оценки параметров">Точечные оценки параметров <small>2.1</small></a></li>
+        <li><a href="#t22" data-t="Доверительные интервалы">Доверительные интервалы <small>2.2</small></a></li>
+        <li><a href="#t31" data-t="Гипотезы: одна выборка">Гипотезы: одна выборка <small>3.1</small></a></li>
+        <li><a href="#t32" data-t="Гипотезы: две выборки">Гипотезы: две выборки <small>3.2</small></a></li>
+        <li><a href="#t41" data-t="Линейная регрессия">Линейная регрессия <small>4.1</small></a></li>
       </ul>
     </div>
     <div>
@@ -257,29 +258,29 @@ window.MathJax={
     <div>
       <h4>Б. Лекции 2 семестра</h4>
       <ul>
-        <li><a href="#l-intro">Л1. Пакеты и шкалы</a></li>
-        <li><a href="#l-sample">Л2. Выборка, ЭФР, Колмогоров</a></li>
-        <li><a href="#l-rank">Л3. Ранги, квантили, box-plot</a></li>
-        <li><a href="#l-sem1">Сем. 10.09. Группировка, X̄</a></li>
-        <li><a href="#l-est">Л4. Свойства оценок</a></li>
-        <li><a href="#l-methods">Л5. Метод моментов и ОМП</a></li>
-        <li><a href="#l-sem2">Сем. 14.09. Задачи 2.3–2.19</a></li>
-        <li><a href="#l-rao">Л 17.09. Фишер, Рао–Крамер</a></li>
+        <li><a href="#l-intro" data-t="Шкалы измерения и стат. пакеты">Шкалы измерения и стат. пакеты</a></li>
+        <li><a href="#l-sample" data-t="Выборка, ЭФР, Колмогоров–Смирнов">Выборка, ЭФР, Колмогоров–Смирнов</a></li>
+        <li><a href="#l-rank" data-t="Ранги, квантили, «ящик с усами»">Ранги, квантили, «ящик с усами»</a></li>
+        <li><a href="#l-sem1" data-t="Группировка данных, гистограмма">Группировка данных, гистограмма <small>сем. 10.09</small></a></li>
+        <li><a href="#l-est" data-t="Свойства оценок">Свойства оценок</a></li>
+        <li><a href="#l-methods" data-t="Метод моментов и ОМП">Метод моментов и ОМП</a></li>
+        <li><a href="#l-sem2" data-t="Задачи на оценки: 2.3, 2.5, 2.8, 2.19">Задачи на оценки: 2.3, 2.5, 2.8, 2.19 <small>сем. 14.09</small></a></li>
+        <li><a href="#l-rao" data-t="Информация Фишера, Рао–Крамер, дов. интервалы">Информация Фишера, Рао–Крамер, дов. интервалы <small>17.09</small></a></li>
       </ul>
     </div>
     <div>
       <h4>В. Практика</h4>
       <ul>
-        <li><a href="#p-hw">Д/З: X̄ для n = 3</a></li>
-        <li><a href="#p-efimov">Ефимов 15.26 / 33 / 40</a></li>
-        <li><a href="#p-map">Карта задачника (14 модулей)</a></li>
+        <li><a href="#p-hw" data-t="Распределение X̄ при n = 3">Распределение X̄ при n = 3 <small>Д/З</small></a></li>
+        <li><a href="#p-efimov" data-t="Описательная статистика (Ефимов)">Описательная статистика (Ефимов)</a></li>
+        <li><a href="#p-map" data-t="Карта модулей задачника">Карта модулей задачника</a></li>
       </ul>
     </div>
   </nav>
 </aside>
 
 <main id="main">
-<nav class="quick" aria-label="Быстрый доступ"><span>Таблицы:</span><a href="#t21">2.1</a><a href="#t22">2.2</a><a href="#t31">3.1</a><a href="#t32">3.2</a><a href="#t41">4.1</a><a href="#l-rao">Рао–Крамер</a><a href="#p-map">Модули</a></nav>
+<nav class="quick" aria-label="Быстрый доступ"><a href="#t21">Точечные оценки</a><a href="#t22">Доверительные интервалы</a><a href="#t31">Гипотезы: 1 выборка</a><a href="#t32">Гипотезы: 2 выборки</a><a href="#t41">Регрессия</a><a href="#l-methods">ОМП</a><a href="#l-rao">Рао–Крамер</a><a href="#b-dist">Распределения</a><a href="#p-map">Модули</a></nav>
 <header class="hero" id="start">
   <h1>Прикладной статистический анализ — живой конспект</h1>
   <p>Сюда постепенно переезжают рукописные лекции в нормальном виде с формулами. Раздел&nbsp;А — только то из теории вероятностей, что реально нужно в этом семестре. Раздел&nbsp;Б — лекции. Раздел&nbsp;В — разборы задач и карта задачника Синевой–Скородумовой (ч.&nbsp;2).</p>
@@ -293,6 +294,7 @@ window.MathJax={
   <details>
     <summary>Журнал обновлений</summary>
     <div class="inner"><ul class="log clean">
+      <li><b>24.09.2026</b> — навигация по названиям тем вместо номеров; адаптация под телефон.</li>
       <li><b>23.09.2026</b> — семинар 14.09 (2.3, 2.5, 2.8, разбор 2.19) и лекция 17.09 (информация Фишера, Рао–Крамер, доверительные интервалы).</li>
       <li><b>23.09.2026</b> — добавлены таблицы преподавателя 2.1, 2.2, 3.1, 3.2, 4.1.</li>
       <li><b>23.09.2026</b> — создан конспект: база 1 семестра, лекции 1–5 (по фото тетради), семинар 10.09.26, Д/З про \(\bar X\) при \(n=3\), задачи Ефимова 15.26, 15.33, 15.40, карта модулей задачника.</li>
@@ -1024,7 +1026,7 @@ window.MathJax={
   var links=[].slice.call(nav.querySelectorAll('a'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
   var title=document.getElementById('tbTitle');
-  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('on',on);if(on)title.textContent=a.textContent;})}
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('on',on);if(on)title.textContent=a.dataset.t||a.textContent;})}
   var cur='',tick=false;
   function track(){tick=false;var y=window.innerHeight*0.3,id=secs[0]&&secs[0].id;
     for(var i=0;i<secs.length;i++){if(secs[i].hidden)continue;if(secs[i].getBoundingClientRect().top<=y)id=secs[i].id;else break;}
@@ -1033,8 +1035,8 @@ window.MathJax={
   window.addEventListener('load',track);track();
   secs.forEach(function(s,i){if(s.tagName!=='SECTION')return;var d=document.createElement('div');d.className='pn';
     var pv=secs[i-1],nx=secs[i+1];
-    if(pv){var a=document.createElement('a');a.href='#'+pv.id;a.textContent='← '+links[i-1].textContent;d.appendChild(a);}
-    if(nx){var b=document.createElement('a');b.href='#'+nx.id;b.className='next';b.textContent=links[i+1].textContent+' →';d.appendChild(b);}
+    if(pv){var a=document.createElement('a');a.href='#'+pv.id;a.textContent='← '+(links[i-1].dataset.t||links[i-1].textContent);d.appendChild(a);}
+    if(nx){var b=document.createElement('a');b.href='#'+nx.id;b.className='next';b.textContent=(links[i+1].dataset.t||links[i+1].textContent)+' →';d.appendChild(b);}
     s.appendChild(d);});
   var q=document.getElementById('q'),q2=document.getElementById('q2'),all=[].slice.call(document.querySelectorAll('section.topic')),parts=[].slice.call(document.querySelectorAll('.part')),empty=document.getElementById('empty');
   function filter(v){v=v.trim().toLowerCase();var n=0;
