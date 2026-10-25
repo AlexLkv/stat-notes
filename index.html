@@ -206,8 +206,10 @@ table[data-plain]{min-width:0;width:100%}
 }
 .scat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
 .scat figure.sc{margin:0}
-.scat figure.sc svg{display:block;width:100%;height:auto}
+.scat figure.sc > svg{display:block;width:100%;height:auto}
 .scat figcaption{text-align:center;font-size:12.5px;line-height:1.35}
+.mn{display:none}
+@media (max-width:760px){.mw{display:none}.mn{display:block}.mn mjx-container[display="true"]{margin:.3em 0!important}}
 .eli{position:relative;margin:4px 0 14px;padding:10px 14px 10px 14px;border-radius:10px;background:var(--note-soft);border:1px dashed color-mix(in srgb,var(--note) 45%,transparent);font-size:15px;line-height:1.55}
 .eli .lbl{display:block;font-family:"Caveat",cursive;font-size:21px;line-height:1;color:var(--note);margin-bottom:4px}
 .empty{display:none;color:var(--muted);padding:20px 0}
@@ -441,7 +443,7 @@ window.MathJax={
   <div class="tnote"><p><i>Примечания к табл. 3.2.</i></p>
   <p>(*) Статистика \(\displaystyle S^2=\frac{(n_1-1)\cdot S_1^2+(n_2-1)\cdot S_2^2}{n_1+n_2-2}\) является оценкой дисперсии по объединенной выборке.</p>
   <p>(**) Распределение статистики \(T\) близко к распределению \(t(k)\) при</p>
-  \[k=\left(\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}\right)^2:\left(\frac{S_1^4}{n_1^2\cdot(n_1-1)}+\frac{S_2^4}{n_2^2\cdot(n_2-1)}\right).\]</div>
+  <span class="mw">\[k=\left(\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}\right)^2:\left(\frac{S_1^4}{n_1^2\cdot(n_1-1)}+\frac{S_2^4}{n_2^2\cdot(n_2-1)}\right).\]</span><span class="mn">\[k\]\[=\left(\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}\right)^2:\left(\frac{S_1^4}{n_1^2\cdot(n_1-1)}+\frac{S_2^4}{n_2^2\cdot(n_2-1)}\right).\]</span></div>
 </section>
 
 <section class="topic" id="t41" data-k="таблица 4.1 линейная регрессия оценки параметров прогноз">
@@ -574,12 +576,12 @@ window.MathJax={
   <p>Если \(\eta=g(\xi)\), \(g\) монотонна: \(p_\eta(y)=p_\xi\bigl(g^{-1}(y)\bigr)\,\bigl|(g^{-1})'(y)\bigr|\). Универсальный путь — через \(F\): \(F_\eta(y)=P(g(\xi)&lt;y)\), потом дифференцировать.</p>
   <div class="box intu"><span class="lbl">Полезный трюк (задача 2.3)</span>Если \(F\) непрерывна, то \(F(\xi)\sim R(0,1)\). Например, для \(\xi\sim Exp(3)\): \(1-e^{-3\xi}\sim R(0,1)\).</div>
   <h5>Сумма независимых — свёртка</h5>
-  \[p_{\xi+\eta}(z)=(p_\xi*p_\eta)(z)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\eta(z-y)\,dy.\]
+  <span class="mw">\[p_{\xi+\eta}(z)=(p_\xi*p_\eta)(z)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\eta(z-y)\,dy.\]</span><span class="mn">\[p_{\xi+\eta}(z)=(p_\xi*p_\eta)(z)\]\[=\int_{-\infty}^{\infty}p_\xi(y)\,p_\eta(z-y)\,dy.\]</span>
   <p>Техника: подынтегральное выражение ненулевое только там, где <b>оба</b> аргумента лежат в носителях — выписываешь систему неравенств на \(y\), и в зависимости от \(z\) получаются разные пределы интегрирования (как на семинаре: случаи 1)–4)).</p>
   <h5>Порядковые статистики (выборка из \(F\), \(p\))</h5>
   \[F_{X_{(n)}}(x)=F(x)^n,\]
 \[F_{X_{(1)}}(x)=1-\bigl(1-F(x)\bigr)^n,\]
-  \[p_{X_{(k)}}(x)=\frac{n!}{(k-1)!\,(n-k)!}\,F(x)^{k-1}\bigl(1-F(x)\bigr)^{n-k}p(x).\]
+  <span class="mw">\[p_{X_{(k)}}(x)=\frac{n!}{(k-1)!\,(n-k)!}\,F(x)^{k-1}\bigl(1-F(x)\bigr)^{n-k}p(x).\]</span><span class="mn">\[p_{X_{(k)}}(x)\]\[=\frac{n!}{(k-1)!\,(n-k)!}\,F(x)^{k-1}\bigl(1-F(x)\bigr)^{n-k}p(x).\]</span>
   <div class="box intu"><span class="lbl">Откуда</span>\(X_{(n)}&lt;x\) ⇔ все \(X_i&lt;x\) ⇒ \(F^n\). \(X_{(1)}\ge x\) ⇔ все \(X_i\ge x\) ⇒ \((1-F)^n\).</div>
 </section>
 
@@ -681,7 +683,7 @@ window.MathJax={
     \[F_n(x)=\begin{cases}0,&amp;x\le2\\0{,}2,&amp;2&lt;x\le3\\0{,}6,&amp;3&lt;x\le4\\0{,}8,&amp;4&lt;x\le5\\0{,}9,&amp;5&lt;x\le7\\1,&amp;x&gt;7\end{cases}\]
   </div></details>
   <h5>Выборочная квантиль уровня \(p\)</h5>
-  \[Q_n(p)=\begin{cases}X_{([np]+1)},&amp;np\ \text{— дробное}\\ \tfrac12\bigl(X_{(np)}+X_{(np+1)}\bigr),&amp;np\ \text{— целое}\end{cases}\]
+  <span class="mw">\[Q_n(p)=\begin{cases}X_{([np]+1)},&amp;np\ \text{— дробное}\\ \tfrac12\bigl(X_{(np)}+X_{(np+1)}\bigr),&amp;np\ \text{— целое}\end{cases}\]</span><span class="mn">\[Q_n(p)\]\[=\begin{cases}X_{([np]+1)},&amp;np\ \text{— дробное}\\ \tfrac12\bigl(X_{(np)}+X_{(np+1)}\bigr),&amp;np\ \text{— целое}\end{cases}\]</span>
   <ul class="clean">
     <li>\(p=0{,}5\) — выборочная медиана; \(p=0{,}25\) / \(0{,}75\) — нижняя / верхняя квартиль;</li>
     <li>\(p=k\cdot0{,}1\) — децили; \(p=k/6\) — секстили.</li>
@@ -725,14 +727,14 @@ window.MathJax={
   <p><b>Формула Стёрджесса</b> (рекомендуемое число интервалов): \(m\approx[\log_2n]+1\).</p>
   <h5>Основные точечные оценки</h5>
   \[\bar X=\frac1n\sum_{i=1}^nX_i,\]
-\[S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2\ \text{(несмещённая)},\]
+<span class="mw">\[S^2=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2\ \text{(несмещённая)},\]</span><span class="mn">\[S^2\]\[=\frac1{n-1}\sum_{i=1}^n(X_i-\bar X)^2\ \text{(несмещённая)},\]</span>
 \[D_{\text{в}}=\frac1n\sum_{i=1}^n(X_i-\bar X)^2\ \text{(смещённая)}.\]
   <p>\(S=\sqrt{S^2}\), \(\sigma_{\text{в}}=\sqrt{D_{\text{в}}}\); \(S^2=\frac{n}{n-1}D_{\text{в}}\). Удобно считать \(D_{\text{в}}=\overline{X^2}-(\bar X)^2\).</p>
   <h5>Распределение \(\bar X\) для \(\xi\sim R(\theta_1,\theta_2)\), \(n=2\)</h5>
   <p>\(Y=X_1+X_2\), \(\bar X=\frac12Y\). Плотность \(Y\) — свёртка:</p>
   \[p_Y(x)=\int_{-\infty}^{\infty}p_\xi(y)\,p_\xi(x-y)\,dy,\]
 \[\begin{cases}\theta_1\le y\le\theta_2\\ x-\theta_2\le y\le x-\theta_1\end{cases}\]
-  \[p_Y(x)=\begin{cases}\dfrac{x-2\theta_1}{(\theta_2-\theta_1)^2},&amp;2\theta_1&lt;x&lt;\theta_1+\theta_2\\ \dfrac{2\theta_2-x}{(\theta_2-\theta_1)^2},&amp;\theta_1+\theta_2&lt;x&lt;2\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]
+  <span class="mw">\[p_Y(x)=\begin{cases}\dfrac{x-2\theta_1}{(\theta_2-\theta_1)^2},&amp;2\theta_1&lt;x&lt;\theta_1+\theta_2\\ \dfrac{2\theta_2-x}{(\theta_2-\theta_1)^2},&amp;\theta_1+\theta_2&lt;x&lt;2\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span><span class="mn">\[p_Y(x)\]\[=\begin{cases}\dfrac{x-2\theta_1}{(\theta_2-\theta_1)^2},&amp;2\theta_1&lt;x&lt;\theta_1+\theta_2\\ \dfrac{2\theta_2-x}{(\theta_2-\theta_1)^2},&amp;\theta_1+\theta_2&lt;x&lt;2\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span>
 \[p_{\bar X}(x)=2p_Y(2x).\]
   <p>Получается <b>треугольник</b> (распределение Симпсона) на \([\theta_1,\theta_2]\) с вершиной в \(\frac{\theta_1+\theta_2}2\) высотой \(\frac2{\theta_2-\theta_1}\).</p>
   <figure>
@@ -757,7 +759,7 @@ window.MathJax={
   </ol>
   <div class="box note"><span class="lbl">Неравенство Рао–Крамера (пояснение)</span>Для любой несмещённой оценки \(\tilde\theta\) (при условиях регулярности):
   \[D\tilde\theta\ \ge\ \frac1{n\,I(\theta)},\]
-\[I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]
+<span class="mw">\[I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]</span><span class="mn">\[I(\theta)=M\left(\frac{\partial\ln p(\xi,\theta)}{\partial\theta}\right)^2\]\[=-M\,\frac{\partial^2\ln p(\xi,\theta)}{\partial\theta^2}.\]</span>
   \(I(\theta)\) — информация Фишера одного наблюдения. Для дискретной СВ вместо \(p\) — \(P(\xi=x)\).</div>
   <h5>Пример с лекции: \(\theta=M\xi\), три оценки</h5>
   <div class="tbl"><table data-cols="Оценка|\(M\)|\(D\)|Состоятельна?">
@@ -818,9 +820,9 @@ window.MathJax={
     <p>Так как \(X_i&gt;0\), то \(e^{-3X_i}\in(0,1)\) и \(Y_i\in(0;1)\).</p>
     \[\begin{aligned}F_Y(x)&=P(1-e^{-3X}&lt;x)=P(e^{-3X}&gt;1-x)\\&=P\bigl(-3X&gt;\ln(1-x)\bigr)=P\!\left(X&lt;-\tfrac13\ln(1-x)\right)\\&=F_X\!\left(-\tfrac13\ln(1-x)\right)\end{aligned}\]
     \[p_Y(x)=p_X\!\left(-\tfrac13\ln(1-x)\right)\cdot\frac{1}{3(1-x)},\]
-\[p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}=3(1-x).\]
+<span class="mw">\[p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}=3(1-x).\]</span><span class="mn">\[p_X\!\left(-\tfrac13\ln(1-x)\right)=3e^{\ln(1-x)}\]\[=3(1-x).\]</span>
     <p>Условие \(-\frac13\ln(1-x)\ge0\) ⇔ \(0&lt;1-x\le1\) ⇔ \(0\le x&lt;1\). Итого</p>
-    \[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}=1,\ \ 0\le x&lt;1;\]
+    <span class="mw">\[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}=1,\ \ 0\le x&lt;1;\]</span><span class="mn">\[p_Y(x)=3(1-x)\cdot\frac{1}{3(1-x)}\]\[=1,\ \ 0\]\[\le x\]\[&lt;1;\]</span>
 \[p_Y(x)=0\ \text{иначе}\]
 \[\Rightarrow\ Y_i\sim R(0,1).\]
     <div class="box intu"><span class="lbl">Почему так вышло</span>\(1-e^{-3x}\) — это и есть \(F_X(x)\). Общий факт: \(F(\xi)\sim R(0,1)\) для любой непрерывной \(F\) (см. <a href="#b-func">функции от СВ</a>).</div>
@@ -838,14 +840,14 @@ window.MathJax={
   <details open><summary>№2.8 — ОМП векторного параметра \((a,\sigma)\) нормального распределения</summary><div class="inner">
     \[f(x,\theta)=\frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-a)^2}{2\sigma^2}},\]
 \[L(x,\theta)=\frac{1}{(\sqrt{2\pi}\,\sigma)^n}\,e^{-\frac{\sum_{i=1}^n(x_i-a)^2}{2\sigma^2}}\]
-    \[\ln L=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]
+    <span class="mw">\[\ln L=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]</span><span class="mn">\[\ln L\]\[=-n\ln\sigma-\frac n2\ln(2\pi)-\frac1{2\sigma^2}\sum(x_i-a)^2\]</span>
     \[\begin{cases}\dfrac{\partial\ln L}{\partial a}=\dfrac1{\sigma^2}\sum(x_i-a)=0\\[4pt]\dfrac{\partial\ln L}{\partial\sigma}=-\dfrac n\sigma+\dfrac{\sum(x_i-a)^2}{\sigma^3}=0\end{cases}\]
 \[\Rightarrow\ \hat a=\overline X,\]
 \[\hat\sigma^2=\frac1n\sum(X_i-\overline X)^2=D_{\text{в}}.\]
     <p><b>Проверка максимума</b> в точке \(M=(\hat a,\hat\sigma)\):</p>
     \[A=\frac{\partial^2\ln L}{\partial a^2}\Big|_M=-\frac{n}{\sigma^2},\]
-\[B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M=-\frac{2}{\sigma^3}\sum(x_i-\hat a)=0,\]
-\[C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2=-\frac{2n}{\sigma^2}.\]
+<span class="mw">\[B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M=-\frac{2}{\sigma^3}\sum(x_i-\hat a)=0,\]</span><span class="mn">\[B=\frac{\partial^2\ln L}{\partial a\,\partial\sigma}\Big|_M\]\[=-\frac{2}{\sigma^3}\sum(x_i-\hat a)\]\[=0,\]</span>
+<span class="mw">\[C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2=-\frac{2n}{\sigma^2}.\]</span><span class="mn">\[C=\frac{\partial^2\ln L}{\partial\sigma^2}\Big|_M\]\[=\frac{n}{\sigma^2}-\frac{3}{\sigma^4}\sum(x_i-\hat a)^2\]\[=-\frac{2n}{\sigma^2}.\]</span>
     <p>\(\Delta=AC-B^2=\dfrac{2n^2}{\sigma^4}&gt;0\) ⇒ экстремум; \(A&lt;0\) ⇒ максимум.</p>
     <div class="box warn"><span class="lbl">Поправка к тетради</span>В записи \(C\) стоит «\(&gt;0\)», но после подстановки \(\sum(x_i-\hat a)^2=n\hat\sigma^2\) получается \(C=\frac{n}{\sigma^2}-\frac{3n}{\sigma^2}=-\frac{2n}{\sigma^2}&lt;0\). Отсюда и \(\Delta=\frac{2n^2}{\sigma^4}\). Вывод (максимум) верный.</div>
     <p><b>Сравнение с 2.5:</b> для \(a\) оба метода дают \(\overline X\); для \(\sigma^2\) ОМП даёт смещённую \(D_{\text{в}}\).</p>
@@ -892,7 +894,7 @@ window.MathJax={
   <div class="box warn"><span class="lbl">Когда неравенство не работает</span>Для \(R[0,\theta]\) носитель \([0,\theta]\) зависит от \(\theta\) — условие 1 нарушено. Поэтому, например, для \(X_{(n)}\) дисперсия может быть меньше «границы» Рао–Крамера — это не противоречие.</div>
 
   <h5>Относительная и асимптотическая эффективность</h5>
-  \[e(\tilde\theta)=\frac{1}{I_n(\theta)}:D\tilde\theta\quad\text{— относительная эффективность}.\]
+  <span class="mw">\[e(\tilde\theta)=\frac{1}{I_n(\theta)}:D\tilde\theta\quad\text{— относительная эффективность}.\]</span><span class="mn">\[e(\tilde\theta)=\frac{1}{I_n(\theta)}:D\tilde\theta\]\[\text{— относительная эффективность}.\]</span>
   <ul class="clean">
     <li>\(e=1\) — эффективная оценка; \(e&lt;1\) — оценку можно улучшить;</li>
     <li>\(\lim_{n\to\infty}e(\tilde\theta)=1\) — асимптотически эффективная;</li>
@@ -905,7 +907,7 @@ window.MathJax={
 \[L=e^{-n\theta}\frac{\theta^{\sum x_i}}{\prod x_i!};\]
 \[\ln L=-n\theta+\sum_{i=1}^nx_i\ln\theta-\ln\prod_{i=1}^n x_i!\]
     \[U=-n+\frac1\theta\sum_{i=1}^nX_i\]
-\[\Rightarrow\ \tilde\theta=\frac1n\sum X_i=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]
+<span class="mw">\[\Rightarrow\ \tilde\theta=\frac1n\sum X_i=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]</span><span class="mn">\[\Rightarrow \ \tilde\theta=\frac1n\sum X_i\]\[=\overline X\ \ \text{— ОМП, несмещённая, состоятельная.}\]</span>
     \[\frac{\partial U}{\partial\theta}=-\frac1{\theta^2}\sum_{i=1}^nX_i,\]
 \[I_n(\theta)=-E\left[-\frac1{\theta^2}\sum X_i\right]=\frac{n\theta}{\theta^2}=\frac n\theta,\]
 \[I_1(\theta)=\frac1\theta.\]
@@ -914,7 +916,7 @@ window.MathJax={
 
   <h5>Доверительное (интервальное) оценивание</h5>
   <p>Вместо одного числа \(\hat\theta\) ищем случайный интервал \((T_1,T_2)\), который накрывает \(\theta\):</p>
-  \[P(T_1&lt;\theta&lt;T_2)=\gamma\quad\text{— доверительная вероятность (уровень доверия)},\]
+  <span class="mw">\[P(T_1&lt;\theta&lt;T_2)=\gamma\quad\text{— доверительная вероятность (уровень доверия)},\]</span><span class="mn">\[P(T_1&lt;\theta&lt;T_2)=\gamma\]\[\text{— доверительная вероятность (уровень доверия)},\]</span>
 \[\gamma:\ 0{,}9;\ 0{,}95;\ 0{,}99;\ 0{,}995;\ 0{,}999.\]
   <p>Три вида интервалов (по графику функции/плотности распределения оценки):</p>
   <ol class="clean" style="padding-left:22px">
@@ -945,19 +947,19 @@ window.MathJax={
     <tr><td>Не отвергаем \(H_0\) (\(x\in\bar S\))</td><td>верно, вероятность \(1-\alpha\)</td><td><b>ошибка II рода</b>, \(\beta\)</td></tr>
     <tr><td>Отвергаем \(H_0\) (\(x\in S\))</td><td><b>ошибка I рода</b>, \(\alpha\)</td><td>верно, \(1-\beta\) — <b>мощность</b></td></tr>
   </table></div>
-  \[\alpha=P(H_1\,|\,H_0)=P(x\in S\,|\,H_0)\quad\text{— уровень значимости}\]
-  \[\beta=P(H_0\,|\,H_1)=P(x\in\bar S\,|\,H_1),\qquad 1-\beta=P(H_1\,|\,H_1)\quad\text{— мощность критерия}\]
+  <span class="mw">\[\alpha=P(H_1\,|\,H_0)=P(x\in S\,|\,H_0)\quad\text{— уровень значимости}\]</span><span class="mn">\[\alpha=P(H_1\,|\,H_0)=P(x\in S\,|\,H_0)\]\[\text{— уровень значимости}\]</span>
+  <span class="mw">\[\beta=P(H_0\,|\,H_1)=P(x\in\bar S\,|\,H_1),\qquad 1-\beta=P(H_1\,|\,H_1)\quad\text{— мощность критерия}\]</span><span class="mn">\[\beta=P(H_0\,|\,H_1)=P(x\in\bar S\,|\,H_1),\]\[1-\beta=P(H_1\,|\,H_1)\]\[\text{— мощность критерия}\]</span>
   <p>Типичные \(\alpha\): \(0{,}1;\ 0{,}05;\ 0{,}01;\ 0{,}005;\ 0{,}001\).</p>
   <div class="def"><b>Наиболее мощный критерий</b> — среди всех критериев с заданным \(\alpha\) имеет <b>наибольшую мощность</b> \(1-\beta\), т.е. его критическая область \(S^*\) удовлетворяет условию
-  \[P(x\in S^*\,|\,H_1)=\max_{S:\ P(x\in S|H_0)=\alpha}P(x\in S\,|\,H_1).\]</div>
+  <span class="mw">\[P(x\in S^*\,|\,H_1)=\max_{S:\ P(x\in S|H_0)=\alpha}P(x\in S\,|\,H_1).\]</span><span class="mn">\[P(x\in S^*\,|\,H_1)\]\[=\max_{S:\ P(x\in S|H_0)=\alpha}P(x\in S\,|\,H_1).\]</span></div>
   <div class="box warn"><span class="lbl">NB</span>Статистически <b>подтвердить</b> гипотезу нельзя. Можно только отвергнуть её или сказать «данные ей не противоречат».</div>
 
   <h5>Теорема Неймана–Пирсона (две простые гипотезы)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Есть две модели: \(H_0\) с плотностью \(p_0\) и \(H_1\) с плотностью \(p_1\). Смотрим, во сколько раз наши данные вероятнее при \(H_1\), чем при \(H_0\). Если во много раз (больше порога \(c\)) — выбираем \(H_1\). Теорема говорит, что так получается самый мощный критерий.</div>
-  \[L_0(x)=p_0(x_1)\cdots p_0(x_n),\qquad L_1(x)=p_1(x_1)\cdots p_1(x_n)\]
-  \[T(x)=\frac{L_1(x)}{L_0(x)}\quad\text{— отношение правдоподобий.}\]
+  <span class="mw">\[L_0(x)=p_0(x_1)\cdots p_0(x_n),\qquad L_1(x)=p_1(x_1)\cdots p_1(x_n)\]</span><span class="mn">\[L_0(x)=p_0(x_1)\cdots p_0(x_n),\]\[L_1(x)=p_1(x_1)\cdots p_1(x_n)\]</span>
+  <span class="mw">\[T(x)=\frac{L_1(x)}{L_0(x)}\quad\text{— отношение правдоподобий.}\]</span><span class="mn">\[T(x)=\frac{L_1(x)}{L_0(x)}\]\[\text{— отношение правдоподобий.}\]</span>
   <p><b>Теорема.</b> Существует \(c=c(\alpha)\) такое, что критическая область наиболее мощного критерия</p>
-  \[S^*=\{x:\ T(x)&gt;c,\ L_0(x)\ne0\}\cup\{x:\ L_0(x)=0\},\]
+  <span class="mw">\[S^*=\{x:\ T(x)&gt;c,\ L_0(x)\ne0\}\cup\{x:\ L_0(x)=0\},\]</span><span class="mn">\[S^*=\{x:\ T(x)\]\[&gt;c,\ L_0(x)\]\[\ne0\}\cup\{x:\ L_0(x)\]\[=0\},\]</span>
   \[P\bigl(T(X)&gt;c\,|\,H_0\bigr)=\alpha.\]
   <p><b>Критерии отношения правдоподобий</b> различаются выбором порога \(c\):</p>
   <ol class="clean" style="padding-left:22px">
@@ -1007,9 +1009,9 @@ window.MathJax={
     <ol class="clean" style="padding-left:22px">
       <li>\(\overline X-\overline Y\sim N\!\left(0,\ \sigma^2\left(\tfrac1{n_1}+\tfrac1{n_2}\right)\right)\), поэтому \(Z=\dfrac{\overline X-\overline Y}{\sigma\sqrt{1/n_1+1/n_2}}\sim N(0,1)\).</li>
       <li>По лемме Фишера \(\dfrac{(n_1-1)S_1^2}{\sigma^2}\sim\chi^2(n_1-1)\), \(\dfrac{(n_2-1)S_2^2}{\sigma^2}\sim\chi^2(n_2-1)\), они независимы, сумма \(\chi^2\) складывает степени свободы:
-      \[V=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{\sigma^2}=\frac{(n_1+n_2-2)S^2}{\sigma^2}\sim\chi^2(n_1+n_2-2).\]</li>
+      <span class="mw">\[V=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{\sigma^2}=\frac{(n_1+n_2-2)S^2}{\sigma^2}\sim\chi^2(n_1+n_2-2).\]</span><span class="mn">\[V=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{\sigma^2}\]\[=\frac{(n_1+n_2-2)S^2}{\sigma^2}\]\[\sim\chi^2(n_1+n_2-2).\]</span></li>
       <li>\(Z\) и \(V\) независимы (средние не зависят от выборочных дисперсий). По определению распределения Стьюдента
-      \[\frac{Z}{\sqrt{V/(n_1+n_2-2)}}=\frac{\overline X-\overline Y}{S\sqrt{1/n_1+1/n_2}}\sim t(n_1+n_2-2).\]
+      <span class="mw">\[\frac{Z}{\sqrt{V/(n_1+n_2-2)}}=\frac{\overline X-\overline Y}{S\sqrt{1/n_1+1/n_2}}\sim t(n_1+n_2-2).\]</span><span class="mn">\[\frac{Z}{\sqrt{V/(n_1+n_2-2)}}=\frac{\overline X-\overline Y}{S\sqrt{1/n_1+1/n_2}}\]\[\sim t(n_1+n_2-2).\]</span>
       Неизвестная \(\sigma\) сократилась — поэтому статистикой можно пользоваться. ∎</li>
     </ol>
   </div></details>
@@ -1024,9 +1026,9 @@ window.MathJax={
   <h5>1. Критерий Колмогорова (простая \(H_0\))</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Рисуем «лесенку» ЭФР по данным и теоретическую \(F(x)\). Находим место, где они дальше всего друг от друга. Если этот зазор (умноженный на \(\sqrt n\)) слишком большой — не верим, что данные из \(F\).</div>
   <p>\(\xi\) — непрерывная, выборка \(X=(X_1,\dots,X_n)\).</p>
-  \[H_0:\ F_\xi(x)=F(x)\ \text{(простая)},\qquad H_1:\ \exists x:\ F_\xi(x)\ne F(x).\]
-  \[T=D_n=\sup_{x\in\mathbb R}|F_n(x)-F(x)|\quad\text{— статистика Колмогорова}\]
-  \[\lim_{n\to\infty}P(\sqrt n\,D_n&lt;x)=K(x)=1+2\sum_{i=1}^{\infty}(-1)^ie^{-2i^2x^2}.\]
+  <span class="mw">\[H_0:\ F_\xi(x)=F(x)\ \text{(простая)},\qquad H_1:\ \exists x:\ F_\xi(x)\ne F(x).\]</span><span class="mn">\[H_0:\ F_\xi(x)=F(x)\ \text{(простая)},\]\[H_1:\ \exists x:\ F_\xi(x)\ne F(x).\]</span>
+  <span class="mw">\[T=D_n=\sup_{x\in\mathbb R}|F_n(x)-F(x)|\quad\text{— статистика Колмогорова}\]</span><span class="mn">\[T=D_n=\sup_{x\in\mathbb R}|F_n(x)-F(x)|\]\[\text{— статистика Колмогорова}\]</span>
+  <span class="mw">\[\lim_{n\to\infty}P(\sqrt n\,D_n&lt;x)=K(x)=1+2\sum_{i=1}^{\infty}(-1)^ie^{-2i^2x^2}.\]</span><span class="mn">\[\lim_{n\to\infty}P(\sqrt n\,D_n&lt;x)=K(x)\]\[=1+2\sum_{i=1}^{\infty}(-1)^ie^{-2i^2x^2}.\]</span>
   <p><b>Методика:</b></p>
   <ol class="clean" style="padding-left:22px">
     <li>Вариационный ряд \(X_{(1)}\le X_{(2)}\le\dots\le X_{(n)}\).</li>
@@ -1040,26 +1042,26 @@ window.MathJax={
   <h5>2. Критерий χ² Пирсона (простая \(H_0\))</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Разбиваем все значения на \(m\) групп (интервалов). В каждой считаем, сколько наблюдений <b>попало</b> (\(n_i\)) и сколько <b>должно было</b> попасть по модели (\(np_i\)). Складываем «квадраты промахов», делённые на ожидаемое. Большая сумма — модель плохая.</div>
   <p>\(H_0\) — простая, \(H_1=\overline{H_0}\). \(A_1,\dots,A_m\) — полная группа событий (интервалы),</p>
-  \[p_i^{(0)}=P(A_i\,|\,H_0)&gt;0,\qquad \sum_{i=1}^mp_i^{(0)}=1;\qquad n_1,\dots,n_m\ \text{— частоты},\ \sum n_i=n.\]
-  \[T=\chi^2_n=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}\bigr)^2}{np_i^{(0)}}\ \xrightarrow[n\to\infty]{H_0}\ \chi^2(m-1).\]
+  <span class="mw">\[p_i^{(0)}=P(A_i\,|\,H_0)&gt;0,\qquad \sum_{i=1}^mp_i^{(0)}=1;\qquad n_1,\dots,n_m\ \text{— частоты},\ \sum n_i=n.\]</span><span class="mn">\[p_i^{(0)}=P(A_i\,|\,H_0)&gt;0,\]\[\sum_{i=1}^mp_i^{(0)}=1;\]\[n_1,\dots,n_m\ \text{— частоты},\ \sum n_i=n.\]</span>
+  <span class="mw">\[T=\chi^2_n=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}\bigr)^2}{np_i^{(0)}}\ \xrightarrow[n\to\infty]{H_0}\ \chi^2(m-1).\]</span><span class="mn">\[T=\chi^2_n\]\[=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}\bigr)^2}{np_i^{(0)}}\]\[\xrightarrow[n\to\infty]{H_0}\ \chi^2(m-1).\]</span>
   <p><b>Методика:</b> 1) \(n_i\ge5\) (иначе объединить соседние интервалы); 2) найти \(p_i^{(0)}\); 3) \(t=T\); 4) \(\alpha\); 5) \(t_{кр}=\chi^2_{1-\alpha}(m-1)\); 6) \(t\ge t_{кр}\Rightarrow H_0\) отвергаем, иначе не отвергаем.</p>
   <div class="box note"><span class="lbl">Уточнение</span>Во многих учебниках условие пишут для <b>ожидаемых</b> частот: \(np_i^{(0)}\ge5\). Уточни у преподавателя, какое требуется.</div>
 
   <h5>3. Критерий χ² Фишера (сложная \(H_0\))</h5>
   <div class="eli"><span class="lbl">На пальцах</span>То же самое, но параметры модели неизвестны, и мы их сначала оцениваем по тем же данным. За это «платим» степенями свободы: каждый оценённый параметр отнимает одну.</div>
-  \[H_0:\ F_\xi(x)\in\mathcal F=\{F(x,\theta),\ \theta=(\theta_1,\dots,\theta_k)\in\Theta\},\qquad H_1=\overline{H_0}.\]
+  <span class="mw">\[H_0:\ F_\xi(x)\in\mathcal F=\{F(x,\theta),\ \theta=(\theta_1,\dots,\theta_k)\in\Theta\},\qquad H_1=\overline{H_0}.\]</span><span class="mn">\[H_0:\ F_\xi(x)\in\mathcal F\]\[=\{F(x,\theta),\ \theta\]\[=(\theta_1,\dots,\theta_k)\]\[\in\Theta\},\]\[H_1=\overline{H_0}.\]</span>
   <p>\(\hat\theta\) — ОМП по сгруппированной выборке, \(p_i^{(0)}(\hat\theta)=P_{\hat\theta}(A_i\,|\,H_0)\), \(\sum p_i^{(0)}(\hat\theta)=1\).</p>
-  \[T=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}(\hat\theta)\bigr)^2}{np_i^{(0)}(\hat\theta)}\ \xrightarrow[n\to\infty]{H_0}\ \chi^2(m-k-1).\]
+  <span class="mw">\[T=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}(\hat\theta)\bigr)^2}{np_i^{(0)}(\hat\theta)}\ \xrightarrow[n\to\infty]{H_0}\ \chi^2(m-k-1).\]</span><span class="mn">\[T=\sum_{i=1}^m\frac{\bigl(n_i-np_i^{(0)}(\hat\theta)\bigr)^2}{np_i^{(0)}(\hat\theta)}\]\[\xrightarrow[n\to\infty]{H_0}\ \chi^2(m-k-1).\]</span>
   <p><b>Методика:</b> 1) \(n_i\ge5\); 2) \(\hat\theta\); 3) \(p_i^{(0)}(\hat\theta)\); 4) \(t\); 5) \(\alpha\); 6) \(t_{кр}=\chi^2_{1-\alpha}(m-k-1)\); 7) \(t\ge t_{кр}\Rightarrow H_0\) отвергаем в пользу \(H_1\); \(t&lt;t_{кр}\Rightarrow\) не отвергаем.</p>
 
   <details open><summary>Пример: монета Бюффона</summary><div class="inner">
     <p>\(n=4040\) бросков: \(A_1\) — герб, \(n_1=2048\); \(A_2\) — решка, \(n_2=1992\). \(H_0:\ p_1^{(0)}=p_2^{(0)}=0{,}5\), ожидаемые частоты \(np_i=2020\).</p>
-    \[T=\frac{(2048-2020)^2}{2020}+\frac{(1992-2020)^2}{2020}=\frac{784+784}{2020}\approx0{,}776.\]
+    <span class="mw">\[T=\frac{(2048-2020)^2}{2020}+\frac{(1992-2020)^2}{2020}=\frac{784+784}{2020}\approx0{,}776.\]</span><span class="mn">\[T=\frac{(2048-2020)^2}{2020}+\frac{(1992-2020)^2}{2020}\]\[=\frac{784+784}{2020}\]\[\approx0{,}776.\]</span>
     <p>\(\alpha=0{,}05\), \(m=2\) ⇒ \(t_{кр}=\chi^2_{0{,}95}(1)=3{,}841\). \(t&lt;t_{кр}\) ⇒ \(H_0\) не отвергаем: монету можно считать симметричной.</p>
     <p>p-value \(=P(\chi^2(1)&gt;0{,}776)\approx0{,}38\) — гораздо больше \(0{,}05\).</p>
   </div></details>
   <details open><summary>Д/З: при каких \(x\) гипотеза будет отвергнута, если \(n_1=2020+x,\ n_2=2020-x\)?</summary><div class="inner">
-    \[T=\frac{x^2}{2020}+\frac{x^2}{2020}=\frac{x^2}{1010}\ge3{,}841\ \iff\ x^2\ge3879{,}4\ \iff\ |x|\ge62{,}3.\]
+    <span class="mw">\[T=\frac{x^2}{2020}+\frac{x^2}{2020}=\frac{x^2}{1010}\ge3{,}841\ \iff\ x^2\ge3879{,}4\ \iff\ |x|\ge62{,}3.\]</span><span class="mn">\[T=\frac{x^2}{2020}+\frac{x^2}{2020}=\frac{x^2}{1010}\ge3{,}841\\]\[\Leftrightarrow \ x^2\ge3879{,}4\\]\[\Leftrightarrow \ |x|\ge62{,}3.\]</span>
     <p>Так как \(x\) целое: <b>\(|x|\ge63\)</b>, т.е. \(n_1\ge2083\) или \(n_1\le1957\). У Бюффона \(x=28\) — далеко от границы.</p>
   </div></details>
 </section>
@@ -1077,29 +1079,29 @@ window.MathJax={
     \[Q=2\theta S\sim\chi^2(2n)=\chi^2(10).\]
     <div class="eli"><span class="lbl">Почему</span>\(\theta S_i\sim Exp(1)\), а \(2\theta S_i\sim Exp(\tfrac12)\) — это ровно \(\chi^2(2)\). Сумма пяти независимых \(\chi^2(2)\) — это \(\chi^2(10)\).</div>
     <p>\(\gamma=0{,}95\), \(\alpha=0{,}05\): \(\chi^2_{0{,}975}(10)=20{,}48\), \(\chi^2_{0{,}025}(10)=3{,}25\).</p>
-    \[P(3{,}25\le2\theta S\le20{,}48)=0{,}95\quad(\text{точно, не приближённо}).\]
-    \[2S=24:\quad P\!\left(\frac{3{,}25}{24}&lt;\theta&lt;\frac{20{,}48}{24}\right)=P(0{,}1353&lt;\theta&lt;0{,}8535)=0{,}95.\]
+    <span class="mw">\[P(3{,}25\le2\theta S\le20{,}48)=0{,}95\quad(\text{точно, не приближённо}).\]</span><span class="mn">\[P(3{,}25\le2\theta S\le20{,}48)=0{,}95\]\[(\text{точно, не приближённо}).\]</span>
+    <span class="mw">\[2S=24:\quad P\!\left(\frac{3{,}25}{24}&lt;\theta&lt;\frac{20{,}48}{24}\right)=P(0{,}1353&lt;\theta&lt;0{,}8535)=0{,}95.\]</span><span class="mn">\[2S=24:\]\[P\!\left(\frac{3{,}25}{24}&lt;\theta&lt;\frac{20{,}48}{24}\right)=P(0{,}1353&lt;\theta&lt;0{,}8535)\]\[=0{,}95.\]</span>
     <p>Среднее время между вызовами \(\mu=M S_i=\dfrac1\theta\), функция убывающая — границы меняются местами:</p>
-    \[\mu_{\min}=\frac1{0{,}8535}\approx1{,}17,\quad \mu_{\max}=\frac1{0{,}1353}\approx7{,}39,\qquad P(1{,}17&lt;\mu&lt;7{,}39)=0{,}95.\]
+    <span class="mw">\[\mu_{\min}=\frac1{0{,}8535}\approx1{,}17,\quad \mu_{\max}=\frac1{0{,}1353}\approx7{,}39,\qquad P(1{,}17&lt;\mu&lt;7{,}39)=0{,}95.\]</span><span class="mn">\[\mu_{\min}=\frac1{0{,}8535}\approx1{,}17,\]\[\mu_{\max}=\frac1{0{,}1353}\approx7{,}39,\]\[P(1{,}17&lt;\mu&lt;7{,}39)=0{,}95.\]</span>
   </div></details>
 
   <details open><summary>Задача 2. Передано 100 сообщений, прошли 84. Интервал для вероятности прохождения \(\theta\), \(\gamma=0{,}9\)</summary><div class="inner">
     <p>\(m=84\) — число прошедших, \(n=100\). По теореме Муавра–Лапласа \(\hat\theta=\dfrac mn\approx N\!\left(\theta,\dfrac{\theta(1-\theta)}n\right)\):</p>
     \[P\!\left(\frac{m-n\theta}{\sqrt{n\theta(1-\theta)}}&lt;x\right)\approx\Phi(x).\]
     <p><b>1. Односторонний интервал (нижняя граница)</b>, \(\theta\in(\theta_1;1]\):</p>
-    \[P\!\left(\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;x\right)=0{,}9\ \Rightarrow\ x=u_{0{,}9}=1{,}282.\]
+    <span class="mw">\[P\!\left(\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;x\right)=0{,}9\ \Rightarrow\ x=u_{0{,}9}=1{,}282.\]</span><span class="mn">\[P\!\left(\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;x\right)=0{,}9\]\[\Rightarrow x=u_{0{,}9}=1{,}282.\]</span>
     \[84-100\theta&lt;12{,}82\sqrt{\theta(1-\theta)}.\]
     <p>При \(\theta\ge0{,}84\) левая часть \(\le0\) — неравенство верно всегда. При \(\theta&lt;0{,}84\) возводим в квадрат:</p>
-    \[(84-100\theta)^2&lt;12{,}82^2\,\theta(1-\theta)\ \iff\ \theta\in(0{,}787;\ 0{,}881).\]
+    <span class="mw">\[(84-100\theta)^2&lt;12{,}82^2\,\theta(1-\theta)\ \iff\ \theta\in(0{,}787;\ 0{,}881).\]</span><span class="mn">\[(84-100\theta)^2&lt;12{,}82^2\,\theta(1-\theta)\\]\[\Leftrightarrow \ \theta\in(0{,}787;\ 0{,}881).\]</span>
     <p>Объединяем: \((0{,}787;0{,}84)\cup[0{,}84;1]\):</p>
     \[P\bigl(\theta\in(0{,}787;\ 1]\bigr)\approx0{,}9.\]
     <p><b>2. Двусторонний (центральный) интервал:</b></p>
-    \[P\!\left(\left|\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}\right|&lt;x\right)=\Phi(x)-\Phi(-x)=2\Phi(x)-1=0{,}9\ \Rightarrow\ \Phi(x)=0{,}95,\ x=u_{0{,}95}=1{,}645.\]
-    \[-1{,}645&lt;\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;1{,}645\ \iff\ (84-100\theta)^2&lt;1{,}645^2\cdot100\,\theta(1-\theta)\]
+    <span class="mw">\[P\!\left(\left|\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}\right|&lt;x\right)=\Phi(x)-\Phi(-x)=2\Phi(x)-1=0{,}9\ \Rightarrow\ \Phi(x)=0{,}95,\ x=u_{0{,}95}=1{,}645.\]</span><span class="mn">\[P\!\left(\left|\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}\right|&lt;x\right)=\Phi(x)-\Phi(-x)\]\[=2\Phi(x)-1\]\[=0{,}9\]\[\Rightarrow \Phi(x)=0{,}95,\ x=u_{0{,}95}=1{,}645.\]</span>
+    <span class="mw">\[-1{,}645&lt;\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;1{,}645\ \iff\ (84-100\theta)^2&lt;1{,}645^2\cdot100\,\theta(1-\theta)\]</span><span class="mn">\[-1{,}645&lt;\frac{84-100\theta}{\sqrt{100\,\theta(1-\theta)}}&lt;1{,}645\\]\[\Leftrightarrow \ (84-100\theta)^2&lt;1{,}645^2\cdot100\,\theta(1-\theta)\]</span>
     \[P\bigl(\theta\in(0{,}771;\ 0{,}891)\bigr)\approx0{,}9.\]
     <p>Слева и справа от интервала — по \(0{,}05\) вероятности.</p>
     <div class="box note"><span class="lbl">Упрощённый вариант (табл. 2.2, строка «Бернулли»)</span>Если в знаменателе сразу подставить \(\nu=0{,}84\) вместо \(\theta\), неравенство не надо решать:
-    \[0{,}84\pm1{,}645\sqrt{\frac{0{,}84\cdot0{,}16}{100}}=0{,}84\pm0{,}060\ \Rightarrow\ (0{,}780;\ 0{,}900).\]
+    <span class="mw">\[0{,}84\pm1{,}645\sqrt{\frac{0{,}84\cdot0{,}16}{100}}=0{,}84\pm0{,}060\ \Rightarrow\ (0{,}780;\ 0{,}900).\]</span><span class="mn">\[0{,}84\pm1{,}645\sqrt{\frac{0{,}84\cdot0{,}16}{100}}\]\[=0{,}84\pm0{,}060\]\[\Rightarrow (0{,}780;\ 0{,}900).\]</span>
     Ответ чуть отличается — это более грубое приближение. Используй тот способ, который требует преподаватель.</div>
   </div></details>
 </section>
@@ -1119,24 +1121,24 @@ window.MathJax={
   <h5>1.1. Критерий знаков</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Если медиана правда \(Me_0\), то каждое наблюдение с шансом 50/50 окажется выше или ниже её — как подбрасывание монеты. Считаем, сколько «плюсов». Слишком много или слишком мало — монета нечестная, \(H_0\) отвергаем.</div>
   <p>Работает для непрерывных распределений.</p>
-  \[H_0:\ Me=Me_0,\ \text{т.е. } P(X_i&gt;Me_0)=P(X_i&lt;Me_0)=0{,}5\]
-  \[H_1:\ Me\ne Me_0\ \ (\text{или } Me&gt;Me_0,\ Me&lt;Me_0)\]
+  <span class="mw">\[H_0:\ Me=Me_0,\ \text{т.е. } P(X_i&gt;Me_0)=P(X_i&lt;Me_0)=0{,}5\]</span><span class="mn">\[H_0:\ Me=Me_0,\ \text{т.е. } P(X_i&gt;Me_0)\]\[=P(X_i&lt;Me_0)\]\[=0{,}5\]</span>
+  <span class="mw">\[H_1:\ Me\ne Me_0\ \ (\text{или } Me&gt;Me_0,\ Me&lt;Me_0)\]</span><span class="mn">\[H_1:\ Me\]\[\ne Me_0\ \ (\text{или } Me&gt;Me_0,\ Me&lt;Me_0)\]</span>
   <ol class="clean" style="padding-left:22px">
     <li>\(d_i=X_i-Me_0\).</li>
     <li>Исключаем \(d_i=0\): объём \(n\to n'\).</li>
     <li>\(S=\#\{d_i&gt;0\}\) — количество плюсов.</li>
   </ol>
   <p>При верной \(H_0\): \(S\sim Bin(n',\,0{,}5)\). Для \(H_1:\ Me&gt;Me_0\):</p>
-  \[p\text{-value}=P(S\ge s)=\sum_{k=s}^{n'}C_{n'}^k\,0{,}5^k\,0{,}5^{n'-k}=0{,}5^{n'}\sum_{k=s}^{n'}C_{n'}^k.\]
+  <span class="mw">\[p\text{-value}=P(S\ge s)=\sum_{k=s}^{n'}C_{n'}^k\,0{,}5^k\,0{,}5^{n'-k}=0{,}5^{n'}\sum_{k=s}^{n'}C_{n'}^k.\]</span><span class="mn">\[p\text{-value}=P(S\ge s)\]\[=\sum_{k=s}^{n'}C_{n'}^k\,0{,}5^k\,0{,}5^{n'-k}\]\[=0{,}5^{n'}\sum_{k=s}^{n'}C_{n'}^k.\]</span>
   <p>При \(n'&gt;20\) — по ЦПТ (\(ES=\frac{n'}2,\ DS=\frac{n'}4\)):</p>
-  \[Z=\frac{S-ES}{\sqrt{DS}}=\frac{S-n'/2}{\sqrt{n'/4}}=\frac{2S-n'}{\sqrt{n'}}\ \xrightarrow{d}\ N(0,1).\]
+  <span class="mw">\[Z=\frac{S-ES}{\sqrt{DS}}=\frac{S-n'/2}{\sqrt{n'/4}}=\frac{2S-n'}{\sqrt{n'}}\ \xrightarrow{d}\ N(0,1).\]</span><span class="mn">\[Z=\frac{S-ES}{\sqrt{DS}}\]\[=\frac{S-n'/2}{\sqrt{n'/4}}\]\[=\frac{2S-n'}{\sqrt{n'}}\]\[\xrightarrow{d}\ N(0,1).\]</span>
   <details open><summary>Пример 1: 98, 102, 105, 100, 101, 108, 103; \(H_0: Me_0=100\), \(H_1: Me&gt;100\)</summary><div class="inner">
     <p>\(d_i=X_i-100\): \(-2,\ 2,\ 5,\ 0,\ 1,\ 8,\ 3\). Ноль выбрасываем: \(n'=6\), плюсов \(S=5\).</p>
-    \[p\text{-value}=P(S\ge5)=C_6^5\,0{,}5^6+C_6^6\,0{,}5^6=\frac{6+1}{64}\approx0{,}1094.\]
+    <span class="mw">\[p\text{-value}=P(S\ge5)=C_6^5\,0{,}5^6+C_6^6\,0{,}5^6=\frac{6+1}{64}\approx0{,}1094.\]</span><span class="mn">\[p\text{-value}=P(S\ge5)\]\[=C_6^5\,0{,}5^6+C_6^6\,0{,}5^6\]\[=\frac{6+1}{64}\]\[\approx0{,}1094.\]</span>
     <p>\(0{,}1094&gt;0{,}05\) ⇒ \(H_0\) не отвергаем.</p>
   </div></details>
   <details open><summary>Пример 2: \(n'=100\), плюсов \(S=62\), двусторонняя \(H_1\)</summary><div class="inner">
-    \[ES=50,\quad DS=25,\quad \sqrt{DS}=5,\qquad Z=\frac{62-50}5=2{,}4.\]
+    <span class="mw">\[ES=50,\quad DS=25,\quad \sqrt{DS}=5,\qquad Z=\frac{62-50}5=2{,}4.\]</span><span class="mn">\[ES=50,\]\[DS=25,\]\[\sqrt{DS}=5,\]\[Z=\frac{62-50}5=2{,}4.\]</span>
     <p>\(\alpha=0{,}05\) (двусторонняя): \(t_{кр}=z_{0{,}975}=1{,}96\). \(2{,}4&gt;1{,}96\) ⇒ \(H_0\) отвергаем.</p>
   </div></details>
 
@@ -1144,11 +1146,11 @@ window.MathJax={
   <div class="eli"><span class="lbl">На пальцах</span>Проверяем, случайна ли последовательность. Если данные идут «пачками» (много плюсов подряд, потом много минусов) — серий мало, похоже на тренд. Если плюсы и минусы чередуются как по линейке — серий слишком много, тоже подозрительно.</div>
   <p>\(X_1,\dots,X_n\) — наблюдения в порядке получения. \(H_0\): наблюдения независимы и одинаково распределены; \(H_1\): наблюдения зависимы.</p>
   <p>\(\widehat{Me}\) — выборочная медиана. \(X_i&gt;\widehat{Me}\to{+}\) (их \(n_1\)), \(X_i&lt;\widehat{Me}\to{-}\) (их \(n_2\)), \(n_1+n_2=n'\). \(R\) — общее число серий (блоков одинаковых знаков подряд).</p>
-  \[ER=\frac{2n_1n_2}{n'}+1,\qquad DR=\frac{2n_1n_2(2n_1n_2-n')}{(n')^2(n'-1)}.\]
-  \[n_1,n_2&gt;10:\qquad Z=\frac{R-ER}{\sqrt{DR}}\ \xrightarrow{d}\ N(0,1).\]
+  <span class="mw">\[ER=\frac{2n_1n_2}{n'}+1,\qquad DR=\frac{2n_1n_2(2n_1n_2-n')}{(n')^2(n'-1)}.\]</span><span class="mn">\[ER=\frac{2n_1n_2}{n'}+1,\]\[DR=\frac{2n_1n_2(2n_1n_2-n')}{(n')^2(n'-1)}.\]</span>
+  <span class="mw">\[n_1,n_2&gt;10:\qquad Z=\frac{R-ER}{\sqrt{DR}}\ \xrightarrow{d}\ N(0,1).\]</span><span class="mn">\[n_1,n_2&gt;10:\]\[Z=\frac{R-ER}{\sqrt{DR}}\ \xrightarrow{d}\ N(0,1).\]</span>
   <details open><summary>Пример: \(++\,|\,---\,|\,+\,|\,-\,|\,+\,|\,-\,|\,+\,|\,--\)</summary><div class="inner">
     <p>Серий \(R=8\), плюсов \(n_1=5\), минусов \(n_2=7\), \(n'=12\).</p>
-    \[ER=\frac{2\cdot35}{12}+1\approx6{,}83,\qquad DR=\frac{70\cdot58}{144\cdot11}\approx2{,}56,\qquad Z=\frac{8-6{,}83}{1{,}60}\approx0{,}73.\]
+    <span class="mw">\[ER=\frac{2\cdot35}{12}+1\approx6{,}83,\qquad DR=\frac{70\cdot58}{144\cdot11}\approx2{,}56,\qquad Z=\frac{8-6{,}83}{1{,}60}\approx0{,}73.\]</span><span class="mn">\[ER=\frac{2\cdot35}{12}+1\approx6{,}83,\]\[DR=\frac{70\cdot58}{144\cdot11}\approx2{,}56,\]\[Z=\frac{8-6{,}83}{1{,}60}\approx0{,}73.\]</span>
     <p>\(|Z|&lt;1{,}96\) ⇒ нет оснований считать наблюдения зависимыми. (Здесь \(n_1,n_2&lt;10\), так что нормальное приближение лишь для иллюстрации — по-честному нужна таблица.)</p>
   </div></details>
 
@@ -1163,12 +1165,12 @@ window.MathJax={
     <li>\(U_X=nm+\dfrac{n(n+1)}2-R_X,\quad U_Y=nm-U_X,\quad U=\min(U_X,U_Y)\).</li>
   </ol>
   <p>При верной \(H_0\) \(U\) колеблется около \(\frac{nm}2\):</p>
-  \[EU=\frac{nm}2,\qquad DU=\frac{nm(n+m+1)}{12},\qquad Z=\frac{U-EU}{\sqrt{DU}}\ \xrightarrow{d}\ N(0,1).\]
+  <span class="mw">\[EU=\frac{nm}2,\qquad DU=\frac{nm(n+m+1)}{12},\qquad Z=\frac{U-EU}{\sqrt{DU}}\ \xrightarrow{d}\ N(0,1).\]</span><span class="mn">\[EU=\frac{nm}2,\]\[DU=\frac{nm(n+m+1)}{12},\]\[Z=\frac{U-EU}{\sqrt{DU}}\ \xrightarrow{d}\ N(0,1).\]</span>
   <p>При малых \(n,m\) сравнивают \(U\) с табличным \(U_{кр}\): \(U\le U_{кр}\) ⇒ \(H_0\) отвергаем.</p>
   <details open><summary>Пример 3: A: 10, 15, 12; B: 14, 18, 19, 22</summary><div class="inner">
     <p>\(n_A=3\), \(n_B=4\). Общий ряд: \(\underline{10},\underline{12},14,\underline{15},18,19,22\) (подчёркнуты A) ⇒ ранги A: 1, 2, 4.</p>
-    \[R_A=1+2+4=7,\qquad U_A=n_An_B+\frac{n_A(n_A+1)}2-R_A=12+6-7=11,\]
-    \[U_B=12-11=1,\qquad U=\min(11,1)=1.\]
+    <span class="mw">\[R_A=1+2+4=7,\qquad U_A=n_An_B+\frac{n_A(n_A+1)}2-R_A=12+6-7=11,\]</span><span class="mn">\[R_A=1+2+4=7,\]\[U_A=n_An_B+\frac{n_A(n_A+1)}2-R_A\]\[=12+6-7\]\[=11,\]</span>
+    <span class="mw">\[U_B=12-11=1,\qquad U=\min(11,1)=1.\]</span><span class="mn">\[U_B=12-11=1,\]\[U=\min(11,1)=1.\]</span>
     <p>Для \(n_A=3,\ n_B=4\) при \(\alpha=0{,}05\) (двусторонний) табличного критического значения нет — выборки слишком малы; точное p-value \(=\frac{2\cdot2}{35}\approx0{,}114&gt;0{,}05\) ⇒ \(H_0\) не отвергаем.</p>
     <p class="hand-note">\(U_A\) — это число пар (a, b), где a &lt; b: 4+4+3 = 11.</p>
   </div></details>
@@ -1184,11 +1186,11 @@ window.MathJax={
     <li>Возвращаем рангам знаки \(d_i\).</li>
     <li>\(W^+\) — сумма рангов положительных, \(W^-\) — отрицательных; \(W=\min(W^+,W^-)\). Проверка: \(W^++W^-=\frac{n'(n'+1)}2\).</li>
   </ol>
-  \[n'&gt;20:\qquad EW=\frac{n'(n'+1)}4,\quad DW=\frac{n'(n'+1)(2n'+1)}{24},\quad Z=\frac{W-EW}{\sqrt{DW}}\ \xrightarrow{d}\ N(0,1).\]
+  <span class="mw">\[n'&gt;20:\qquad EW=\frac{n'(n'+1)}4,\quad DW=\frac{n'(n'+1)(2n'+1)}{24},\quad Z=\frac{W-EW}{\sqrt{DW}}\ \xrightarrow{d}\ N(0,1).\]</span><span class="mn">\[n'&gt;20:\]\[EW=\frac{n'(n'+1)}4,\]\[DW=\frac{n'(n'+1)(2n'+1)}{24},\]\[Z=\frac{W-EW}{\sqrt{DW}}\ \xrightarrow{d}\ N(0,1).\]</span>
   <details open><summary>Пример 4: (10,12), (20,15), (30,30), (40,35), (50,52)</summary><div class="inner">
     <p>\(d_i:\ -2,\ 5,\ 0,\ 5,\ -2\); ноль выбрасываем, \(n'=4\).</p>
     <p>\(|d_i|\) по возрастанию: \(2,2,5,5\) ⇒ \(\operatorname{rank}(2)=\frac{1+2}2=1{,}5\), \(\operatorname{rank}(5)=\frac{3+4}2=3{,}5\).</p>
-    \[W^+=3{,}5+3{,}5=7,\qquad W^-=1{,}5+1{,}5=3,\qquad W=3.\]
+    <span class="mw">\[W^+=3{,}5+3{,}5=7,\qquad W^-=1{,}5+1{,}5=3,\qquad W=3.\]</span><span class="mn">\[W^+=3{,}5+3{,}5=7,\]\[W^-=1{,}5+1{,}5=3,\]\[W=3.\]</span>
     <p>Проверка: \(7+3=10=\frac{4\cdot5}2\) ✓. При \(n'=4\) отвергнуть \(H_0\) невозможно ни при каком \(W\) (точное p-value здесь \(0{,}5\)).</p>
   </div></details>
 
@@ -1210,14 +1212,14 @@ window.MathJax={
   <h5>№3.1. Критерий по максимуму</h5>
   <p>\(X_1,\dots,X_n\sim N(a,1)\). \(H_0:\ a=0\), \(H_1:\ a=1\). Критерий: \(X_{(n)}&lt;3\) ⇒ принимаем \(H_0\); \(X_{(n)}\ge3\) ⇒ отвергаем. Найти \(\alpha\) и \(\beta\).</p>
   <div class="eli"><span class="lbl">На пальцах</span>Максимум меньше 3 ⇔ <b>все</b> наблюдения меньше 3. Наблюдения независимы, значит вероятности просто перемножаются — отсюда степень \(n\).</div>
-  \[P(X_{(n)}&lt;3)=P(X_1&lt;3,\dots,X_n&lt;3)=\prod_{i=1}^nP(X_i&lt;3).\]
+  <span class="mw">\[P(X_{(n)}&lt;3)=P(X_1&lt;3,\dots,X_n&lt;3)=\prod_{i=1}^nP(X_i&lt;3).\]</span><span class="mn">\[P(X_{(n)}&lt;3)=P(X_1&lt;3,\dots,X_n&lt;3)\]\[=\prod_{i=1}^nP(X_i&lt;3).\]</span>
   <p><b>Ошибка I рода</b> — отвергли \(H_0\), хотя она верна (\(a=0\), \(X_i\sim N(0,1)\)):</p>
-  \[\alpha=P(X_{(n)}\ge3\mid a=0)=1-\Phi(3)^n=1-0{,}99865^{\,n}.\]
+  <span class="mw">\[\alpha=P(X_{(n)}\ge3\mid a=0)=1-\Phi(3)^n=1-0{,}99865^{\,n}.\]</span><span class="mn">\[\alpha=P(X_{(n)}\ge3\mid a=0)\]\[=1-\Phi(3)^n\]\[=1-0{,}99865^{\,n}.\]</span>
   <p><b>Ошибка II рода</b> — приняли \(H_0\), хотя верна \(H_1\) (\(a=1\), \(X_i-1\sim N(0,1)\)):</p>
-  \[\beta=P(X_{(n)}&lt;3\mid a=1)=P(X_i-1&lt;2)^n=\Phi(2)^n=0{,}97725^{\,n}.\]
+  <span class="mw">\[\beta=P(X_{(n)}&lt;3\mid a=1)=P(X_i-1&lt;2)^n=\Phi(2)^n=0{,}97725^{\,n}.\]</span><span class="mn">\[\beta=P(X_{(n)}&lt;3\mid a=1)\]\[=P(X_i-1&lt;2)^n\]\[=\Phi(2)^n\]\[=0{,}97725^{\,n}.\]</span>
   <div class="box warn"><span class="lbl">Внимание</span>\(\Phi\) здесь — функция распределения \(N(0,1)\) (\(\Phi(3)=0{,}99865\)), а не функция Лапласа \(\Phi_0\) (\(\Phi_0(3)=0{,}49865\)). С Лапласом: \(\Phi(x)=0{,}5+\Phi_0(x)\).</div>
   <details open><summary>Числа при \(n=10\)</summary><div class="inner">
-    \[\alpha=1-0{,}99865^{10}\approx0{,}0134,\qquad \beta=0{,}97725^{10}\approx0{,}794.\]
+    <span class="mw">\[\alpha=1-0{,}99865^{10}\approx0{,}0134,\qquad \beta=0{,}97725^{10}\approx0{,}794.\]</span><span class="mn">\[\alpha=1-0{,}99865^{10}\approx0{,}0134,\]\[\beta=0{,}97725^{10}\approx0{,}794.\]</span>
     <p>Вывод: ложные тревоги редки (1,3%), зато настоящий сдвиг \(a=1\) критерий пропускает в 79% случаев — порог 3 слишком высокий. С ростом \(n\) \(\alpha\to1\), \(\beta\to0\): максимум большой выборки почти наверняка перевалит за 3 при любом \(a\).</p>
   </div></details>
 
@@ -1263,7 +1265,7 @@ window.MathJax={
   \[T=\sum\frac{(n_i-n_i^0)^2}{n_i^0}\approx2{,}52.\]
   <div class="box warn"><span class="lbl">В знаменателе — теоретическая</span>Делим на ожидаемую частоту \(n_i^0\) (верхняя строка условия), а не на наблюдённую: \(\frac{(36-40)^2}{40}\), а не \(\frac{(40-36)^2}{36}\).</div>
   <p>Интервалов \(m=7\), у нормального закона оценивали 2 параметра (\(a,\sigma\)): \(df=7-2-1=4\).</p>
-  \[t_{кр}=\chi^2_{0{,}99}(4)=13{,}28,\qquad 2{,}52&lt;13{,}28.\]
+  <span class="mw">\[t_{кр}=\chi^2_{0{,}99}(4)=13{,}28,\qquad 2{,}52&lt;13{,}28.\]</span><span class="mn">\[t_{кр}=\chi^2_{0{,}99}(4)=13{,}28,\]\[2{,}52&lt;13{,}28.\]</span>
   <p><b>Ответ:</b> \(H_0\) не отвергаем — расхождение случайно, данные согласуются с нормальным законом.</p>
 
   <h5>№4.10. Проверка нормальности по группированной выборке (ДЗ)</h5>
@@ -1271,10 +1273,10 @@ window.MathJax={
   <div class="eli"><span class="lbl">На пальцах</span>План: (1) заменяем каждый интервал его серединой и считаем \(\overline X\) и \(S\); (2) по ним рисуем «идеальную» нормальную кривую и считаем, сколько точек должно было попасть в каждый интервал; (3) сравниваем с тем, что попало, через χ².</div>
   <p><b>1. Оценки.</b> Середины \(x_i=5{,}5;\ 10{,}5;\ \dots;\ 35{,}5\).</p>
   \[\overline X=\frac1n\sum x_in_i=\frac{2070}{100}=20{,}7.\]
-  \[S^2=\frac1n\sum(x_i-\overline X)^2n_i=\frac{5296}{100}=52{,}96,\qquad S\approx7{,}28.\]
+  <span class="mw">\[S^2=\frac1n\sum(x_i-\overline X)^2n_i=\frac{5296}{100}=52{,}96,\qquad S\approx7{,}28.\]</span><span class="mn">\[S^2=\frac1n\sum(x_i-\overline X)^2n_i\]\[=\frac{5296}{100}\]\[=52{,}96,\]\[S\approx7{,}28.\]</span>
   <p class="hand-note">Здесь взята ОМП-дисперсия с \(\frac1n\) (так и получается \(S=7{,}277\)). С \(\frac1{n-1}\): \(S^2\approx53{,}49\), \(S\approx7{,}31\) — вывод тот же.</p>
   <p><b>2. Теоретические вероятности.</b> \(z_i=\dfrac{x_i-\overline X}{S}\) для границ; крайние интервалы растягиваем до \(\mp\infty\), чтобы \(\sum p_i=1\):</p>
-  \[p_i=P(\alpha_i&lt;\xi&lt;\beta_i)=\Phi\!\left(\frac{\beta_i-\overline X}{S}\right)-\Phi\!\left(\frac{\alpha_i-\overline X}{S}\right).\]
+  <span class="mw">\[p_i=P(\alpha_i&lt;\xi&lt;\beta_i)=\Phi\!\left(\frac{\beta_i-\overline X}{S}\right)-\Phi\!\left(\frac{\alpha_i-\overline X}{S}\right).\]</span><span class="mn">\[p_i=P(\alpha_i&lt;\xi&lt;\beta_i)\]\[=\Phi\!\left(\frac{\beta_i-\overline X}{S}\right)-\Phi\!\left(\frac{\alpha_i-\overline X}{S}\right).\]</span>
   <div class="tbl"><table data-plain data-cols="Интервал|\(n_i\)|\(p_i\)|\(n p_i\)|\(\frac{(n_i-np_i)^2}{np_i}\)">
     <thead><tr><th>Интервал</th><th>\(n_i\)</th><th>\(p_i\)</th><th>\(np_i\)</th><th>\(\frac{(n_i-np_i)^2}{np_i}\)</th></tr></thead>
     <tbody>
@@ -1287,7 +1289,7 @@ window.MathJax={
       <tr><td>\((33;+\infty)\)</td><td>7</td><td>0,0455</td><td>4,55</td><td>1,32</td></tr>
     </tbody>
   </table></div>
-  \[T\approx13{,}46,\qquad df=m-k-1=7-2-1=4,\qquad t_{кр}=\chi^2_{0{,}95}(4)=9{,}49.\]
+  <span class="mw">\[T\approx13{,}46,\qquad df=m-k-1=7-2-1=4,\qquad t_{кр}=\chi^2_{0{,}95}(4)=9{,}49.\]</span><span class="mn">\[T\approx13{,}46,\]\[df=m-k-1=7-2-1=4,\]\[t_{кр}=\chi^2_{0{,}95}(4)=9{,}49.\]</span>
   <p>\(13{,}46&gt;9{,}49\) ⇒ <b>\(H_0\) о нормальности отвергаем</b> (p-value \(\approx0{,}009\)). Главный вклад — центральный интервал 18–23: там 40 наблюдений вместо ожидаемых 27, распределение «острее» нормального.</p>
   <div class="box note"><span class="lbl">Если требуют \(np_i\ge5\)</span>Крайние интервалы (4,05 и 4,55) объединяют с соседями: 5 интервалов, \(T\approx9{,}75\), \(df=5-3=2\), \(\chi^2_{0{,}95}(2)=5{,}99\) — всё равно отвергаем.</div>
 </section>
@@ -1300,9 +1302,9 @@ window.MathJax={
 
   <h5>Данные и модель</h5>
   <p>Фактор \(A\) имеет \(k\) уровней (столбцов); в \(j\)-м столбце \(n_j\) наблюдений \(X_{1j},\dots,X_{n_jj}\); всего \(n=\sum_{j=1}^kn_j\).</p>
-  \[X_{ij}=\mu_j+\varepsilon_{ij},\qquad \mu_j=c+\alpha_j,\qquad \sum_{j=1}^k\alpha_j=0.\]
+  <span class="mw">\[X_{ij}=\mu_j+\varepsilon_{ij},\qquad \mu_j=c+\alpha_j,\qquad \sum_{j=1}^k\alpha_j=0.\]</span><span class="mn">\[X_{ij}=\mu_j+\varepsilon_{ij},\]\[\mu_j=c+\alpha_j,\]\[\sum_{j=1}^k\alpha_j=0.\]</span>
   <p>\(c\) — общий уровень, \(\alpha_j\) — <b>главные эффекты</b> фактора \(A\) (на сколько \(j\)-я группа выше/ниже среднего), \(\varepsilon_{ij}\) — случайная ошибка.</p>
-  \[H_0:\ \mu_1=\mu_2=\dots=\mu_k\ \Longleftrightarrow\ \alpha_1=\dots=\alpha_k=0.\]
+  <span class="mw">\[H_0:\ \mu_1=\mu_2=\dots=\mu_k\ \Longleftrightarrow\ \alpha_1=\dots=\alpha_k=0.\]</span><span class="mn">\[H_0:\ \mu_1=\mu_2=\dots=\mu_k\\]\[\Leftrightarrow \ \alpha_1=\dots=\alpha_k=0.\]</span>
   \[H_1:\ \exists\,j\ne l:\ \mu_j\ne\mu_l.\]
 
   <h5>1. Критерий Краскела–Уоллиса</h5>
@@ -1312,41 +1314,41 @@ window.MathJax={
     <li>Ранжируем все \(X_{ij}\) вместе: \(r_{ij}\) — ранг.</li>
     <li>\(R_j=\sum_{i=1}^{n_j}r_{ij}\) — сумма рангов \(j\)-го столбца.</li>
   </ol>
-  \[H=\frac{12}{n(n+1)}\sum_{j=1}^k\frac{R_j^2}{n_j}-3(n+1)\ \xrightarrow{d}\ \chi^2(k-1).\]
+  <span class="mw">\[H=\frac{12}{n(n+1)}\sum_{j=1}^k\frac{R_j^2}{n_j}-3(n+1)\ \xrightarrow{d}\ \chi^2(k-1).\]</span><span class="mn">\[H=\frac{12}{n(n+1)}\sum_{j=1}^k\frac{R_j^2}{n_j}-3(n+1)\]\[\xrightarrow{d}\ \chi^2(k-1).\]</span>
   <p>\(t_{кр}=\chi^2_{1-\alpha}(k-1)\); \(H\ge t_{кр}\) ⇒ \(H_0\) отвергаем.</p>
 
   <h5>2. Однофакторный дисперсионный анализ (ANOVA)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Общий разброс всех данных раскладываем на две части: разброс <b>между</b> группами (насколько средние групп отличаются друг от друга) и разброс <b>внутри</b> групп (шум). Если «между» намного больше «внутри» — группы правда разные. \(F\) — это отношение «сигнал / шум».</div>
   <p>Условие: \(\varepsilon_{ij}\) независимы, \(\varepsilon_{ij}\sim N(0,\sigma^2)\) — нормальны и с <b>одинаковой</b> дисперсией (это проверяет Бартлетт, п. 3).</p>
   <p>Средние: по столбцу и общее</p>
-  \[X_{*j}=\frac1{n_j}\sum_{i=1}^{n_j}X_{ij},\qquad X_{**}=\frac1n\sum_{j=1}^k\sum_{i=1}^{n_j}X_{ij}.\]
+  <span class="mw">\[X_{*j}=\frac1{n_j}\sum_{i=1}^{n_j}X_{ij},\qquad X_{**}=\frac1n\sum_{j=1}^k\sum_{i=1}^{n_j}X_{ij}.\]</span><span class="mn">\[X_{*j}=\frac1{n_j}\sum_{i=1}^{n_j}X_{ij},\]\[X_{**}=\frac1n\sum_{j=1}^k\sum_{i=1}^{n_j}X_{ij}.\]</span>
   <p>Суммы квадратов:</p>
   \[Q^2=\sum_{j=1}^k\sum_{i=1}^{n_j}(X_{ij}-X_{**})^2\quad\text{— общая;}\]
-  \[Q_A^2=\sum_{j=1}^kn_j(X_{*j}-X_{**})^2\quad\text{— за счёт фактора }A;\]
-  \[Q_R^2=\sum_{j=1}^k\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2\quad\text{— остаточная.}\]
+  <span class="mw">\[Q_A^2=\sum_{j=1}^kn_j(X_{*j}-X_{**})^2\quad\text{— за счёт фактора }A;\]</span><span class="mn">\[Q_A^2=\sum_{j=1}^kn_j(X_{*j}-X_{**})^2\]\[\text{— за счёт фактора }A;\]</span>
+  <span class="mw">\[Q_R^2=\sum_{j=1}^k\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2\quad\text{— остаточная.}\]</span><span class="mn">\[Q_R^2=\sum_{j=1}^k\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2\]\[\text{— остаточная.}\]</span>
   \[Q^2=Q_A^2+Q_R^2.\]
   <details><summary>Доказательство \(Q^2=Q_A^2+Q_R^2\) (задано «док-ть»)</summary><div class="inner">
     <p>Добавим и вычтем среднее столбца: \(X_{ij}-X_{**}=(X_{ij}-X_{*j})+(X_{*j}-X_{**})\). Возводим в квадрат и суммируем:</p>
-    \[Q^2=Q_R^2+\sum_j n_j(X_{*j}-X_{**})^2+2\sum_j(X_{*j}-X_{**})\sum_i(X_{ij}-X_{*j}).\]
+    <span class="mw">\[Q^2=Q_R^2+\sum_j n_j(X_{*j}-X_{**})^2+2\sum_j(X_{*j}-X_{**})\sum_i(X_{ij}-X_{*j}).\]</span><span class="mn">\[Q^2=Q_R^2+\sum_j n_j(X_{*j}-X_{**})^2\]\[+\,2\sum_j(X_{*j}-X_{**})\sum_i(X_{ij}-X_{*j}).\]</span>
     <p>Внутренняя сумма \(\sum_i(X_{ij}-X_{*j})=n_jX_{*j}-n_jX_{*j}=0\) — отклонения от своего среднего в сумме дают ноль. Значит, удвоенное произведение исчезает, и \(Q^2=Q_A^2+Q_R^2\). ∎</p>
   </div></details>
-  \[F=\frac{Q_A^2/(k-1)}{Q_R^2/(n-k)}=\frac{\hat\sigma_A^2}{\hat\sigma_R^2}\ \sim\ F(k-1,\,n-k)\quad\text{при }H_0.\]
+  <span class="mw">\[F=\frac{Q_A^2/(k-1)}{Q_R^2/(n-k)}=\frac{\hat\sigma_A^2}{\hat\sigma_R^2}\ \sim\ F(k-1,\,n-k)\quad\text{при }H_0.\]</span><span class="mn">\[F=\frac{Q_A^2/(k-1)}{Q_R^2/(n-k)}\]\[=\frac{\hat\sigma_A^2}{\hat\sigma_R^2}\]\[\sim\ F(k-1,\,n-k)\]\[\text{при }H_0.\]</span>
   <p>\(t_{кр}=F_{1-\alpha}(k-1,\,n-k)\); \(F\ge t_{кр}\) ⇒ \(H_0\) отвергаем (фактор влияет).</p>
   <div class="box intu"><span class="lbl">Почему степени свободы такие</span>\(Q_A^2\) строится по \(k\) средним, связанным одним условием (общее среднее) ⇒ \(k-1\). \(Q_R^2\) — по \(n\) наблюдениям за вычетом \(k\) оценённых средних столбцов ⇒ \(n-k\).</div>
 
   <h5>3. Критерий Бартлетта (однородность дисперсий)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>ANOVA честна, только если шум во всех группах одинаковый. Бартлетт сравнивает дисперсию каждой группы с общей «средней» дисперсией. Если все примерно равны — логарифмы отношений близки к нулю и \(W\) маленькое.</div>
-  \[H_0^\sigma:\ \sigma_1^2=\dots=\sigma_k^2,\qquad H_1^\sigma:\ \exists\,i\ne j:\ \sigma_i^2\ne\sigma_j^2.\]
-  \[S_j^2=\frac1{n_j-1}\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2,\qquad S^2=\frac{Q_R^2}{n-k}.\]
+  <span class="mw">\[H_0^\sigma:\ \sigma_1^2=\dots=\sigma_k^2,\qquad H_1^\sigma:\ \exists\,i\ne j:\ \sigma_i^2\ne\sigma_j^2.\]</span><span class="mn">\[H_0^\sigma:\ \sigma_1^2=\dots=\sigma_k^2,\]\[H_1^\sigma:\ \exists\,i\ne j:\ \sigma_i^2\ne\sigma_j^2.\]</span>
+  <span class="mw">\[S_j^2=\frac1{n_j-1}\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2,\qquad S^2=\frac{Q_R^2}{n-k}.\]</span><span class="mn">\[S_j^2=\frac1{n_j-1}\sum_{i=1}^{n_j}(X_{ij}-X_{*j})^2,\]\[S^2=\frac{Q_R^2}{n-k}.\]</span>
   \[W=q\sum_{j=1}^k(n_j-1)\ln\frac{S^2}{S_j^2}\ \xrightarrow{d}\ \chi^2(k-1),\]
-  \[q=\left[1+\frac1{3(k-1)}\left(\sum_{j=1}^k\frac1{n_j-1}-\frac1{n-k}\right)\right]^{-1}.\]
+  <span class="mw">\[q=\left[1+\frac1{3(k-1)}\left(\sum_{j=1}^k\frac1{n_j-1}-\frac1{n-k}\right)\right]^{-1}.\]</span><span class="mn">\[q\]\[=\left[1+\frac1{3(k-1)}\left(\sum_{j=1}^k\frac1{n_j-1}-\frac1{n-k}\right)\right]^{-1}.\]</span>
   <p>\(t_{кр}=\chi^2_{1-\alpha}(k-1)\); \(W&gt;t_{кр}\) ⇒ \(H_0^\sigma\) отвергаем. Иначе — через p-value \(=P(\chi^2(k-1)&gt;W)\).</p>
 
   <h5>4. Метод Шеффе (множественные сравнения)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>ANOVA сказал «разница есть», но не сказал, где. Шеффе сравнивает каждую пару групп, но с увеличенным «допуском» \(\Delta\), чтобы все сравнения вместе давали ошибку не больше \(\alpha\).</div>
   <p>Почему нельзя просто \(C_k^2\) раз применить двухвыборочный критерий: при \(\alpha=0{,}1\) шанс ни разу не ошибиться в двух независимых сравнениях \(0{,}9\cdot0{,}9=0{,}81\), в трёх — \(0{,}9^3=0{,}729\): общая ошибка быстро растёт.</p>
   \[H_0:\ \mu_i=\mu_j,\qquad h_{ij}=X_{*i}-X_{*j}.\]
-  \[\Delta_{ij}=Q_R\sqrt{\frac{k-1}{n-k}\left(\frac1{n_i}+\frac1{n_j}\right)F_{1-\alpha}(k-1,\,n-k)}.\]
+  <span class="mw">\[\Delta_{ij}=Q_R\sqrt{\frac{k-1}{n-k}\left(\frac1{n_i}+\frac1{n_j}\right)F_{1-\alpha}(k-1,\,n-k)}.\]</span><span class="mn">\[\Delta_{ij}\]\[=Q_R\sqrt{\frac{k-1}{n-k}\left(\frac1{n_i}+\frac1{n_j}\right)F_{1-\alpha}(k-1,\,n-k)}.\]</span>
   <p>\(|h_{ij}|&gt;\Delta_{ij}\) ⇒ средние \(i\) и \(j\) различаются значимо.</p>
 
   <details open><summary>Пример: связывание антибиотиков с белками плазмы крови, %</summary><div class="inner">
@@ -1362,12 +1364,12 @@ window.MathJax={
       </tbody>
     </table></div>
     <p><b>ANOVA.</b> \(X_{**}=22{,}935\).</p>
-    \[Q_A^2\approx1480{,}82,\qquad Q_R^2\approx135{,}82,\qquad Q^2\approx1616{,}65.\]
+    <span class="mw">\[Q_A^2\approx1480{,}82,\qquad Q_R^2\approx135{,}82,\qquad Q^2\approx1616{,}65.\]</span><span class="mn">\[Q_A^2\approx1480{,}82,\]\[Q_R^2\approx135{,}82,\]\[Q^2\approx1616{,}65.\]</span>
     \[F=\frac{1480{,}82/4}{135{,}82/15}=\frac{370{,}21}{9{,}055}\approx40{,}88.\]
-    \[t_{кр}=F_{0{,}95}(4,15)=3{,}06,\qquad 40{,}88&gt;3{,}06.\]
+    <span class="mw">\[t_{кр}=F_{0{,}95}(4,15)=3{,}06,\qquad 40{,}88&gt;3{,}06.\]</span><span class="mn">\[t_{кр}=F_{0{,}95}(4,15)=3{,}06,\]\[40{,}88&gt;3{,}06.\]</span>
     <p>⇒ \(H_0\) отвергаем: тип антибиотика влияет (p-value \(\approx7\cdot10^{-8}\)).</p>
     <p><b>Бартлетт.</b> \(S^2=Q_R^2/15\approx9{,}05\), \(q\approx0{,}88\):</p>
-    \[W\approx1{,}81,\qquad t_{кр}=\chi^2_{0{,}95}(4)=9{,}49,\qquad 1{,}81&lt;9{,}49.\]
+    <span class="mw">\[W\approx1{,}81,\qquad t_{кр}=\chi^2_{0{,}95}(4)=9{,}49,\qquad 1{,}81&lt;9{,}49.\]</span><span class="mn">\[W\approx1{,}81,\]\[t_{кр}=\chi^2_{0{,}95}(4)=9{,}49,\]\[1{,}81&lt;9{,}49.\]</span>
     <p>⇒ \(H_0^\sigma\) не отвергаем: дисперсии однородны, ANOVA применять было законно (p-value \(\approx0{,}77\)).</p>
     <p><b>Шеффе.</b> Все \(n_j=4\), поэтому \(\Delta\) одна на все пары:</p>
     \[\Delta=\sqrt{135{,}82}\cdot\sqrt{\frac4{15}\cdot\frac12\cdot3{,}06}\approx7{,}44.\]
@@ -1398,15 +1400,15 @@ window.MathJax={
 
   <h5>№5.4. Пары выпускников: дают ли примеры задач +50 баллов</h5>
   <p>10 пар; в паре один получил примеры задач («Да»), другой нет. \(\alpha=0{,}05\). \(D=\text{Да}-\text{Нет}\):</p>
-  \[d_i:\ 22,\ 81,\ -25,\ 77,\ 27,\ -23,\ 23,\ -29,\ 13,\ 51.\]
+  <span class="mw">\[d_i:\ 22,\ 81,\ -25,\ 77,\ 27,\ -23,\ 23,\ -29,\ 13,\ 51.\]</span><span class="mn">\[d_i:\ 22,\ 81,\ -25,\ 77,\ 27,\]\[-23,\ 23,\ -29,\ 13,\ 51.\]</span>
   <p>\(H_0\): прирост 50 баллов (\(\mu_D=50\), для рангового — \(Me_D=50\)); \(H_1\): прирост меньше 50 (\(\mu_D&lt;50\)) — левосторонняя.</p>
   <p><b>1. Парный t-критерий Стьюдента</b> (выборки связаны ⇒ работаем с разностями как с одной выборкой).</p>
-  \[\bar d=21{,}7,\qquad S_d^2=1587{,}57,\qquad S_d=39{,}84.\]
+  <span class="mw">\[\bar d=21{,}7,\qquad S_d^2=1587{,}57,\qquad S_d=39{,}84.\]</span><span class="mn">\[\bar d=21{,}7,\]\[S_d^2=1587{,}57,\]\[S_d=39{,}84.\]</span>
   \[t=\frac{\bar d-\mu_0}{S_d/\sqrt n}=\frac{21{,}7-50}{39{,}84/\sqrt{10}}\approx-2{,}25.\]
   <p>\(t_{кр}=t_{0{,}05}(9)=-1{,}833\); \(t&lt;t_{кр}\) ⇒ \(H_0\) отвергаем в пользу \(H_1\): прирост меньше 50.</p>
 
   <p><b>2. Критерий знаковых рангов Уилкоксона.</b> \(d_i'=d_i-50\):</p>
-  \[d_i':\ -28,\ 31,\ -75,\ 27,\ -23,\ -73,\ -27,\ -79,\ -37,\ 1.\]
+  <span class="mw">\[d_i':\ -28,\ 31,\ -75,\ 27,\ -23,\ -73,\ -27,\ -79,\ -37,\ 1.\]</span><span class="mn">\[d_i':\ -28,\ 31,\ -75,\ 27,\ -23,\]\[-73,\ -27,\ -79,\ -37,\ 1.\]</span>
   <p>Ранжируем модули; у двух значений \(|d'|=27\) (одно \(+27\), другое \(-27\)) — средний ранг \(\frac{3+4}2=3{,}5\):</p>
   <div class="tbl"><table data-plain data-cols="\(|d_i'|\)|Знак|Ранг">
     <thead><tr><th>\(|d_i'|\)</th><th>Знак</th><th>Ранг</th></tr></thead>
@@ -1423,11 +1425,11 @@ window.MathJax={
       <tr><td>79</td><td>−</td><td>10</td></tr>
     </tbody>
   </table></div>
-  \[W^+=1+3{,}5+6=10{,}5,\qquad W^-=44{,}5,\qquad W^++W^-=\frac{10\cdot11}2=55\ \checkmark\]
+  <span class="mw">\[W^+=1+3{,}5+6=10{,}5,\qquad W^-=44{,}5,\qquad W^++W^-=\frac{10\cdot11}2=55\ \checkmark\]</span><span class="mn">\[W^+=1+3{,}5+6=10{,}5,\]\[W^-=44{,}5,\]\[W^++W^-=\frac{10\cdot11}2=55\ \checkmark\]</span>
   <p>\(H_1\) «меньше» ⇒ смотрим на \(W=W^+=10{,}5\) (мало положительных). По таблице для \(n=10\), \(\alpha=0{,}05\) (односторонний) \(W_{кр}=10\): отвергаем при \(W\le10\). У нас \(10{,}5\) — <b>на самой границе</b>, из-за связки 27/27.</p>
   <p><b>3. Нормальное приближение:</b></p>
-  \[EW=\frac{n(n+1)}4=27{,}5,\qquad \sigma_W=\sqrt{\frac{n(n+1)(2n+1)}{24}}\approx9{,}81.\]
-  \[Z=\frac{W-EW}{\sigma_W}=\frac{10{,}5-27{,}5}{9{,}81}\approx-1{,}73.\]
+  <span class="mw">\[EW=\frac{n(n+1)}4=27{,}5,\qquad \sigma_W=\sqrt{\frac{n(n+1)(2n+1)}{24}}\approx9{,}81.\]</span><span class="mn">\[EW=\frac{n(n+1)}4=27{,}5,\]\[\sigma_W=\sqrt{\frac{n(n+1)(2n+1)}{24}}\approx9{,}81.\]</span>
+  <span class="mw">\[Z=\frac{W-EW}{\sigma_W}=\frac{10{,}5-27{,}5}{9{,}81}\approx-1{,}73.\]</span><span class="mn">\[Z=\frac{W-EW}{\sigma_W}\]\[=\frac{10{,}5-27{,}5}{9{,}81}\]\[\approx-1{,}73.\]</span>
   <p>С поправкой на непрерывность: \(Z=\frac{10{,}5+0{,}5-27{,}5}{9{,}81}\approx-1{,}68\). \(z_{кр}=z_{0{,}05}=-1{,}645\); \(Z&lt;z_{кр}\) ⇒ \(H_0\) отвергаем. Точное p-value \(\approx0{,}045\).</p>
   <div class="box note"><span class="lbl">Вывод</span>Оба критерия: прирост от примеров задач значимо <b>меньше 50 баллов</b>. Ранговый — впритык, t-критерий — увереннее.</div>
 
@@ -1436,20 +1438,20 @@ window.MathJax={
   \[\bar X\approx16{,}49,\qquad \bar Y\approx15{,}88.\]
   <p>Разница 0,6 кг — статистически значима или случайна? Выборки <b>независимы</b> ⇒ критерий Манна–Уитни (он же ранговая сумма Уилкоксона — в условии «критерий Уилкоксона» означает именно его).</p>
   <p>Ранжируем все 33 значения вместе (одинаковым — средний ранг):</p>
-  \[R_1=378{,}5,\qquad R_2=182{,}5,\qquad R_1+R_2=\frac{33\cdot34}2=561\ \checkmark\]
-  \[U_1=R_1-\frac{n_1(n_1+1)}2=147{,}5,\qquad U_2=R_2-\frac{n_2(n_2+1)}2=104{,}5.\]
-  \[U_1+U_2=n_1n_2=252\ \checkmark\qquad U=\min(U_1,U_2)=104{,}5.\]
+  <span class="mw">\[R_1=378{,}5,\qquad R_2=182{,}5,\qquad R_1+R_2=\frac{33\cdot34}2=561\ \checkmark\]</span><span class="mn">\[R_1=378{,}5,\]\[R_2=182{,}5,\]\[R_1+R_2=\frac{33\cdot34}2=561\ \checkmark\]</span>
+  <span class="mw">\[U_1=R_1-\frac{n_1(n_1+1)}2=147{,}5,\qquad U_2=R_2-\frac{n_2(n_2+1)}2=104{,}5.\]</span><span class="mn">\[U_1=R_1-\frac{n_1(n_1+1)}2=147{,}5,\]\[U_2=R_2-\frac{n_2(n_2+1)}2=104{,}5.\]</span>
+  <span class="mw">\[U_1+U_2=n_1n_2=252\ \checkmark\qquad U=\min(U_1,U_2)=104{,}5.\]</span><span class="mn">\[U_1+U_2=n_1n_2=252\ \checkmark\]\[U=\min(U_1,U_2)=104{,}5.\]</span>
   <p>Выборки большие ⇒ гауссовская аппроксимация:</p>
-  \[EU=\frac{n_1n_2}2=126,\qquad \sigma_U=\sqrt{\frac{n_1n_2(n+1)}{12}}\approx26{,}72.\]
-  \[U^*=\frac{U-EU+0{,}5}{\sigma_U}=\frac{104{,}5-126+0{,}5}{26{,}72}\approx-0{,}79.\]
+  <span class="mw">\[EU=\frac{n_1n_2}2=126,\qquad \sigma_U=\sqrt{\frac{n_1n_2(n+1)}{12}}\approx26{,}72.\]</span><span class="mn">\[EU=\frac{n_1n_2}2=126,\]\[\sigma_U=\sqrt{\frac{n_1n_2(n+1)}{12}}\approx26{,}72.\]</span>
+  <span class="mw">\[U^*=\frac{U-EU+0{,}5}{\sigma_U}=\frac{104{,}5-126+0{,}5}{26{,}72}\approx-0{,}79.\]</span><span class="mn">\[U^*=\frac{U-EU+0{,}5}{\sigma_U}\]\[=\frac{104{,}5-126+0{,}5}{26{,}72}\]\[\approx-0{,}79.\]</span>
   <p>\(+0{,}5\) — поправка на непрерывность (\(U&lt;EU\), сдвигаем к центру). Двусторонний p-value \(=2\Phi(-0{,}79)\approx0{,}43&gt;0{,}05\) ⇒ <b>\(H_0\) принимаем</b>: вес багажа в среднем одинаковый.</p>
   <div class="box intu"><span class="lbl">Почему ранги</span>Критерии на рангах устойчивы к выбросам: если кто-то однажды взял 40 кг, среднее «уедет», а ранг будет просто 33.</div>
 
   <h5>№6.9. Подписки: распределение Пуассона?</h5>
   <p>\(n=150\): число подписок 0, 1, 2, 3, 4, &gt;4 — частоты 91, 46, 8, 3, 2, 0. \(\alpha=0{,}05\).</p>
   <p>\(H_0:\ \xi\sim\Pi(\theta)\) с неизвестным \(\theta\) — гипотеза <b>сложная</b> ⇒ χ² Фишера (параметр оцениваем, df уменьшается). \(H_1=\overline{H_0}\).</p>
-  \[\hat\theta=\bar x=\frac{0\cdot91+1\cdot46+2\cdot8+3\cdot3+4\cdot2}{150}=\frac{79}{150}\approx0{,}5267.\]
-  \[p_i^{(0)}=e^{-\hat\theta}\frac{\hat\theta^{\,i}}{i!},\ i=0,1,2;\qquad p_3^{(0)}=1-\sum_{i=0}^2p_i^{(0)}\ \ (\text{группа }\ge3).\]
+  <span class="mw">\[\hat\theta=\bar x=\frac{0\cdot91+1\cdot46+2\cdot8+3\cdot3+4\cdot2}{150}=\frac{79}{150}\approx0{,}5267.\]</span><span class="mn">\[\hat\theta=\bar x\]\[=\frac{0\cdot91+1\cdot46+2\cdot8+3\cdot3+4\cdot2}{150}\]\[=\frac{79}{150}\]\[\approx0{,}5267.\]</span>
+  <span class="mw">\[p_i^{(0)}=e^{-\hat\theta}\frac{\hat\theta^{\,i}}{i!},\ i=0,1,2;\qquad p_3^{(0)}=1-\sum_{i=0}^2p_i^{(0)}\ \ (\text{группа }\ge3).\]</span><span class="mn">\[p_i^{(0)}=e^{-\hat\theta}\frac{\hat\theta^{\,i}}{i!},\ i=0,1,2;\]\[p_3^{(0)}=1-\sum_{i=0}^2p_i^{(0)}\ \ (\text{группа }\ge3).\]</span>
   <div class="tbl"><table data-plain data-cols="Подписок|\(n_i\)|\(p_i^{(0)}\)|\(np_i^{(0)}\)">
     <thead><tr><th>Подписок</th><th>\(n_i\)</th><th>\(p_i^{(0)}\)</th><th>\(np_i^{(0)}\)</th></tr></thead>
     <tbody>
@@ -1484,7 +1486,7 @@ window.MathJax={
   \[X_{ij}=c+\alpha_j+\beta_i+\varepsilon_{ij},\qquad \varepsilon_{ij}\ \text{— iid}.\]
   \[\sum_{j=1}^k\alpha_j=0,\qquad \sum_{i=1}^l\beta_i=0.\]
   <p>\(\alpha_j\) — эффект обработки, \(\beta_i\) — эффект блока.</p>
-  \[H_0:\ \alpha_1=\alpha_2=\dots=\alpha_k=0,\qquad H_1:\ \exists\,j\ne n:\ \alpha_j\ne\alpha_n.\]
+  <span class="mw">\[H_0:\ \alpha_1=\alpha_2=\dots=\alpha_k=0,\qquad H_1:\ \exists\,j\ne n:\ \alpha_j\ne\alpha_n.\]</span><span class="mn">\[H_0:\ \alpha_1=\alpha_2=\dots=\alpha_k=0,\]\[H_1:\ \exists\,j\ne n:\ \alpha_j\ne\alpha_n.\]</span>
 
   <h5>1. Критерий Фридмана (непараметрический)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>«Краскел–Уоллис по строкам». Ранжируем не всё вместе, а <b>внутри каждого блока</b>: в каждой строке обработки получают ранги 1…k. Если обработки одинаковы, ранги в строках случайны и суммы по столбцам близки. Если одна обработка всегда лучшая — она в каждой строке получит ранг \(k\), и её сумма выделится.</div>
@@ -1493,7 +1495,7 @@ window.MathJax={
     <li>\(X_{ij}\to r_{ij}\) — ранги <b>поблочно</b> (построчно), в каждой строке от 1 до \(k\).</li>
     <li>\(R_j=\sum_{i=1}^lr_{ij}\) — сумма рангов \(j\)-й обработки.</li>
   </ol>
-  \[T=\frac{12}{lk(k+1)}\sum_{j=1}^kR_j^2-3l(k+1)\ \sim\ \chi^2(k-1).\]
+  <span class="mw">\[T=\frac{12}{lk(k+1)}\sum_{j=1}^kR_j^2-3l(k+1)\ \sim\ \chi^2(k-1).\]</span><span class="mn">\[T=\frac{12}{lk(k+1)}\sum_{j=1}^kR_j^2-3l(k+1)\]\[\sim\ \chi^2(k-1).\]</span>
   <p>\(t_{кр}=\chi^2_{1-\alpha}(k-1)\). \(T'&lt;t_{кр}\) ⇒ \(H_0\) не отвергаем; \(T''\ge t_{кр}\) ⇒ отвергаем (критическая область — правый хвост площадью \(\alpha\)).</p>
   <figure><svg viewBox="0 0 600 230" role="img" aria-label="Плотность хи-квадрат с критической областью"><g font-family="Onest, sans-serif" font-size="21" fill="var(--ink)"><path d="M331.4,185 L331.6,171.8 L333.4,172.1 L335.2,172.3 L337.0,172.6 L338.8,172.8 L340.7,173.1 L342.5,173.3 L344.3,173.6 L346.1,173.8 L347.9,174.0 L349.7,174.2 L351.5,174.5 L353.3,174.7 L355.1,174.9 L356.9,175.1 L358.7,175.3 L360.5,175.5 L362.3,175.7 L364.1,175.9 L365.9,176.1 L367.7,176.3 L369.5,176.4 L371.4,176.6 L373.2,176.8 L375.0,177.0 L376.8,177.1 L378.6,177.3 L380.4,177.4 L382.2,177.6 L384.0,177.7 L385.8,177.9 L387.6,178.0 L389.4,178.2 L391.2,178.3 L393.0,178.5 L394.8,178.6 L396.6,178.7 L398.4,178.9 L400.2,179.0 L402.1,179.1 L403.9,179.2 L405.7,179.4 L407.5,179.5 L409.3,179.6 L411.1,179.7 L412.9,179.8 L414.7,179.9 L416.5,180.0 L418.3,180.1 L420.1,180.2 L421.9,180.3 L423.7,180.4 L425.5,180.5 L427.3,180.6 L429.1,180.7 L430.9,180.8 L432.8,180.9 L434.6,181.0 L436.4,181.1 L438.2,181.1 L440.0,181.2 L441.8,181.3 L443.6,181.4 L445.4,181.5 L447.2,181.5 L449.0,181.6 L450.8,181.7 L452.6,181.7 L454.4,181.8 L456.2,181.9 L458.0,181.9 L459.8,182.0 L461.6,182.1 L463.5,182.1 L465.3,182.2 L467.1,182.3 L468.9,182.3 L470.7,182.4 L472.5,182.4 L474.3,182.5 L476.1,182.5 L477.9,182.6 L479.7,182.6 L481.5,182.7 L483.3,182.7 L485.1,182.8 L486.9,182.8 L488.7,182.9 L490.5,182.9 L492.3,183.0 L494.2,183.0 L496.0,183.1 L497.8,183.1 L499.6,183.1 L501.4,183.2 L503.2,183.2 L505.0,183.2 L506.8,183.3 L508.6,183.3 L510.4,183.4 L512.2,183.4 L514.0,183.4 L515.8,183.5 L517.6,183.5 L519.4,183.5 L521.2,183.6 L523.0,183.6 L524.9,183.6 L526.7,183.6 L528.5,183.7 L530.3,183.7 L532.1,183.7 L533.9,183.8 L535.7,183.8 L537.5,183.8 L539.3,183.8 L541.1,183.9 L542.9,183.9 L544.7,183.9 L546.5,183.9 L548.3,184.0 L550.1,184.0 L551.9,184.0 L553.7,184.0 L555.6,184.0 L557.4,184.1 L559.2,184.1 L561.0,184.1 L562.8,184.1 L564.6,184.1 L566.4,184.2 L568.2,184.2 L570.0,184.2 L570.0,185 Z" fill="var(--warn)" fill-opacity=".28" stroke="none"/><line x1="30" y1="185" x2="585" y2="185" stroke="var(--muted)"/><line x1="30" y1="185" x2="30" y2="15" stroke="var(--muted)"/><path d="M30.0,177.6 L31.8,134.7 L33.7,115.9 L35.5,102.5 L37.3,92.0 L39.1,83.5 L40.9,76.4 L42.7,70.4 L44.5,65.4 L46.3,61.1 L48.1,57.4 L49.9,54.3 L51.7,51.6 L53.5,49.4 L55.3,47.6 L57.1,46.0 L58.9,44.8 L60.7,43.8 L62.5,43.1 L64.4,42.6 L66.2,42.3 L68.0,42.1 L69.8,42.2 L71.6,42.3 L73.4,42.6 L75.2,43.1 L77.0,43.6 L78.8,44.3 L80.6,45.0 L82.4,45.8 L84.2,46.7 L86.0,47.7 L87.8,48.7 L89.6,49.8 L91.4,50.9 L93.2,52.1 L95.1,53.4 L96.9,54.6 L98.7,56.0 L100.5,57.3 L102.3,58.7 L104.1,60.0 L105.9,61.5 L107.7,62.9 L109.5,64.3 L111.3,65.8 L113.1,67.3 L114.9,68.8 L116.7,70.2 L118.5,71.7 L120.3,73.2 L122.1,74.7 L123.9,76.2 L125.8,77.7 L127.6,79.2 L129.4,80.7 L131.2,82.2 L133.0,83.7 L134.8,85.2 L136.6,86.7 L138.4,88.1 L140.2,89.6 L142.0,91.0 L143.8,92.5 L145.6,93.9 L147.4,95.3 L149.2,96.7 L151.0,98.1 L152.8,99.5 L154.6,100.8 L156.5,102.2 L158.3,103.5 L160.1,104.9 L161.9,106.2 L163.7,107.5 L165.5,108.8 L167.3,110.0 L169.1,111.3 L170.9,112.5 L172.7,113.8 L174.5,115.0 L176.3,116.2 L178.1,117.3 L179.9,118.5 L181.7,119.6 L183.5,120.8 L185.3,121.9 L187.2,123.0 L189.0,124.1 L190.8,125.2 L192.6,126.2 L194.4,127.3 L196.2,128.3 L198.0,129.3 L199.8,130.3 L201.6,131.3 L203.4,132.2 L205.2,133.2 L207.0,134.1 L208.8,135.1 L210.6,136.0 L212.4,136.9 L214.2,137.7 L216.0,138.6 L217.9,139.5 L219.7,140.3 L221.5,141.1 L223.3,142.0 L225.1,142.8 L226.9,143.5 L228.7,144.3 L230.5,145.1 L232.3,145.8 L234.1,146.6 L235.9,147.3 L237.7,148.0 L239.5,148.7 L241.3,149.4 L243.1,150.1 L244.9,150.7 L246.7,151.4 L248.6,152.0 L250.4,152.6 L252.2,153.3 L254.0,153.9 L255.8,154.5 L257.6,155.1 L259.4,155.6 L261.2,156.2 L263.0,156.8 L264.8,157.3 L266.6,157.8 L268.4,158.4 L270.2,158.9 L272.0,159.4 L273.8,159.9 L275.6,160.4 L277.4,160.9 L279.3,161.3 L281.1,161.8 L282.9,162.3 L284.7,162.7 L286.5,163.1 L288.3,163.6 L290.1,164.0 L291.9,164.4 L293.7,164.8 L295.5,165.2 L297.3,165.6 L299.1,166.0 L300.9,166.4 L302.7,166.7 L304.5,167.1 L306.3,167.5 L308.1,167.8 L310.0,168.2 L311.8,168.5 L313.6,168.8 L315.4,169.1 L317.2,169.5 L319.0,169.8 L320.8,170.1 L322.6,170.4 L324.4,170.7 L326.2,171.0 L328.0,171.2 L329.8,171.5 L331.6,171.8 L333.4,172.1 L335.2,172.3 L337.0,172.6 L338.8,172.8 L340.7,173.1 L342.5,173.3 L344.3,173.6 L346.1,173.8 L347.9,174.0 L349.7,174.2 L351.5,174.5 L353.3,174.7 L355.1,174.9 L356.9,175.1 L358.7,175.3 L360.5,175.5 L362.3,175.7 L364.1,175.9 L365.9,176.1 L367.7,176.3 L369.5,176.4 L371.4,176.6 L373.2,176.8 L375.0,177.0 L376.8,177.1 L378.6,177.3 L380.4,177.4 L382.2,177.6 L384.0,177.7 L385.8,177.9 L387.6,178.0 L389.4,178.2 L391.2,178.3 L393.0,178.5 L394.8,178.6 L396.6,178.7 L398.4,178.9 L400.2,179.0 L402.1,179.1 L403.9,179.2 L405.7,179.4 L407.5,179.5 L409.3,179.6 L411.1,179.7 L412.9,179.8 L414.7,179.9 L416.5,180.0 L418.3,180.1 L420.1,180.2 L421.9,180.3 L423.7,180.4 L425.5,180.5 L427.3,180.6 L429.1,180.7 L430.9,180.8 L432.8,180.9 L434.6,181.0 L436.4,181.1 L438.2,181.1 L440.0,181.2 L441.8,181.3 L443.6,181.4 L445.4,181.5 L447.2,181.5 L449.0,181.6 L450.8,181.7 L452.6,181.7 L454.4,181.8 L456.2,181.9 L458.0,181.9 L459.8,182.0 L461.6,182.1 L463.5,182.1 L465.3,182.2 L467.1,182.3 L468.9,182.3 L470.7,182.4 L472.5,182.4 L474.3,182.5 L476.1,182.5 L477.9,182.6 L479.7,182.6 L481.5,182.7 L483.3,182.7 L485.1,182.8 L486.9,182.8 L488.7,182.9 L490.5,182.9 L492.3,183.0 L494.2,183.0 L496.0,183.1 L497.8,183.1 L499.6,183.1 L501.4,183.2 L503.2,183.2 L505.0,183.2 L506.8,183.3 L508.6,183.3 L510.4,183.4 L512.2,183.4 L514.0,183.4 L515.8,183.5 L517.6,183.5 L519.4,183.5 L521.2,183.6 L523.0,183.6 L524.9,183.6 L526.7,183.6 L528.5,183.7 L530.3,183.7 L532.1,183.7 L533.9,183.8 L535.7,183.8 L537.5,183.8 L539.3,183.8 L541.1,183.9 L542.9,183.9 L544.7,183.9 L546.5,183.9 L548.3,184.0 L550.1,184.0 L551.9,184.0 L553.7,184.0 L555.6,184.0 L557.4,184.1 L559.2,184.1 L561.0,184.1 L562.8,184.1 L564.6,184.1 L566.4,184.2 L568.2,184.2 L570.0,184.2" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="331.4" y1="115" x2="331.4" y2="193" stroke="var(--warn)" stroke-width="2"/><text x="331.4" y="217" text-anchor="middle" fill="var(--warn)">t кр</text><circle cx="130.3" cy="185" r="5" fill="var(--ok)"/><text x="130.3" y="217" text-anchor="middle" fill="var(--ok)">T′</text><circle cx="423.4" cy="185" r="5" fill="var(--warn)"/><text x="423.4" y="217" text-anchor="middle" fill="var(--warn)">T″</text><text x="180.7" y="90" text-anchor="middle" fill="var(--ok)">H₀ не отвергаем</text><text x="441.4" y="140" text-anchor="middle" fill="var(--warn)">H₁ (площадь α)</text></g></svg><figcaption>Плотность \(\chi^2(k-1)\) при верной \(H_0\). \(T'&lt;t_{кр}\) — \(H_0\) не отвергаем; \(T''\) попало в правый хвост площадью \(\alpha\) — отвергаем.</figcaption></figure>
 
@@ -1504,14 +1506,14 @@ window.MathJax={
   \[X_{**}=\frac1{kl}\sum_{i=1}^l\sum_{j=1}^kX_{ij}.\]
   <p>Суммы квадратов:</p>
   \[Q^2=\sum_{i=1}^l\sum_{j=1}^k(X_{ij}-X_{**})^2,\]
-  \[Q_A^2=\sum_i\sum_j(X_{*j}-X_{**})^2=l\sum_j(X_{*j}-X_{**})^2,\]
-  \[Q_B^2=\sum_i\sum_j(X_{i*}-X_{**})^2=k\sum_i(X_{i*}-X_{**})^2,\]
+  <span class="mw">\[Q_A^2=\sum_i\sum_j(X_{*j}-X_{**})^2=l\sum_j(X_{*j}-X_{**})^2,\]</span><span class="mn">\[Q_A^2=\sum_i\sum_j(X_{*j}-X_{**})^2\]\[=l\sum_j(X_{*j}-X_{**})^2,\]</span>
+  <span class="mw">\[Q_B^2=\sum_i\sum_j(X_{i*}-X_{**})^2=k\sum_i(X_{i*}-X_{**})^2,\]</span><span class="mn">\[Q_B^2=\sum_i\sum_j(X_{i*}-X_{**})^2\]\[=k\sum_i(X_{i*}-X_{**})^2,\]</span>
   \[Q_R^2=\sum_i\sum_j(X_{ij}-X_{*j}-X_{i*}+X_{**})^2.\]
   \[Q^2=Q_A^2+Q_B^2+Q_R^2.\]
   <details><summary>Доказательство тождества (задано «док-ть»)</summary><div class="inner">
     <p>Разложим отклонение на три слагаемых:</p>
     \[X_{ij}-X_{**}=a_j+b_i+e_{ij},\]
-    \[a_j=X_{*j}-X_{**},\quad b_i=X_{i*}-X_{**},\quad e_{ij}=X_{ij}-X_{*j}-X_{i*}+X_{**}.\]
+    <span class="mw">\[a_j=X_{*j}-X_{**},\quad b_i=X_{i*}-X_{**},\quad e_{ij}=X_{ij}-X_{*j}-X_{i*}+X_{**}.\]</span><span class="mn">\[a_j=X_{*j}-X_{**},\]\[b_i=X_{i*}-X_{**},\]\[e_{ij}=X_{ij}-X_{*j}-X_{i*}+X_{**}.\]</span>
     <p>Возводим в квадрат и суммируем по \(i,j\). Квадраты дают \(Q_A^2+Q_B^2+Q_R^2\). Удвоенные произведения равны нулю:</p>
     <ul class="clean" style="padding-left:22px">
       <li>\(\sum_{i,j}a_jb_i=\left(\sum_ja_j\right)\left(\sum_ib_i\right)=0\), т.к. \(\sum_ja_j=k\cdot X_{**}-k\cdot X_{**}=0\);</li>
@@ -1519,7 +1521,7 @@ window.MathJax={
       <li>\(\sum_{i,j}b_ie_{ij}=\sum_ib_i\sum_je_{ij}=0\) — аналогично по \(j\). ∎</li>
     </ul>
   </div></details>
-  \[F=\frac{Q_A^2/(k-1)}{Q_R^2/\bigl((k-1)(l-1)\bigr)}\ \overset{H_0}{\sim}\ F\bigl(k-1,\,(k-1)(l-1)\bigr).\]
+  <span class="mw">\[F=\frac{Q_A^2/(k-1)}{Q_R^2/\bigl((k-1)(l-1)\bigr)}\ \overset{H_0}{\sim}\ F\bigl(k-1,\,(k-1)(l-1)\bigr).\]</span><span class="mn">\[F=\frac{Q_A^2/(k-1)}{Q_R^2/\bigl((k-1)(l-1)\bigr)}\]\[\overset{H_0}{\sim}\ F\bigl(k-1,\,(k-1)(l-1)\bigr).\]</span>
   <p>Числитель \(\hat\sigma_A^2\) — оценка \(\sigma^2\), верная только при \(H_0\); знаменатель \(\hat\sigma_R^2\) — верна всегда. Распределение — распределение Фишера (дисперсионного отношения).</p>
   <p>\(t_{кр}=F_{1-\alpha}\bigl(k-1,\,(k-1)(l-1)\bigr)\); \(F\ge t_{кр}\) ⇒ \(H_0\) отвергаем в пользу \(H_1\); \(F&lt;t_{кр}\) ⇒ не отвергаем. Или по p-value — площадь хвоста правее \(F\).</p>
   <figure><svg viewBox="0 0 600 230" role="img" aria-label="Плотность распределения Фишера, p-value"><g font-family="Onest, sans-serif" font-size="21" fill="var(--ink)"><path d="M354.0,185 L355.1,178.2 L356.9,178.3 L358.7,178.4 L360.5,178.5 L362.3,178.6 L364.1,178.7 L366.0,178.8 L367.8,178.9 L369.6,179.0 L371.4,179.1 L373.2,179.2 L375.0,179.3 L376.8,179.4 L378.6,179.5 L380.4,179.6 L382.2,179.7 L384.0,179.8 L385.8,179.9 L387.6,179.9 L389.4,180.0 L391.2,180.1 L393.0,180.2 L394.8,180.3 L396.7,180.3 L398.5,180.4 L400.3,180.5 L402.1,180.6 L403.9,180.6 L405.7,180.7 L407.5,180.8 L409.3,180.8 L411.1,180.9 L412.9,181.0 L414.7,181.0 L416.5,181.1 L418.3,181.1 L420.1,181.2 L421.9,181.3 L423.7,181.3 L425.5,181.4 L427.3,181.4 L429.2,181.5 L431.0,181.5 L432.8,181.6 L434.6,181.7 L436.4,181.7 L438.2,181.8 L440.0,181.8 L441.8,181.9 L443.6,181.9 L445.4,181.9 L447.2,182.0 L449.0,182.0 L450.8,182.1 L452.6,182.1 L454.4,182.2 L456.2,182.2 L458.0,182.3 L459.9,182.3 L461.7,182.3 L463.5,182.4 L465.3,182.4 L467.1,182.5 L468.9,182.5 L470.7,182.5 L472.5,182.6 L474.3,182.6 L476.1,182.6 L477.9,182.7 L479.7,182.7 L481.5,182.7 L483.3,182.8 L485.1,182.8 L486.9,182.8 L488.7,182.9 L490.5,182.9 L492.4,182.9 L494.2,183.0 L496.0,183.0 L497.8,183.0 L499.6,183.0 L501.4,183.1 L503.2,183.1 L505.0,183.1 L506.8,183.2 L508.6,183.2 L510.4,183.2 L512.2,183.2 L514.0,183.3 L515.8,183.3 L517.6,183.3 L519.4,183.3 L521.2,183.4 L523.1,183.4 L524.9,183.4 L526.7,183.4 L528.5,183.4 L530.3,183.5 L532.1,183.5 L533.9,183.5 L535.7,183.5 L537.5,183.5 L539.3,183.6 L541.1,183.6 L542.9,183.6 L544.7,183.6 L546.5,183.6 L548.3,183.7 L550.1,183.7 L551.9,183.7 L553.7,183.7 L555.6,183.7 L557.4,183.7 L559.2,183.8 L561.0,183.8 L562.8,183.8 L564.6,183.8 L566.4,183.8 L568.2,183.8 L570.0,183.9 L570.0,185 Z" fill="var(--warn)" fill-opacity=".28" stroke="none"/><line x1="30" y1="185" x2="585" y2="185" stroke="var(--muted)"/><line x1="30" y1="185" x2="30" y2="15" stroke="var(--muted)"/><path d="M30.1,170.8 L31.9,122.4 L33.7,100.8 L35.5,86.0 L37.3,75.1 L39.1,66.7 L40.9,60.2 L42.7,55.0 L44.5,51.1 L46.3,48.0 L48.1,45.8 L50.0,44.1 L51.8,43.0 L53.6,42.4 L55.4,42.1 L57.2,42.2 L59.0,42.6 L60.8,43.3 L62.6,44.1 L64.4,45.2 L66.2,46.4 L68.0,47.7 L69.8,49.2 L71.6,50.8 L73.4,52.4 L75.2,54.2 L77.0,55.9 L78.8,57.8 L80.7,59.7 L82.5,61.6 L84.3,63.5 L86.1,65.5 L87.9,67.4 L89.7,69.4 L91.5,71.4 L93.3,73.4 L95.1,75.4 L96.9,77.3 L98.7,79.3 L100.5,81.2 L102.3,83.2 L104.1,85.1 L105.9,87.0 L107.7,88.8 L109.5,90.7 L111.3,92.5 L113.2,94.3 L115.0,96.1 L116.8,97.8 L118.6,99.5 L120.4,101.2 L122.2,102.9 L124.0,104.5 L125.8,106.2 L127.6,107.7 L129.4,109.3 L131.2,110.8 L133.0,112.3 L134.8,113.8 L136.6,115.3 L138.4,116.7 L140.2,118.1 L142.0,119.4 L143.9,120.8 L145.7,122.1 L147.5,123.4 L149.3,124.6 L151.1,125.9 L152.9,127.1 L154.7,128.3 L156.5,129.4 L158.3,130.6 L160.1,131.7 L161.9,132.8 L163.7,133.8 L165.5,134.9 L167.3,135.9 L169.1,136.9 L170.9,137.9 L172.7,138.9 L174.5,139.8 L176.4,140.7 L178.2,141.6 L180.0,142.5 L181.8,143.4 L183.6,144.2 L185.4,145.0 L187.2,145.9 L189.0,146.6 L190.8,147.4 L192.6,148.2 L194.4,148.9 L196.2,149.6 L198.0,150.4 L199.8,151.1 L201.6,151.7 L203.4,152.4 L205.2,153.0 L207.1,153.7 L208.9,154.3 L210.7,154.9 L212.5,155.5 L214.3,156.1 L216.1,156.7 L217.9,157.2 L219.7,157.8 L221.5,158.3 L223.3,158.8 L225.1,159.3 L226.9,159.8 L228.7,160.3 L230.5,160.8 L232.3,161.3 L234.1,161.8 L235.9,162.2 L237.7,162.6 L239.6,163.1 L241.4,163.5 L243.2,163.9 L245.0,164.3 L246.8,164.7 L248.6,165.1 L250.4,165.5 L252.2,165.8 L254.0,166.2 L255.8,166.6 L257.6,166.9 L259.4,167.3 L261.2,167.6 L263.0,167.9 L264.8,168.2 L266.6,168.6 L268.4,168.9 L270.3,169.2 L272.1,169.5 L273.9,169.7 L275.7,170.0 L277.5,170.3 L279.3,170.6 L281.1,170.8 L282.9,171.1 L284.7,171.4 L286.5,171.6 L288.3,171.9 L290.1,172.1 L291.9,172.3 L293.7,172.6 L295.5,172.8 L297.3,173.0 L299.1,173.2 L300.9,173.4 L302.8,173.6 L304.6,173.8 L306.4,174.0 L308.2,174.2 L310.0,174.4 L311.8,174.6 L313.6,174.8 L315.4,175.0 L317.2,175.2 L319.0,175.3 L320.8,175.5 L322.6,175.7 L324.4,175.8 L326.2,176.0 L328.0,176.1 L329.8,176.3 L331.6,176.5 L333.5,176.6 L335.3,176.7 L337.1,176.9 L338.9,177.0 L340.7,177.2 L342.5,177.3 L344.3,177.4 L346.1,177.6 L347.9,177.7 L349.7,177.8 L351.5,177.9 L353.3,178.0 L355.1,178.2 L356.9,178.3 L358.7,178.4 L360.5,178.5 L362.3,178.6 L364.1,178.7 L366.0,178.8 L367.8,178.9 L369.6,179.0 L371.4,179.1 L373.2,179.2 L375.0,179.3 L376.8,179.4 L378.6,179.5 L380.4,179.6 L382.2,179.7 L384.0,179.8 L385.8,179.9 L387.6,179.9 L389.4,180.0 L391.2,180.1 L393.0,180.2 L394.8,180.3 L396.7,180.3 L398.5,180.4 L400.3,180.5 L402.1,180.6 L403.9,180.6 L405.7,180.7 L407.5,180.8 L409.3,180.8 L411.1,180.9 L412.9,181.0 L414.7,181.0 L416.5,181.1 L418.3,181.1 L420.1,181.2 L421.9,181.3 L423.7,181.3 L425.5,181.4 L427.3,181.4 L429.2,181.5 L431.0,181.5 L432.8,181.6 L434.6,181.7 L436.4,181.7 L438.2,181.8 L440.0,181.8 L441.8,181.9 L443.6,181.9 L445.4,181.9 L447.2,182.0 L449.0,182.0 L450.8,182.1 L452.6,182.1 L454.4,182.2 L456.2,182.2 L458.0,182.3 L459.9,182.3 L461.7,182.3 L463.5,182.4 L465.3,182.4 L467.1,182.5 L468.9,182.5 L470.7,182.5 L472.5,182.6 L474.3,182.6 L476.1,182.6 L477.9,182.7 L479.7,182.7 L481.5,182.7 L483.3,182.8 L485.1,182.8 L486.9,182.8 L488.7,182.9 L490.5,182.9 L492.4,182.9 L494.2,183.0 L496.0,183.0 L497.8,183.0 L499.6,183.0 L501.4,183.1 L503.2,183.1 L505.0,183.1 L506.8,183.2 L508.6,183.2 L510.4,183.2 L512.2,183.2 L514.0,183.3 L515.8,183.3 L517.6,183.3 L519.4,183.3 L521.2,183.4 L523.1,183.4 L524.9,183.4 L526.7,183.4 L528.5,183.4 L530.3,183.5 L532.1,183.5 L533.9,183.5 L535.7,183.5 L537.5,183.5 L539.3,183.6 L541.1,183.6 L542.9,183.6 L544.7,183.6 L546.5,183.6 L548.3,183.7 L550.1,183.7 L551.9,183.7 L553.7,183.7 L555.6,183.7 L557.4,183.7 L559.2,183.8 L561.0,183.8 L562.8,183.8 L564.6,183.8 L566.4,183.8 L568.2,183.8 L570.0,183.9" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="354.0" y1="168.1" x2="354.0" y2="193" stroke="var(--warn)" stroke-width="2" stroke-dasharray="4 3"/><text x="354.0" y="217" text-anchor="middle" fill="var(--warn)">F</text><text x="444.0" y="125" fill="var(--warn)">p-value</text><path d="M442.0,130 L394.0,173" stroke="var(--warn)" fill="none"/></g></svg><figcaption>p-value — площадь под плотностью \(F\big(k-1,(k-1)(l-1)\big)\) правее посчитанного значения \(F\). Если p-value \(&lt;\alpha\) — \(H_0\) отвергаем.</figcaption></figure>
@@ -1528,22 +1530,22 @@ window.MathJax={
   <h5>3. Двухфакторный дисперсионный анализ с повторениями</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Когда в каждой клетке несколько измерений, можно поймать <b>взаимодействие</b>: удобрение 2 отлично работает именно на глинистом поле, а на песчаном — нет. Это не сводится к «эффект удобрения + эффект поля», и для этого вводят добавку \(\gamma_{ij}\) для конкретной клетки.</div>
   \[X_{ijp}=c+\alpha_j+\beta_i+\gamma_{ij}+\varepsilon_{ijp},\]
-  \[i=\overline{1,l},\quad j=\overline{1,k},\quad p=\overline{1,m};\qquad \sum_{i=1}^l\gamma_{ij}=\sum_{j=1}^k\gamma_{ij}=0.\]
+  <span class="mw">\[i=\overline{1,l},\quad j=\overline{1,k},\quad p=\overline{1,m};\qquad \sum_{i=1}^l\gamma_{ij}=\sum_{j=1}^k\gamma_{ij}=0.\]</span><span class="mn">\[i=\overline{1,l},\]\[j=\overline{1,k},\]\[p=\overline{1,m};\]\[\sum_{i=1}^l\gamma_{ij}=\sum_{j=1}^k\gamma_{ij}=0.\]</span>
   <p>\(\gamma_{ij}\) — эффект взаимодействия факторов \(A\) и \(B\) (ненулевые \(\gamma\) — «особые» клетки таблицы).</p>
   <figure><svg viewBox="0 0 600 200" role="img" aria-label="Матрица эффектов взаимодействия"><g font-family="Onest, sans-serif" font-size="18" fill="var(--ink)"><text x="10" y="100" fill="var(--muted)">блоки i</text><text x="300" y="196" text-anchor="middle" fill="var(--muted)">обработки j</text><rect x="120" y="20" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="151" y="42" text-anchor="middle" fill="var(--muted)">0</text><rect x="190" y="20" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="221" y="42" text-anchor="middle" fill="var(--muted)">0</text><rect x="260" y="20" width="62" height="34" rx="6" fill="var(--warn-soft)" stroke="var(--warn)"/><text x="291" y="42" text-anchor="middle" fill="var(--warn)">γ≠0</text><rect x="330" y="20" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="361" y="42" text-anchor="middle" fill="var(--muted)">0</text><rect x="400" y="20" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="431" y="42" text-anchor="middle" fill="var(--muted)">0</text><rect x="120" y="62" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="151" y="84" text-anchor="middle" fill="var(--muted)">0</text><rect x="190" y="62" width="62" height="34" rx="6" fill="var(--warn-soft)" stroke="var(--warn)"/><text x="221" y="84" text-anchor="middle" fill="var(--warn)">γ≠0</text><rect x="260" y="62" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="291" y="84" text-anchor="middle" fill="var(--muted)">0</text><rect x="330" y="62" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="361" y="84" text-anchor="middle" fill="var(--muted)">0</text><rect x="400" y="62" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="431" y="84" text-anchor="middle" fill="var(--muted)">0</text><rect x="120" y="104" width="62" height="34" rx="6" fill="var(--warn-soft)" stroke="var(--warn)"/><text x="151" y="126" text-anchor="middle" fill="var(--warn)">γ≠0</text><rect x="190" y="104" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="221" y="126" text-anchor="middle" fill="var(--muted)">0</text><rect x="260" y="104" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="291" y="126" text-anchor="middle" fill="var(--muted)">0</text><rect x="330" y="104" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="361" y="126" text-anchor="middle" fill="var(--muted)">0</text><rect x="400" y="104" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="431" y="126" text-anchor="middle" fill="var(--muted)">0</text><rect x="120" y="146" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="151" y="168" text-anchor="middle" fill="var(--muted)">0</text><rect x="190" y="146" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="221" y="168" text-anchor="middle" fill="var(--muted)">0</text><rect x="260" y="146" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="291" y="168" text-anchor="middle" fill="var(--muted)">0</text><rect x="330" y="146" width="62" height="34" rx="6" fill="var(--warn-soft)" stroke="var(--warn)"/><text x="361" y="168" text-anchor="middle" fill="var(--warn)">γ≠0</text><rect x="400" y="146" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="431" y="168" text-anchor="middle" fill="var(--muted)">0</text></g></svg><figcaption>Таблица \(\gamma_{ij}\): почти везде взаимодействия нет, но в отдельных клетках (выделены) сочетание «блок × обработка» даёт свой особый эффект. \(H_{0AB}\): все \(\gamma_{ij}=0\).</figcaption></figure>
   <p>Средние:</p>
-  \[X_{ij*}=\frac1m\sum_{p=1}^mX_{ijp},\qquad X_{i**}=\frac1{km}\sum_{j=1}^k\sum_{p=1}^mX_{ijp},\]
-  \[X_{*j*}=\frac1{lm}\sum_{i=1}^l\sum_{p=1}^mX_{ijp},\qquad X_{***}=\frac1{klm}\sum_i\sum_j\sum_pX_{ijp}.\]
+  <span class="mw">\[X_{ij*}=\frac1m\sum_{p=1}^mX_{ijp},\qquad X_{i**}=\frac1{km}\sum_{j=1}^k\sum_{p=1}^mX_{ijp},\]</span><span class="mn">\[X_{ij*}=\frac1m\sum_{p=1}^mX_{ijp},\]\[X_{i**}=\frac1{km}\sum_{j=1}^k\sum_{p=1}^mX_{ijp},\]</span>
+  <span class="mw">\[X_{*j*}=\frac1{lm}\sum_{i=1}^l\sum_{p=1}^mX_{ijp},\qquad X_{***}=\frac1{klm}\sum_i\sum_j\sum_pX_{ijp}.\]</span><span class="mn">\[X_{*j*}=\frac1{lm}\sum_{i=1}^l\sum_{p=1}^mX_{ijp},\]\[X_{***}=\frac1{klm}\sum_i\sum_j\sum_pX_{ijp}.\]</span>
   <p>Суммы квадратов:</p>
   \[Q^2=\sum_{i=1}^l\sum_{j=1}^k\sum_{p=1}^m(X_{ijp}-X_{***})^2,\]
-  \[Q_A^2=lm\sum_j(X_{*j*}-X_{***})^2,\qquad Q_B^2=km\sum_i(X_{i**}-X_{***})^2,\]
-  \[Q_{AB}^2=m\sum_i\sum_j(X_{ij*}-X_{i**}-X_{*j*}+X_{***})^2,\]
+  <span class="mw">\[Q_A^2=lm\sum_j(X_{*j*}-X_{***})^2,\qquad Q_B^2=km\sum_i(X_{i**}-X_{***})^2,\]</span><span class="mn">\[Q_A^2=lm\sum_j(X_{*j*}-X_{***})^2,\]\[Q_B^2=km\sum_i(X_{i**}-X_{***})^2,\]</span>
+  <span class="mw">\[Q_{AB}^2=m\sum_i\sum_j(X_{ij*}-X_{i**}-X_{*j*}+X_{***})^2,\]</span><span class="mn">\[Q_{AB}^2\]\[=m\sum_i\sum_j(X_{ij*}-X_{i**}-X_{*j*}+X_{***})^2,\]</span>
   \[Q_R^2=\sum_i\sum_j\sum_p(X_{ijp}-X_{ij*})^2.\]
   \[Q^2=Q_A^2+Q_B^2+Q_{AB}^2+Q_R^2.\]
   <p>Гипотезы:</p>
-  \[H_{0A}:\ \alpha_1=\dots=\alpha_k=0;\qquad H_{1A}:\ \exists\,j:\ \alpha_j\ne0.\]
-  \[H_{0B}:\ \beta_1=\dots=\beta_l=0;\qquad H_{1B}:\ \exists\,i:\ \beta_i\ne0.\]
-  \[H_{0AB}:\ \gamma_{ij}=0\ \forall i,j;\qquad H_{1AB}:\ \exists\,i,j:\ \gamma_{ij}\ne0.\]
+  <span class="mw">\[H_{0A}:\ \alpha_1=\dots=\alpha_k=0;\qquad H_{1A}:\ \exists\,j:\ \alpha_j\ne0.\]</span><span class="mn">\[H_{0A}:\ \alpha_1=\dots=\alpha_k=0;\]\[H_{1A}:\ \exists\,j:\ \alpha_j\ne0.\]</span>
+  <span class="mw">\[H_{0B}:\ \beta_1=\dots=\beta_l=0;\qquad H_{1B}:\ \exists\,i:\ \beta_i\ne0.\]</span><span class="mn">\[H_{0B}:\ \beta_1=\dots=\beta_l=0;\]\[H_{1B}:\ \exists\,i:\ \beta_i\ne0.\]</span>
+  <span class="mw">\[H_{0AB}:\ \gamma_{ij}=0\ \forall i,j;\qquad H_{1AB}:\ \exists\,i,j:\ \gamma_{ij}\ne0.\]</span><span class="mn">\[H_{0AB}:\ \gamma_{ij}=0\ \forall i,j;\]\[H_{1AB}:\ \exists\,i,j:\ \gamma_{ij}\ne0.\]</span>
   <p><b>Проверка гипотез ДДА</b> (только для гауссовских ошибок):</p>
   <div class="tbl"><table data-cols="Гипотеза|Статистика|Принимаем, если">
     <thead><tr><th>Гипотеза</th><th>Статистика</th><th>Принимаем, если</th></tr></thead>
@@ -1566,11 +1568,11 @@ window.MathJax={
       </tbody>
     </table></div>
     <p><b>Фридман.</b> В каждой строке ранги 1, 2, 3 ⇒ \(R_j=4,\,8,\,12\); \(k=3\), \(l=4\):</p>
-    \[T=\frac{12}{4\cdot3\cdot4}(16+64+144)-3\cdot4\cdot4=56-48=8.\]
+    <span class="mw">\[T=\frac{12}{4\cdot3\cdot4}(16+64+144)-3\cdot4\cdot4=56-48=8.\]</span><span class="mn">\[T=\frac{12}{4\cdot3\cdot4}(16+64+144)-3\cdot4\cdot4\]\[=56-48\]\[=8.\]</span>
     <p>\(8&gt;\chi^2_{0{,}95}(2)=5{,}99\) ⇒ обработки различаются.</p>
     <p><b>ДДА.</b> \(X_{*j}=10{,}25;\ 12{,}75;\ 15\); \(X_{**}=12{,}67\).</p>
-    \[Q_A^2\approx45{,}17,\quad Q_B^2\approx51{,}33,\quad Q_R^2\approx4{,}17,\quad Q^2\approx100{,}67.\]
-    \[F=\frac{45{,}17/2}{4{,}17/6}\approx32{,}5&gt;F_{0{,}95}(2,6)=5{,}14.\]
+    <span class="mw">\[Q_A^2\approx45{,}17,\quad Q_B^2\approx51{,}33,\quad Q_R^2\approx4{,}17,\quad Q^2\approx100{,}67.\]</span><span class="mn">\[Q_A^2\approx45{,}17,\]\[Q_B^2\approx51{,}33,\]\[Q_R^2\approx4{,}17,\]\[Q^2\approx100{,}67.\]</span>
+    <span class="mw">\[F=\frac{45{,}17/2}{4{,}17/6}\approx32{,}5&gt;F_{0{,}95}(2,6)=5{,}14.\]</span><span class="mn">\[F=\frac{45{,}17/2}{4{,}17/6}\]\[\approx32{,}5\]\[&gt;F_{0{,}95}(2,6)\]\[=5{,}14.\]</span>
     <p>⇒ \(H_0\) отвергаем. Заметь: блоки «съели» \(Q_B^2=51\) — в однофакторном анализе это всё попало бы в шум.</p>
   </div></details>
 </section>
@@ -1582,7 +1584,7 @@ window.MathJax={
 
   <h5>1. Коэффициент корреляции Пирсона</h5>
   <p>Данные — пары \((X_i,Y_i)\), \(i=\overline{1,n}\).</p>
-  \[\hat r=\frac{\sum_{i=1}^n(X_i-\overline X)(Y_i-\overline Y)}{\sqrt{\sum_{i=1}^n(X_i-\overline X)^2}\cdot\sqrt{\sum_{i=1}^n(Y_i-\overline Y)^2}}.\]
+  <span class="mw">\[\hat r=\frac{\sum_{i=1}^n(X_i-\overline X)(Y_i-\overline Y)}{\sqrt{\sum_{i=1}^n(X_i-\overline X)^2}\cdot\sqrt{\sum_{i=1}^n(Y_i-\overline Y)^2}}.\]</span><span class="mn">\[\hat r\]\[=\frac{\sum_{i=1}^n(X_i-\overline X)(Y_i-\overline Y)}{\sqrt{\sum_{i=1}^n(X_i-\overline X)^2}\cdot\sqrt{\sum_{i=1}^n(Y_i-\overline Y)^2}}.\]</span>
   <p>\(\hat r&gt;0\) — <b>прямая</b> связь (растёт \(X\) — растёт \(Y\)), \(\hat r&lt;0\) — <b>обратная</b>. \(|\hat r|=1\) — точки лежат ровно на прямой.</p>
   <div class="scat"><figure class="sc"><svg viewBox="0 0 200 200" role="img" aria-label="Диаграмма рассеяния, \(\hat r\approx0{,}97\)"><rect x="1" y="1" width="198" height="198" rx="10" fill="var(--paper)" stroke="var(--line)"/><line x1="14" y1="182" x2="190" y2="182" stroke="var(--muted)"/><line x1="14" y1="182" x2="14" y2="12" stroke="var(--muted)"/><g fill="var(--accent)" fill-opacity=".8"><circle cx="124.5" cy="81.7" r="3.2"/><circle cx="136.8" cy="70.8" r="3.2"/><circle cx="113.0" cy="105.3" r="3.2"/><circle cx="87.5" cy="116.1" r="3.2"/><circle cx="105.5" cy="86.8" r="3.2"/><circle cx="83.3" cy="135.9" r="3.2"/><circle cx="126.9" cy="72.1" r="3.2"/><circle cx="180.0" cy="30.5" r="3.2"/><circle cx="104.0" cy="107.9" r="3.2"/><circle cx="98.7" cy="86.8" r="3.2"/><circle cx="144.7" cy="56.6" r="3.2"/><circle cx="139.2" cy="81.0" r="3.2"/><circle cx="128.8" cy="78.1" r="3.2"/><circle cx="85.8" cy="112.7" r="3.2"/><circle cx="123.2" cy="85.8" r="3.2"/><circle cx="153.2" cy="49.6" r="3.2"/><circle cx="68.6" cy="134.8" r="3.2"/><circle cx="105.4" cy="93.7" r="3.2"/><circle cx="45.5" cy="141.2" r="3.2"/><circle cx="70.9" cy="138.7" r="3.2"/><circle cx="48.0" cy="151.1" r="3.2"/><circle cx="114.7" cy="96.4" r="3.2"/><circle cx="71.8" cy="129.9" r="3.2"/><circle cx="135.7" cy="84.2" r="3.2"/><circle cx="130.9" cy="82.5" r="3.2"/><circle cx="116.6" cy="91.9" r="3.2"/><circle cx="20.0" cy="170.0" r="3.2"/><circle cx="102.1" cy="92.1" r="3.2"/><circle cx="122.4" cy="97.7" r="3.2"/><circle cx="129.1" cy="86.3" r="3.2"/><circle cx="60.9" cy="134.8" r="3.2"/><circle cx="104.6" cy="120.6" r="3.2"/><circle cx="83.8" cy="124.7" r="3.2"/><circle cx="90.9" cy="114.6" r="3.2"/><circle cx="168.4" cy="30.0" r="3.2"/><circle cx="90.9" cy="106.9" r="3.2"/><circle cx="123.1" cy="87.3" r="3.2"/><circle cx="161.1" cy="52.7" r="3.2"/><circle cx="100.2" cy="107.6" r="3.2"/><circle cx="119.8" cy="72.1" r="3.2"/></g></svg><figcaption><b>\(\hat r\approx0{,}97\)</b><br>весьма высокая прямая связь</figcaption></figure><figure class="sc"><svg viewBox="0 0 200 200" role="img" aria-label="Диаграмма рассеяния, \(\hat r\approx0{,}8\)"><rect x="1" y="1" width="198" height="198" rx="10" fill="var(--paper)" stroke="var(--line)"/><line x1="14" y1="182" x2="190" y2="182" stroke="var(--muted)"/><line x1="14" y1="182" x2="14" y2="12" stroke="var(--muted)"/><g fill="var(--accent)" fill-opacity=".8"><circle cx="124.5" cy="96.3" r="3.2"/><circle cx="136.8" cy="86.4" r="3.2"/><circle cx="113.0" cy="85.4" r="3.2"/><circle cx="87.5" cy="110.7" r="3.2"/><circle cx="105.5" cy="102.0" r="3.2"/><circle cx="83.3" cy="135.4" r="3.2"/><circle cx="126.9" cy="85.6" r="3.2"/><circle cx="180.0" cy="64.7" r="3.2"/><circle cx="104.0" cy="72.4" r="3.2"/><circle cx="98.7" cy="87.0" r="3.2"/><circle cx="144.7" cy="75.6" r="3.2"/><circle cx="139.2" cy="63.3" r="3.2"/><circle cx="128.8" cy="91.9" r="3.2"/><circle cx="85.8" cy="85.4" r="3.2"/><circle cx="123.2" cy="87.6" r="3.2"/><circle cx="153.2" cy="57.1" r="3.2"/><circle cx="68.6" cy="147.8" r="3.2"/><circle cx="105.4" cy="89.9" r="3.2"/><circle cx="45.5" cy="170.0" r="3.2"/><circle cx="70.9" cy="163.2" r="3.2"/><circle cx="48.0" cy="137.6" r="3.2"/><circle cx="114.7" cy="112.5" r="3.2"/><circle cx="71.8" cy="113.4" r="3.2"/><circle cx="135.7" cy="30.0" r="3.2"/><circle cx="130.9" cy="101.6" r="3.2"/><circle cx="116.6" cy="105.2" r="3.2"/><circle cx="20.0" cy="142.3" r="3.2"/><circle cx="102.1" cy="88.6" r="3.2"/><circle cx="122.4" cy="91.9" r="3.2"/><circle cx="129.1" cy="88.7" r="3.2"/><circle cx="60.9" cy="107.6" r="3.2"/><circle cx="104.6" cy="86.5" r="3.2"/><circle cx="83.8" cy="133.3" r="3.2"/><circle cx="90.9" cy="107.9" r="3.2"/><circle cx="168.4" cy="60.6" r="3.2"/><circle cx="90.9" cy="129.7" r="3.2"/><circle cx="123.1" cy="81.7" r="3.2"/><circle cx="161.1" cy="84.8" r="3.2"/><circle cx="100.2" cy="78.9" r="3.2"/><circle cx="119.8" cy="85.1" r="3.2"/></g></svg><figcaption><b>\(\hat r\approx0{,}8\)</b><br>высокая прямая связь</figcaption></figure><figure class="sc"><svg viewBox="0 0 200 200" role="img" aria-label="Диаграмма рассеяния, \(\hat r\approx-0{,}3\)"><rect x="1" y="1" width="198" height="198" rx="10" fill="var(--paper)" stroke="var(--line)"/><line x1="14" y1="182" x2="190" y2="182" stroke="var(--muted)"/><line x1="14" y1="182" x2="14" y2="12" stroke="var(--muted)"/><g fill="var(--accent)" fill-opacity=".8"><circle cx="113.8" cy="145.7" r="3.2"/><circle cx="85.0" cy="79.6" r="3.2"/><circle cx="105.0" cy="41.6" r="3.2"/><circle cx="25.5" cy="135.1" r="3.2"/><circle cx="62.2" cy="95.0" r="3.2"/><circle cx="125.4" cy="131.9" r="3.2"/><circle cx="20.0" cy="146.0" r="3.2"/><circle cx="145.8" cy="81.9" r="3.2"/><circle cx="36.2" cy="79.4" r="3.2"/><circle cx="142.0" cy="108.0" r="3.2"/><circle cx="74.3" cy="121.1" r="3.2"/><circle cx="143.0" cy="92.5" r="3.2"/><circle cx="115.6" cy="125.1" r="3.2"/><circle cx="45.0" cy="87.0" r="3.2"/><circle cx="162.9" cy="163.1" r="3.2"/><circle cx="171.0" cy="170.0" r="3.2"/><circle cx="107.3" cy="45.3" r="3.2"/><circle cx="98.4" cy="118.5" r="3.2"/><circle cx="103.3" cy="87.0" r="3.2"/><circle cx="68.8" cy="89.9" r="3.2"/><circle cx="156.5" cy="133.6" r="3.2"/><circle cx="87.1" cy="115.0" r="3.2"/><circle cx="107.9" cy="74.5" r="3.2"/><circle cx="76.5" cy="103.3" r="3.2"/><circle cx="83.6" cy="99.2" r="3.2"/><circle cx="56.0" cy="83.6" r="3.2"/><circle cx="163.2" cy="69.0" r="3.2"/><circle cx="103.5" cy="71.1" r="3.2"/><circle cx="150.9" cy="97.9" r="3.2"/><circle cx="110.6" cy="124.5" r="3.2"/><circle cx="80.7" cy="149.0" r="3.2"/><circle cx="96.2" cy="57.8" r="3.2"/><circle cx="86.3" cy="54.0" r="3.2"/><circle cx="110.4" cy="107.0" r="3.2"/><circle cx="94.2" cy="73.9" r="3.2"/><circle cx="97.3" cy="65.0" r="3.2"/><circle cx="51.7" cy="49.0" r="3.2"/><circle cx="75.9" cy="52.7" r="3.2"/><circle cx="180.0" cy="141.4" r="3.2"/><circle cx="81.6" cy="30.0" r="3.2"/></g></svg><figcaption><b>\(\hat r\approx-0{,}3\)</b><br>слабая обратная связь</figcaption></figure><figure class="sc"><svg viewBox="0 0 200 200" role="img" aria-label="Диаграмма рассеяния, \(\hat r\approx0\)"><rect x="1" y="1" width="198" height="198" rx="10" fill="var(--paper)" stroke="var(--line)"/><line x1="14" y1="182" x2="190" y2="182" stroke="var(--muted)"/><line x1="14" y1="182" x2="14" y2="12" stroke="var(--muted)"/><g fill="var(--accent)" fill-opacity=".8"><circle cx="20.0" cy="34.3" r="3.2"/><circle cx="24.1" cy="30.0" r="3.2"/><circle cx="28.2" cy="45.7" r="3.2"/><circle cx="32.3" cy="54.5" r="3.2"/><circle cx="36.4" cy="57.3" r="3.2"/><circle cx="40.5" cy="71.2" r="3.2"/><circle cx="44.6" cy="103.0" r="3.2"/><circle cx="48.7" cy="116.7" r="3.2"/><circle cx="52.8" cy="104.2" r="3.2"/><circle cx="56.9" cy="127.2" r="3.2"/><circle cx="61.0" cy="125.8" r="3.2"/><circle cx="65.1" cy="125.1" r="3.2"/><circle cx="69.2" cy="151.4" r="3.2"/><circle cx="73.3" cy="160.2" r="3.2"/><circle cx="77.4" cy="144.7" r="3.2"/><circle cx="81.5" cy="150.0" r="3.2"/><circle cx="85.6" cy="155.2" r="3.2"/><circle cx="89.7" cy="154.9" r="3.2"/><circle cx="93.8" cy="163.8" r="3.2"/><circle cx="97.9" cy="170.0" r="3.2"/><circle cx="102.1" cy="158.8" r="3.2"/><circle cx="106.2" cy="164.8" r="3.2"/><circle cx="110.3" cy="169.0" r="3.2"/><circle cx="114.4" cy="148.9" r="3.2"/><circle cx="118.5" cy="150.8" r="3.2"/><circle cx="122.6" cy="143.4" r="3.2"/><circle cx="126.7" cy="150.9" r="3.2"/><circle cx="130.8" cy="143.2" r="3.2"/><circle cx="134.9" cy="140.4" r="3.2"/><circle cx="139.0" cy="133.1" r="3.2"/><circle cx="143.1" cy="117.1" r="3.2"/><circle cx="147.2" cy="117.5" r="3.2"/><circle cx="151.3" cy="99.6" r="3.2"/><circle cx="155.4" cy="90.6" r="3.2"/><circle cx="159.5" cy="66.7" r="3.2"/><circle cx="163.6" cy="84.7" r="3.2"/><circle cx="167.7" cy="54.4" r="3.2"/><circle cx="171.8" cy="50.6" r="3.2"/><circle cx="175.9" cy="37.3" r="3.2"/><circle cx="180.0" cy="36.0" r="3.2"/></g></svg><figcaption><b>\(\hat r\approx0\)</b><br>связь есть, но нелинейная</figcaption></figure><figure class="sc"><svg viewBox="0 0 200 200" role="img" aria-label="Диаграмма рассеяния, \(\hat r\approx0\)"><rect x="1" y="1" width="198" height="198" rx="10" fill="var(--paper)" stroke="var(--line)"/><line x1="14" y1="182" x2="190" y2="182" stroke="var(--muted)"/><line x1="14" y1="182" x2="14" y2="12" stroke="var(--muted)"/><g fill="var(--accent)" fill-opacity=".8"><circle cx="173.4" cy="100.8" r="3.2"/><circle cx="180.0" cy="96.7" r="3.2"/><circle cx="172.0" cy="82.8" r="3.2"/><circle cx="168.3" cy="73.1" r="3.2"/><circle cx="159.5" cy="57.5" r="3.2"/><circle cx="160.6" cy="54.3" r="3.2"/><circle cx="143.9" cy="49.5" r="3.2"/><circle cx="119.8" cy="36.4" r="3.2"/><circle cx="117.9" cy="43.2" r="3.2"/><circle cx="98.0" cy="40.0" r="3.2"/><circle cx="77.7" cy="46.5" r="3.2"/><circle cx="82.5" cy="30.0" r="3.2"/><circle cx="82.2" cy="35.4" r="3.2"/><circle cx="62.8" cy="39.5" r="3.2"/><circle cx="44.7" cy="46.0" r="3.2"/><circle cx="36.8" cy="55.4" r="3.2"/><circle cx="41.8" cy="62.5" r="3.2"/><circle cx="29.3" cy="73.4" r="3.2"/><circle cx="23.9" cy="82.5" r="3.2"/><circle cx="20.4" cy="90.9" r="3.2"/><circle cx="20.0" cy="93.4" r="3.2"/><circle cx="25.8" cy="108.3" r="3.2"/><circle cx="27.1" cy="121.2" r="3.2"/><circle cx="29.6" cy="133.2" r="3.2"/><circle cx="28.2" cy="142.0" r="3.2"/><circle cx="45.9" cy="138.2" r="3.2"/><circle cx="47.7" cy="150.3" r="3.2"/><circle cx="69.3" cy="157.8" r="3.2"/><circle cx="65.9" cy="163.8" r="3.2"/><circle cx="84.9" cy="170.0" r="3.2"/><circle cx="98.0" cy="165.5" r="3.2"/><circle cx="102.0" cy="159.9" r="3.2"/><circle cx="133.0" cy="164.0" r="3.2"/><circle cx="142.7" cy="159.3" r="3.2"/><circle cx="141.1" cy="154.0" r="3.2"/><circle cx="158.2" cy="145.8" r="3.2"/><circle cx="163.7" cy="146.9" r="3.2"/><circle cx="151.4" cy="131.4" r="3.2"/><circle cx="174.0" cy="125.3" r="3.2"/><circle cx="175.0" cy="106.7" r="3.2"/></g></svg><figcaption><b>\(\hat r\approx0\)</b><br>точки по кругу — тоже не «нет связи»</figcaption></figure></div>
   <div class="box warn"><span class="lbl">Важно</span>Пирсон ловит только <b>линейную</b> связь. \(\hat r\approx0\) не значит «связи нет»: на двух последних картинках \(Y\) полностью определяется \(X\), но не по прямой.</div>
@@ -1604,28 +1606,28 @@ window.MathJax={
   <h5>Значимость \(\hat r\): z-преобразование Фишера</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Даже у независимых величин \(\hat r\) по выборке не будет ровно нулём — случайность. Надо понять, «достаточно ли далеко» от нуля. Распределение самого \(\hat r\) неудобное (кривое, особенно около ±1). Фишер придумал «выпрямитель»: после преобразования \(z\) величина почти нормальна — и дальше работаем с привычной \(N(0,1)\).</div>
   \[H_0:\ r=0,\qquad H_1:\ r\ne0.\]
-  \[\hat z=\frac12\ln\frac{1+\hat r}{1-\hat r}\ \sim\ N\!\left(\frac12\ln\frac{1+r}{1-r}+\frac{r}{2(n-1)},\ \frac1{n-3}\right).\]
+  <span class="mw">\[\hat z=\frac12\ln\frac{1+\hat r}{1-\hat r}\ \sim\ N\!\left(\frac12\ln\frac{1+r}{1-r}+\frac{r}{2(n-1)},\ \frac1{n-3}\right).\]</span><span class="mn">\[\hat z=\frac12\ln\frac{1+\hat r}{1-\hat r}\]\[\sim\ N\!\left(\frac12\ln\frac{1+r}{1-r}+\frac{r}{2(n-1)},\ \frac1{n-3}\right).\]</span>
   <p>При верной \(H_0\) (\(r=0\)): \(\hat z\sim N\!\left(0,\frac1{n-3}\right)\).</p>
-  \[|\hat z|\ge\frac{u_{1-\alpha/2}}{\sqrt{n-3}}\ \Rightarrow\ H_0\ \text{отвергаем в пользу }H_1;\]
+  <span class="mw">\[|\hat z|\ge\frac{u_{1-\alpha/2}}{\sqrt{n-3}}\ \Rightarrow\ H_0\ \text{отвергаем в пользу }H_1;\]</span><span class="mn">\[|\hat z|\ge\frac{u_{1-\alpha/2}}{\sqrt{n-3}}\]\[\Rightarrow H_0\ \text{отвергаем в пользу }H_1;\]</span>
   \[|\hat z|&lt;\frac{u_{1-\alpha/2}}{\sqrt{n-3}}\ \Rightarrow\ H_0\ \text{не отвергаем}.\]
   <p><b>Обратное преобразование.</b> Выразим \(\hat r\) через \(\hat z\):</p>
-  \[2\hat z=\ln\frac{1+\hat r}{1-\hat r}\ \Rightarrow\ e^{2\hat z}=\frac{1+\hat r}{1-\hat r}\ \Rightarrow\ e^{2\hat z}-\hat re^{2\hat z}=1+\hat r,\]
+  <span class="mw">\[2\hat z=\ln\frac{1+\hat r}{1-\hat r}\ \Rightarrow\ e^{2\hat z}=\frac{1+\hat r}{1-\hat r}\ \Rightarrow\ e^{2\hat z}-\hat re^{2\hat z}=1+\hat r,\]</span><span class="mn">\[2\hat z=\ln\frac{1+\hat r}{1-\hat r}\]\[\Rightarrow e^{2\hat z}=\frac{1+\hat r}{1-\hat r}\]\[\Rightarrow e^{2\hat z}-\hat re^{2\hat z}=1+\hat r,\]</span>
   \[\hat r=\frac{e^{2\hat z}-1}{e^{2\hat z}+1}=\frac{e^{\hat z}-e^{-\hat z}}{e^{\hat z}+e^{-\hat z}}=\operatorname{th}\hat z.\]
   <p><b>Доверительный интервал для \(r\)</b> (уровень \(\gamma\)): строим интервал для \(z\) и переводим обратно через \(z^{-1}=\operatorname{th}\):</p>
   \[\operatorname{th}\!\left(\frac12\ln\frac{1+\hat r}{1-\hat r}-\frac{u_{\frac{1+\gamma}2}}{\sqrt{n-3}}\right)&lt;r\]
   \[r&lt;\operatorname{th}\!\left(\frac12\ln\frac{1+\hat r}{1-\hat r}+\frac{u_{\frac{1+\gamma}2}}{\sqrt{n-3}}\right).\]
   <p class="hand-note">Поправкой \(\frac{r}{2(n-1)}\) в интервале пренебрегают — она мала при больших \(n\).</p>
   <details><summary>Пример для понимания (не с лекции): \(n=28\), \(\hat r=0{,}5\), \(\alpha=0{,}05\)</summary><div class="inner">
-    \[\hat z=\frac12\ln\frac{1{,}5}{0{,}5}=\frac12\ln3\approx0{,}549,\qquad \frac{u_{0{,}975}}{\sqrt{25}}=\frac{1{,}96}5=0{,}392.\]
+    <span class="mw">\[\hat z=\frac12\ln\frac{1{,}5}{0{,}5}=\frac12\ln3\approx0{,}549,\qquad \frac{u_{0{,}975}}{\sqrt{25}}=\frac{1{,}96}5=0{,}392.\]</span><span class="mn">\[\hat z=\frac12\ln\frac{1{,}5}{0{,}5}=\frac12\ln3\approx0{,}549,\]\[\frac{u_{0{,}975}}{\sqrt{25}}=\frac{1{,}96}5=0{,}392.\]</span>
     <p>\(0{,}549\ge0{,}392\) ⇒ \(H_0\) отвергаем: корреляция значима.</p>
-    \[\operatorname{th}(0{,}549-0{,}392)&lt;r&lt;\operatorname{th}(0{,}549+0{,}392)\ \Rightarrow\ 0{,}156&lt;r&lt;0{,}736.\]
+    <span class="mw">\[\operatorname{th}(0{,}549-0{,}392)&lt;r&lt;\operatorname{th}(0{,}549+0{,}392)\ \Rightarrow\ 0{,}156&lt;r&lt;0{,}736.\]</span><span class="mn">\[\operatorname{th}(0{,}549-0{,}392)&lt;r\]\[&lt;\operatorname{th}(0{,}549+0{,}392)\]\[\Rightarrow 0{,}156&lt;r&lt;0{,}736.\]</span>
     <p>Интервал несимметричен относительно 0,5 — так и должно быть: \(r\) не может выйти за 1.</p>
   </div></details>
 
   <h5>2. Коэффициент корреляции Спирмена (ранговый)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Это Пирсон, посчитанный не по самим числам, а по их <b>рангам</b>. Поэтому он ловит любую <b>монотонную</b> связь (не только прямую линию) и не боится выбросов.</div>
   <p>Пары \((X_i,Y_i)\), \(i=\overline{1,n}\), упорядочены по \(X\): \(\operatorname{rank}X_i=i\), \(\operatorname{rank}Y_i=r_i\).</p>
-  \[\hat\rho=\frac{\sum_{i=1}^n\left(i-\frac{n+1}2\right)\left(r_i-\frac{n+1}2\right)}{\sqrt{\sum_{i=1}^n\left(i-\frac{n+1}2\right)^2}\sqrt{\sum_{i=1}^n\left(r_i-\frac{n+1}2\right)^2}}\]
+  <span class="mw">\[\hat\rho=\frac{\sum_{i=1}^n\left(i-\frac{n+1}2\right)\left(r_i-\frac{n+1}2\right)}{\sqrt{\sum_{i=1}^n\left(i-\frac{n+1}2\right)^2}\sqrt{\sum_{i=1}^n\left(r_i-\frac{n+1}2\right)^2}}\]</span><span class="mn">\[\hat\rho\]\[=\frac{\sum_{i=1}^n\left(i-\frac{n+1}2\right)\left(r_i-\frac{n+1}2\right)}{\sqrt{\sum_{i=1}^n\left(i-\frac{n+1}2\right)^2}\sqrt{\sum_{i=1}^n\left(r_i-\frac{n+1}2\right)^2}}\]</span>
   \[\hat\rho=1-\frac{6}{n(n^2-1)}\sum_{i=1}^n(i-r_i)^2.\]
   <p>\(\frac{n+1}2\) — средний ранг. Вторая формула удобнее для счёта (верна, когда нет одинаковых рангов).</p>
   \[H_0:\ \rho=0,\qquad H_1:\ \rho\ne0.\]
@@ -1635,7 +1637,7 @@ window.MathJax={
   <h5>3. Коэффициент конкордации Кендалла</h5>
   <div class="eli"><span class="lbl">На пальцах</span>\(k\) экспертов (судей) независимо ранжируют одни и те же \(n\) объектов. Согласны ли они между собой? Если да — у «лучшего» объекта все ранги высокие, у «худшего» все низкие, и суммы рангов сильно разные. Если эксперты ставят наугад — суммы рангов у всех объектов примерно одинаковые.</div>
   <p>\(r_{ij}\) — ранг, который \(j\)-й эксперт поставил \(i\)-му объекту, \(i=\overline{1,n}\), \(j=\overline{1,k}\).</p>
-  \[S_i=\sum_{j=1}^kr_{ij},\qquad \overline S=\frac1n\sum_{i=1}^nS_i,\qquad S_w=\sum_{i=1}^n(S_i-\overline S)^2.\]
+  <span class="mw">\[S_i=\sum_{j=1}^kr_{ij},\qquad \overline S=\frac1n\sum_{i=1}^nS_i,\qquad S_w=\sum_{i=1}^n(S_i-\overline S)^2.\]</span><span class="mn">\[S_i=\sum_{j=1}^kr_{ij},\]\[\overline S=\frac1n\sum_{i=1}^nS_i,\]\[S_w=\sum_{i=1}^n(S_i-\overline S)^2.\]</span>
   \[W=\frac{12\,S_w}{k^2n(n^2-1)}\in[0,1].\]
   <p>\(W=1\) — полное согласие экспертов, \(W=0\) — согласия нет. Значимость (\(H_0\): согласованности нет):</p>
   \[T=k(n-1)W\ \sim\ \chi^2(n-1),\quad n&gt;7.\]
@@ -1661,7 +1663,7 @@ window.MathJax={
   \[\hat r_M(X_i)=\sqrt{1-\frac{\det\hat R}{\hat R_{ii}}}\in[0,1].\]
   <p>\(\hat R_M^2=\hat r_M^2\cdot100\%\) — <b>множественный коэффициент детерминации</b>.</p>
   \[H_0:\ r_M=0,\qquad H_1:\ r_M\ne0.\]
-  \[F=\frac{\hat r_M^2/(k-1)}{(1-\hat r_M^2)/(n-k)}\ \overset{H_0}{\sim}\ F(k-1,\,n-k).\]
+  <span class="mw">\[F=\frac{\hat r_M^2/(k-1)}{(1-\hat r_M^2)/(n-k)}\ \overset{H_0}{\sim}\ F(k-1,\,n-k).\]</span><span class="mn">\[F=\frac{\hat r_M^2/(k-1)}{(1-\hat r_M^2)/(n-k)}\]\[\overset{H_0}{\sim}\ F(k-1,\,n-k).\]</span>
   <p>\(F\ge F_{1-\alpha}(k-1,n-k)\) ⇒ \(H_0\) отвергаем.</p>
 
   <h5>Геометрический смысл</h5>
@@ -1681,7 +1683,7 @@ window.MathJax={
 <text x="10" y="34" fill="var(--ok)">X* — проекция</text>
 <text x="10" y="64" fill="var(--warn)">Y = X − X* — остаток</text>
 </g></svg><figcaption>Признаки — векторы. Частная корреляция \(\hat r_p(X_i,X_j)=\hat r(Y_i,Y_j)\) — корреляция <b>остатков</b> после «вычитания» влияния остальных признаков. Множественная \(\hat r_M(X_i)=\hat r(X_i,X_i^*)\) — насколько \(X_i\) близок к своей проекции на остальные признаки.</figcaption></figure>
-  \[\hat r_p(X_i,X_j)=\hat r(Y_i,Y_j),\qquad \hat r_M(X_i)=\hat r(X_i,X_i^*).\]
+  <span class="mw">\[\hat r_p(X_i,X_j)=\hat r(Y_i,Y_j),\qquad \hat r_M(X_i)=\hat r(X_i,X_i^*).\]</span><span class="mn">\[\hat r_p(X_i,X_j)=\hat r(Y_i,Y_j),\]\[\hat r_M(X_i)=\hat r(X_i,X_i^*).\]</span>
 
   <h5>6. Тетрахорический показатель связи (коэффициент ассоциации)</h5>
   <div class="eli"><span class="lbl">На пальцах</span>Признаки не числовые, а «да/нет» (курит / не курит, болеет / не болеет). Данные сводятся к таблице 2×2. Если признаки не связаны, \(ad\approx bc\); чем сильнее перекос диагоналей, тем сильнее связь.</div>
@@ -1693,9 +1695,9 @@ window.MathJax={
       <tr><td>Σ</td><td>\(a+c\)</td><td>\(b+d\)</td><td>\(n\)</td></tr>
     </tbody>
   </table></div>
-  \[\varphi=\frac{ad-bc}{\sqrt{(a+c)(b+d)(a+b)(c+d)}}\in[-1,1].\]
+  <span class="mw">\[\varphi=\frac{ad-bc}{\sqrt{(a+c)(b+d)(a+b)(c+d)}}\in[-1,1].\]</span><span class="mn">\[\varphi=\frac{ad-bc}{\sqrt{(a+c)(b+d)(a+b)(c+d)}}\]\[\in[-1,1].\]</span>
   <p>Проверка \(H_0\) «признаки не связаны»: статистика \(n\varphi^2\overset{H_0}{\sim}\chi^2(1)\). С <b>поправкой на непрерывность</b> (Йейтса) \(|ad-bc|\) уменьшают на \(0{,}5n\):</p>
-  \[\chi^2=\frac{n\bigl(|ad-bc|-0{,}5n\bigr)^2}{(a+c)(b+d)(a+b)(c+d)}\ \sim\ \chi^2(1).\]
+  <span class="mw">\[\chi^2=\frac{n\bigl(|ad-bc|-0{,}5n\bigr)^2}{(a+c)(b+d)(a+b)(c+d)}\ \sim\ \chi^2(1).\]</span><span class="mn">\[\chi^2=\frac{n\bigl(|ad-bc|-0{,}5n\bigr)^2}{(a+c)(b+d)(a+b)(c+d)}\]\[\sim\ \chi^2(1).\]</span>
   <figure><svg viewBox="0 0 600 230" role="img" aria-label="Плотность хи-квадрат с одной степенью свободы и p-value"><g font-family="Onest, sans-serif" font-size="21" fill="var(--ink)"><path d="M237.0,185 L237.7,177.2 L239.6,177.3 L241.4,177.5 L243.2,177.6 L245.0,177.7 L246.8,177.8 L248.6,177.9 L250.4,178.0 L252.2,178.1 L254.0,178.2 L255.8,178.3 L257.6,178.4 L259.4,178.5 L261.2,178.5 L263.0,178.6 L264.8,178.7 L266.6,178.8 L268.4,178.9 L270.3,179.0 L272.1,179.1 L273.9,179.1 L275.7,179.2 L277.5,179.3 L279.3,179.4 L281.1,179.5 L282.9,179.5 L284.7,179.6 L286.5,179.7 L288.3,179.7 L290.1,179.8 L291.9,179.9 L293.7,180.0 L295.5,180.0 L297.3,180.1 L299.1,180.2 L300.9,180.2 L302.8,180.3 L304.6,180.3 L306.4,180.4 L308.2,180.5 L310.0,180.5 L311.8,180.6 L313.6,180.6 L315.4,180.7 L317.2,180.8 L319.0,180.8 L320.8,180.9 L322.6,180.9 L324.4,181.0 L326.2,181.0 L328.0,181.1 L329.8,181.1 L331.6,181.2 L333.5,181.2 L335.3,181.3 L337.1,181.3 L338.9,181.4 L340.7,181.4 L342.5,181.5 L344.3,181.5 L346.1,181.6 L347.9,181.6 L349.7,181.6 L351.5,181.7 L353.3,181.7 L355.1,181.8 L356.9,181.8 L358.7,181.8 L360.5,181.9 L362.3,181.9 L364.1,182.0 L366.0,182.0 L367.8,182.0 L369.6,182.1 L371.4,182.1 L373.2,182.2 L375.0,182.2 L376.8,182.2 L378.6,182.3 L380.4,182.3 L382.2,182.3 L384.0,182.4 L385.8,182.4 L387.6,182.4 L389.4,182.5 L391.2,182.5 L393.0,182.5 L394.8,182.6 L396.7,182.6 L398.5,182.6 L400.3,182.6 L402.1,182.7 L403.9,182.7 L405.7,182.7 L407.5,182.8 L409.3,182.8 L411.1,182.8 L412.9,182.8 L414.7,182.9 L416.5,182.9 L418.3,182.9 L420.1,182.9 L421.9,183.0 L423.7,183.0 L425.5,183.0 L427.3,183.0 L429.2,183.1 L431.0,183.1 L432.8,183.1 L434.6,183.1 L436.4,183.2 L438.2,183.2 L440.0,183.2 L441.8,183.2 L443.6,183.2 L445.4,183.3 L447.2,183.3 L449.0,183.3 L450.8,183.3 L452.6,183.4 L454.4,183.4 L456.2,183.4 L458.0,183.4 L459.9,183.4 L461.7,183.4 L463.5,183.5 L465.3,183.5 L467.1,183.5 L468.9,183.5 L470.7,183.5 L472.5,183.6 L474.3,183.6 L476.1,183.6 L477.9,183.6 L479.7,183.6 L481.5,183.6 L483.3,183.7 L485.1,183.7 L486.9,183.7 L488.7,183.7 L490.5,183.7 L492.4,183.7 L494.2,183.8 L496.0,183.8 L497.8,183.8 L499.6,183.8 L501.4,183.8 L503.2,183.8 L505.0,183.8 L506.8,183.9 L508.6,183.9 L510.4,183.9 L512.2,183.9 L514.0,183.9 L515.8,183.9 L517.6,183.9 L519.4,183.9 L521.2,184.0 L523.1,184.0 L524.9,184.0 L526.7,184.0 L528.5,184.0 L530.3,184.0 L532.1,184.0 L533.9,184.0 L535.7,184.0 L537.5,184.1 L539.3,184.1 L541.1,184.1 L542.9,184.1 L544.7,184.1 L546.5,184.1 L548.3,184.1 L550.1,184.1 L551.9,184.1 L553.7,184.2 L555.6,184.2 L557.4,184.2 L559.2,184.2 L561.0,184.2 L562.8,184.2 L564.6,184.2 L566.4,184.2 L568.2,184.2 L570.0,184.2 L570.0,185 Z" fill="var(--warn)" fill-opacity=".28" stroke="none"/><line x1="30" y1="185" x2="585" y2="185" stroke="var(--muted)"/><line x1="30" y1="185" x2="30" y2="15" stroke="var(--muted)"/><path d="M30.1,35.0 L31.9,35.0 L33.7,35.0 L35.5,38.4 L37.3,59.0 L39.1,73.3 L40.9,84.0 L42.7,92.3 L44.5,99.2 L46.3,104.8 L48.1,109.7 L50.0,113.9 L51.8,117.6 L53.6,120.9 L55.4,123.8 L57.2,126.5 L59.0,128.9 L60.8,131.1 L62.6,133.1 L64.4,135.0 L66.2,136.8 L68.0,138.4 L69.8,139.9 L71.6,141.4 L73.4,142.7 L75.2,144.0 L77.0,145.2 L78.8,146.3 L80.7,147.4 L82.5,148.4 L84.3,149.4 L86.1,150.3 L87.9,151.2 L89.7,152.0 L91.5,152.8 L93.3,153.6 L95.1,154.4 L96.9,155.1 L98.7,155.8 L100.5,156.4 L102.3,157.1 L104.1,157.7 L105.9,158.3 L107.7,158.9 L109.5,159.4 L111.3,160.0 L113.2,160.5 L115.0,161.0 L116.8,161.5 L118.6,162.0 L120.4,162.4 L122.2,162.9 L124.0,163.3 L125.8,163.7 L127.6,164.1 L129.4,164.5 L131.2,164.9 L133.0,165.3 L134.8,165.6 L136.6,166.0 L138.4,166.3 L140.2,166.7 L142.0,167.0 L143.9,167.3 L145.7,167.6 L147.5,168.0 L149.3,168.3 L151.1,168.5 L152.9,168.8 L154.7,169.1 L156.5,169.4 L158.3,169.6 L160.1,169.9 L161.9,170.2 L163.7,170.4 L165.5,170.6 L167.3,170.9 L169.1,171.1 L170.9,171.3 L172.7,171.6 L174.5,171.8 L176.4,172.0 L178.2,172.2 L180.0,172.4 L181.8,172.6 L183.6,172.8 L185.4,173.0 L187.2,173.2 L189.0,173.4 L190.8,173.5 L192.6,173.7 L194.4,173.9 L196.2,174.1 L198.0,174.2 L199.8,174.4 L201.6,174.6 L203.4,174.7 L205.2,174.9 L207.1,175.0 L208.9,175.2 L210.7,175.3 L212.5,175.5 L214.3,175.6 L216.1,175.7 L217.9,175.9 L219.7,176.0 L221.5,176.2 L223.3,176.3 L225.1,176.4 L226.9,176.5 L228.7,176.7 L230.5,176.8 L232.3,176.9 L234.1,177.0 L235.9,177.1 L237.7,177.2 L239.6,177.3 L241.4,177.5 L243.2,177.6 L245.0,177.7 L246.8,177.8 L248.6,177.9 L250.4,178.0 L252.2,178.1 L254.0,178.2 L255.8,178.3 L257.6,178.4 L259.4,178.5 L261.2,178.5 L263.0,178.6 L264.8,178.7 L266.6,178.8 L268.4,178.9 L270.3,179.0 L272.1,179.1 L273.9,179.1 L275.7,179.2 L277.5,179.3 L279.3,179.4 L281.1,179.5 L282.9,179.5 L284.7,179.6 L286.5,179.7 L288.3,179.7 L290.1,179.8 L291.9,179.9 L293.7,180.0 L295.5,180.0 L297.3,180.1 L299.1,180.2 L300.9,180.2 L302.8,180.3 L304.6,180.3 L306.4,180.4 L308.2,180.5 L310.0,180.5 L311.8,180.6 L313.6,180.6 L315.4,180.7 L317.2,180.8 L319.0,180.8 L320.8,180.9 L322.6,180.9 L324.4,181.0 L326.2,181.0 L328.0,181.1 L329.8,181.1 L331.6,181.2 L333.5,181.2 L335.3,181.3 L337.1,181.3 L338.9,181.4 L340.7,181.4 L342.5,181.5 L344.3,181.5 L346.1,181.6 L347.9,181.6 L349.7,181.6 L351.5,181.7 L353.3,181.7 L355.1,181.8 L356.9,181.8 L358.7,181.8 L360.5,181.9 L362.3,181.9 L364.1,182.0 L366.0,182.0 L367.8,182.0 L369.6,182.1 L371.4,182.1 L373.2,182.2 L375.0,182.2 L376.8,182.2 L378.6,182.3 L380.4,182.3 L382.2,182.3 L384.0,182.4 L385.8,182.4 L387.6,182.4 L389.4,182.5 L391.2,182.5 L393.0,182.5 L394.8,182.6 L396.7,182.6 L398.5,182.6 L400.3,182.6 L402.1,182.7 L403.9,182.7 L405.7,182.7 L407.5,182.8 L409.3,182.8 L411.1,182.8 L412.9,182.8 L414.7,182.9 L416.5,182.9 L418.3,182.9 L420.1,182.9 L421.9,183.0 L423.7,183.0 L425.5,183.0 L427.3,183.0 L429.2,183.1 L431.0,183.1 L432.8,183.1 L434.6,183.1 L436.4,183.2 L438.2,183.2 L440.0,183.2 L441.8,183.2 L443.6,183.2 L445.4,183.3 L447.2,183.3 L449.0,183.3 L450.8,183.3 L452.6,183.4 L454.4,183.4 L456.2,183.4 L458.0,183.4 L459.9,183.4 L461.7,183.4 L463.5,183.5 L465.3,183.5 L467.1,183.5 L468.9,183.5 L470.7,183.5 L472.5,183.6 L474.3,183.6 L476.1,183.6 L477.9,183.6 L479.7,183.6 L481.5,183.6 L483.3,183.7 L485.1,183.7 L486.9,183.7 L488.7,183.7 L490.5,183.7 L492.4,183.7 L494.2,183.8 L496.0,183.8 L497.8,183.8 L499.6,183.8 L501.4,183.8 L503.2,183.8 L505.0,183.8 L506.8,183.9 L508.6,183.9 L510.4,183.9 L512.2,183.9 L514.0,183.9 L515.8,183.9 L517.6,183.9 L519.4,183.9 L521.2,184.0 L523.1,184.0 L524.9,184.0 L526.7,184.0 L528.5,184.0 L530.3,184.0 L532.1,184.0 L533.9,184.0 L535.7,184.0 L537.5,184.1 L539.3,184.1 L541.1,184.1 L542.9,184.1 L544.7,184.1 L546.5,184.1 L548.3,184.1 L550.1,184.1 L551.9,184.1 L553.7,184.2 L555.6,184.2 L557.4,184.2 L559.2,184.2 L561.0,184.2 L562.8,184.2 L564.6,184.2 L566.4,184.2 L568.2,184.2 L570.0,184.2" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="237.0" y1="145" x2="237.0" y2="193" stroke="var(--warn)" stroke-width="2" stroke-dasharray="4 3"/><text x="237.0" y="217" text-anchor="middle" fill="var(--warn)">χ² = nφ²</text><text x="347.0" y="130" fill="var(--warn)">p-value</text><path d="M345.0,135 L287.0,175" stroke="var(--warn)" fill="none"/><text x="444.0" y="40" fill="var(--muted)">χ²(1)</text></g></svg><figcaption>Плотность \(\chi^2(1)\) убывает от нуля. p-value — площадь правее посчитанной статистики.</figcaption></figure>
   <p>p-value \(&lt;\alpha\) (или \(\chi^2\ge\chi^2_{1-\alpha}(1)=3{,}84\) при \(\alpha=0{,}05\)) ⇒ связь значима.</p>
 
@@ -1723,9 +1725,9 @@ window.MathJax={
   \[p_Y(x)=\int p_Z(u)\,p_\xi(x-u)\,du,\]
 \[\begin{cases}2\theta_1\le u\le2\theta_2\\ x-\theta_2\le u\le x-\theta_1\end{cases}\]
   <p>Пять случаев в зависимости от положения отрезка \([x-\theta_2,\,x-\theta_1]\) относительно точек \(2\theta_1,\ \theta_1+\theta_2,\ 2\theta_2\):</p>
-  \[p_Y(x)=\begin{cases}\dfrac{(x-3\theta_1)^2}{2h^3},&amp;3\theta_1&lt;x&lt;2\theta_1+\theta_2\\ \dfrac{2h^2-(x-2\theta_1-\theta_2)^2-(2\theta_2+\theta_1-x)^2}{2h^3},&amp;2\theta_1+\theta_2&lt;x&lt;\theta_1+2\theta_2\\ \dfrac{(3\theta_2-x)^2}{2h^3},&amp;\theta_1+2\theta_2&lt;x&lt;3\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]
+  <span class="mw">\[p_Y(x)=\begin{cases}\dfrac{(x-3\theta_1)^2}{2h^3},&amp;3\theta_1&lt;x&lt;2\theta_1+\theta_2\\ \dfrac{2h^2-(x-2\theta_1-\theta_2)^2-(2\theta_2+\theta_1-x)^2}{2h^3},&amp;2\theta_1+\theta_2&lt;x&lt;\theta_1+2\theta_2\\ \dfrac{(3\theta_2-x)^2}{2h^3},&amp;\theta_1+2\theta_2&lt;x&lt;3\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span><span class="mn">\[p_Y(x)\]\[=\begin{cases}\dfrac{(x-3\theta_1)^2}{2h^3},&amp;3\theta_1&lt;x&lt;2\theta_1+\theta_2\\ \dfrac{2h^2-(x-2\theta_1-\theta_2)^2-(2\theta_2+\theta_1-x)^2}{2h^3},&amp;2\theta_1+\theta_2&lt;x&lt;\theta_1+2\theta_2\\ \dfrac{(3\theta_2-x)^2}{2h^3},&amp;\theta_1+2\theta_2&lt;x&lt;3\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span>
   <p>Затем \(p_{\bar X}(x)=3\,p_Y(3x)\):</p>
-  \[p_{\bar X}(x)=\begin{cases}\dfrac{27(x-\theta_1)^2}{2h^3},&amp;\theta_1&lt;x&lt;\frac{2\theta_1+\theta_2}3\\ \dfrac{6h^2-3(3x-2\theta_1-\theta_2)^2-3(2\theta_2+\theta_1-3x)^2}{2h^3},&amp;\frac{2\theta_1+\theta_2}3&lt;x&lt;\frac{\theta_1+2\theta_2}3\\ \dfrac{27(\theta_2-x)^2}{2h^3},&amp;\frac{\theta_1+2\theta_2}3&lt;x&lt;\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]
+  <span class="mw">\[p_{\bar X}(x)=\begin{cases}\dfrac{27(x-\theta_1)^2}{2h^3},&amp;\theta_1&lt;x&lt;\frac{2\theta_1+\theta_2}3\\ \dfrac{6h^2-3(3x-2\theta_1-\theta_2)^2-3(2\theta_2+\theta_1-3x)^2}{2h^3},&amp;\frac{2\theta_1+\theta_2}3&lt;x&lt;\frac{\theta_1+2\theta_2}3\\ \dfrac{27(\theta_2-x)^2}{2h^3},&amp;\frac{\theta_1+2\theta_2}3&lt;x&lt;\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span><span class="mn">\[p_{\bar X}(x)\]\[=\begin{cases}\dfrac{27(x-\theta_1)^2}{2h^3},&amp;\theta_1&lt;x&lt;\frac{2\theta_1+\theta_2}3\\ \dfrac{6h^2-3(3x-2\theta_1-\theta_2)^2-3(2\theta_2+\theta_1-3x)^2}{2h^3},&amp;\frac{2\theta_1+\theta_2}3&lt;x&lt;\frac{\theta_1+2\theta_2}3\\ \dfrac{27(\theta_2-x)^2}{2h^3},&amp;\frac{\theta_1+2\theta_2}3&lt;x&lt;\theta_2\\ 0,&amp;\text{иначе}\end{cases}\]</span>
   <div class="box good"><span class="lbl">Самопроверка</span>В центре \(x=\frac{\theta_1+\theta_2}2\) обе скобки равны \(\frac h2\): \(\frac{6h^2-\frac34h^2-\frac34h^2}{2h^3}=\frac{2{,}25}{h}\). Для \(R(0,1)\) это \(2{,}25\) — совпадает с известной формулой Ирвина–Холла (\(3\cdot0{,}75\)). Куски стыкуются непрерывно: при \(x=\frac{2\theta_1+\theta_2}3\) первый даёт \(\frac{27(h/3)^2}{2h^3}=\frac{3}{2h}\), второй — \(\frac{6h^2-3h^2}{2h^3}=\frac3{2h}\). ✓</div>
 </section>
 
